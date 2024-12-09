@@ -1,0 +1,17 @@
+.newEventContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    margin: 1rem;
+    background-color: #FCE8E9ff;
+    border-radius: 15px;
+}
+
+.input {
+    margin: 1rem;
+    border: transparent;
+    padding: 0.7rem 4rem;
+    border-radius: 15px;
+    background-color: #FEFBF5ff;
+}
