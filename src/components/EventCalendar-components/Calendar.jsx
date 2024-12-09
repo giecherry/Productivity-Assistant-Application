@@ -2,6 +2,7 @@ import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, en
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import CalendarCSS from './Calendar.module.css'
+import NewEvent from './NewEvent';
 const Calendar = () => {
         const [currentMonth, setCurrentMonth] = useState(new Date());
 
@@ -30,7 +31,7 @@ const Calendar = () => {
                 <h2>{format(currentMonth, "MMMM")}</h2>
                 <button className={CalendarCSS.nextMonthButton}  onClick={handleNextMonth}>&gt;</button>
             </div>            
-            <button className={CalendarCSS.addEventButton}>+</button>
+            <Link to="/calendar/newEvent" element={<NewEvent />}><button className={CalendarCSS.addEventButton}>+</button></Link>
             <div className={CalendarCSS.eventsListContainer}>
                 {eventsThisMonth.map((event,i) => (
                 <Link to={`/event/${event.id}`} key={i}>
