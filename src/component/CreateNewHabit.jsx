@@ -1,4 +1,5 @@
 import { useState } from "react";
+import HabitDelete from "../component/HabitDelete"
 
 function CreateNewHabit() {
     let [habits, setHabits] = useState([]);
@@ -37,3 +38,5 @@ function CreateNewHabit() {
         </>
     )
 }
+
+export default CreateNewHabit
