@@ -1,7 +1,8 @@
+import Calendar from "../components/EventCalendar-components/Calendar"  
 const EventCalendar = () => {
     return (
         <>
-            <h1>Event Calendar</h1>
+            <Calendar />
         </>
     )
 }

@@ -1,0 +1,37 @@
+.monthSelector {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem 1rem;
+    min-width: 100dvh;
+}
+.eventsListContainer {
+    background-color: #FCE8E9ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.7rem;
+    min-width: 100dvh;
+    border-radius: 15px;
+}
+
+.past-event, .upcoming-event {
+    background-color: #FEFBF5ff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem;
+    margin: 1rem 0rem;
+    min-width: 100dvh;
+    border-radius: 15px;
+}
+.eventDate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.7rem;
+    margin: 1rem 0rem;
+    font-weight: bold;
+}
