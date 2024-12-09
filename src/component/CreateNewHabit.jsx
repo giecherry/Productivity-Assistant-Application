@@ -31,6 +31,8 @@ function CreateNewHabit() {
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                 </select>
+
+                <button onClick={AddHabit}>Save habit</button>
             </div>
         </>
     )
