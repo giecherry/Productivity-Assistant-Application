@@ -9,7 +9,7 @@ const Calendar = () => {
             { id: 1, date: new Date(2024, 11, 5, 10, 45), title: "Sprint Planning", time: "10:45-11:00" },
             { id: 2, date: new Date(2024, 11, 6, 10, 45), title: "Performance review", time: "10:45-12:00" },
             { id: 3, date: new Date(2024, 10, 7, 10, 45), title: "Bi-weekly sync w/Alyne", time: "10:45-12:00" },
-            { id: 4, date: new Date(2024, 11, 8, 10, 45), title: "Mid-week check-in", time: "10:45-11:00" },
+            { id: 4, date: new Date(2024, 10, 8, 10, 45), title: "Mid-week check-in", time: "10:45-11:00" },
             { id: 5, date: new Date(2024, 11, 9, 10, 45), title: "Retro", time: "10:45-11:00" },
             { id: 6, date: new Date(2024, 11, 10, 10, 45), title: "Studio meetup", time: "10:45-11:00" },
             { id: 7, date: new Date(2024, 11, 11, 10, 45), title: "Marketing Monthly", time: "10:45-11:00" },
@@ -26,10 +26,11 @@ const Calendar = () => {
         <div>
             <h1>{format(currentMonth, "yyyy")}</h1>
             <div className={CalendarCSS.monthSelector}>
-                <button onClick={handlePrevMonth}>&lt;</button>
+                <button className={CalendarCSS.prevMonthButton} onClick={handlePrevMonth}>&lt;</button>
                 <h2>{format(currentMonth, "MMMM")}</h2>
-                <button onClick={handleNextMonth}>&gt;</button>
-            </div>
+                <button className={CalendarCSS.nextMonthButton}  onClick={handleNextMonth}>&gt;</button>
+            </div>            
+            <button className={CalendarCSS.addEventButton}>+</button>
             <div className={CalendarCSS.eventsListContainer}>
                 {eventsThisMonth.map((event,i) => (
                 <Link to={`/event/${event.id}`} key={i}>

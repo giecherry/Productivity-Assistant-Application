@@ -1,15 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Gaegu&family=Modak&display=swap');
+
 html, body, #root {
     max-height: 100dvh; 
     margin: 0;
     overflow: hidden; 
+    font-family: "Gaegu";
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-family: "Modak";
+    font-size: 5rem;
+    text-align: center;
 }
 .monthSelector {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
-    padding: 1rem 1rem;
+    padding: 0rem 0rem;
     min-width: 100dvh;
+    font-weight: bold;
+    font-size: 1.3rem;
+    
 }
 .eventsListContainer {
     background-color: #FCE8E9ff;
@@ -22,6 +36,7 @@ html, body, #root {
     min-height: 100%;
     max-height: 65vh;
     overflow-y: auto;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
@@ -47,7 +62,21 @@ html, body, #root {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0.7rem;
+    padding: 1rem;
     margin: 1rem 0rem;
     font-weight: bold;
+    background-color: rgba(147, 159, 113, 0.505);
+    border-radius: 15px;
+}
+
+.addEventButton, .prevMonthButton, .nextMonthButton {
+    font-size:30px;
+    font-weight: bolder;
+    padding: 0.2rem 4rem;
+}
+
+.addEventButton {
+    margin: 0;
+    padding: 0.2rem 7rem;
+    min-width: 100%;
 }
