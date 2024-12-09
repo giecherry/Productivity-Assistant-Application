@@ -5,7 +5,10 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/"/>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/todo" element={<TodosAndActivities />} />
+        <Route path="/habits" element={<Habits />} />
+        <Route path="/eventCalender" element={<EventCalender />} />
       </Routes>
     </>
   )
