@@ -1,39 +1,60 @@
 import { useState } from "react";
-import HabitDelete from "./HabitDelete"
+import { HabitCounterContext } from "../../context/Habit-context/HabitCounterContext";
+import { useContext } from "react";
 
 function CreateNewHabit() {
     let [habits, setHabits] = useState([]);
 
-    let [title, setTitle] = useState();
-    let [repeat, setRepeat] = useState();
-    let [priority, setPriority] = useState();
+    let {counter, increment} = useContext(HabitCounterContext)
+
+    let [title, setTitle] = useState('');
+    let [repeat, setRepeat] = useState('');
+    let [priority, setPriority] = useState('');
 
     const AddHabit = () => {
-        let NewHabit = {
+
+        let newHabit = {
             title,
             repeat,
             priority,
         }
 
-        setHabits
+        let updatedHabits = [...habits, newHabit]
+        setHabits(updatedHabits)
+        increment();
     };
 
     return (
         <>
             <h1>Add new habit</h1>
-            <div className="createNewHabit">
-                <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)}/>
+            <p>Count your repetitions {counter}</p>
+            <button onClick={increment}>Count</button>
 
-                <input type="number" placeholder="Repeat" value={repeat} onChange={(e) => setRepeat(e.target.value)}/>
+            <div className="createHabit">
+                <form onSubmit={AddHabit}>
+                    <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required/>
 
-                <select value={priority} onChange={(e) => setPriority(e.target.value)}>
-                    <option value="" disabled selected>Select priority</option>
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                </select>
+                    <input type="number" placeholder="Repeat" value={repeat} onChange={(e) => setRepeat(e.target.value)} required/>
 
-                <button onClick={AddHabit}>Save habit</button>
+                    <select value={priority} onChange={(e) => setPriority(e.target.value)} required>
+                        <option value="" disabled>Select priority</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+
+                    <button onClick={AddHabit}>Save habit</button>
+                </form>
+
+                <ul>
+                    {habits.map((habit,i) => (
+                        <li key={i}>
+                            <h3>Habit: {habit.title}</h3>
+                            <p>Priority: {habit.priority}</p>
+                            <p>Repeat: {habit.repeat}</p>
+                        </li>
+                    ))}
+                </ul>
             </div>
         </>
     )
