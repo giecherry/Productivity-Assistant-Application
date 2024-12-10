@@ -1,5 +1,6 @@
 import { useState } from "react";
-import HabitDelete from "../components/Habit-components/deleteHabit"
+import { HabitCounterContext } from "../../context/Habit-context/HabitCounterContext";
+import { useContext } from "react";
 
 function CreateNewHabit() {
     let [habits, setHabits] = useState([]);
@@ -8,14 +9,16 @@ function CreateNewHabit() {
     let [repeat, setRepeat] = useState();
     let [priority, setPriority] = useState();
 
+    const {increment} = useContext(HabitCounterContext);
+
     const AddHabit = () => {
-        let NewHabit = {
+        let newHabit = {
             title,
             repeat,
             priority,
         }
 
-        setHabits
+        setHabits([...habits, newHabit])
     };
 
     return (
