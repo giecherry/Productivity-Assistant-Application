@@ -19,7 +19,8 @@ function CreateNewHabit() {
             priority,
         }
 
-        setHabits([...habits, newHabit])
+        let updatedHabits = [...habits, newHabit]
+        setHabits(updatedHabits)
         increment();
     };
 
@@ -44,12 +45,15 @@ function CreateNewHabit() {
 
                     <button onClick={AddHabit}>Save habit</button>
                 </form>
+
                 <ul>
-                    {habits.map((habits,i) =>
+                    {habits.map((habit,i) => (
                     <li key={i}>
-                        <h3>{habits.title.repeat.priority}</h3>
+                        <h3>Habit: {habit.title}</h3>
+                        <p>Repeat: {habit.repeat}</p>
+                        <p>Priority: {habit.priority}</p>
                     </li>
-                    )}
+                    ))}
                 </ul>
             </div>
         </>
