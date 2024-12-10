@@ -43,7 +43,7 @@ function CreateNewHabit() {
                         <option value="Low">Low</option>
                     </select>
 
-                    <button onClick={AddHabit}>Save habit</button>
+                    <button type="submit">Save habit</button>
                 </form>
 
                 <ul>
