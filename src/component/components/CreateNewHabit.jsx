@@ -1,5 +1,5 @@
 import { useState } from "react";
-import HabitDelete from "../component/HabitDelete"
+import HabitDelete from "./HabitDelete"
 
 function CreateNewHabit() {
     let [habits, setHabits] = useState([]);
