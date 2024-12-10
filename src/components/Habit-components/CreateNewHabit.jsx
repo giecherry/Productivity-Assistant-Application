@@ -9,8 +9,6 @@ function CreateNewHabit() {
     let [repeat, setRepeat] = useState();
     let [priority, setPriority] = useState();
 
-    const {increment} = useContext(HabitCounterContext);
-
     const AddHabit = () => {
         let newHabit = {
             title,
@@ -25,18 +23,20 @@ function CreateNewHabit() {
         <>
             <h1>Add new habit</h1>
             <div className="createNewHabit">
-                <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required/>
+                <form action={AddHabit}>
+                    <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required/>
 
-                <input type="number" placeholder="Repeat" value={repeat} onChange={(e) => setRepeat(e.target.value)} required/>
+                    <input type="number" placeholder="Repeat" value={repeat} onChange={(e) => setRepeat(e.target.value)} required/>
 
-                <select value={priority} onChange={(e) => setPriority(e.target.value)} required>
-                    <option value="" disabled selected>Select priority</option>
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                </select>
+                    <select value={priority} onChange={(e) => setPriority(e.target.value)} required>
+                        <option value="" disabled selected>Select priority</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
 
-                <button onClick={AddHabit}>Save habit</button>
+                    <button onClick={AddHabit}>Save habit</button>
+                </form>
             </div>
         </>
     )
