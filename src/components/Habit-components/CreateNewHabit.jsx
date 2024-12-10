@@ -12,7 +12,6 @@ function CreateNewHabit() {
     let [priority, setPriority] = useState('');
 
     const AddHabit = () => {
-        /* e.preventDefault(); */
 
         let newHabit = {
             title,
@@ -45,6 +44,13 @@ function CreateNewHabit() {
 
                     <button onClick={AddHabit}>Save habit</button>
                 </form>
+                <ul>
+                    {habits.map((habit,i) =>
+                    <li key={i}>
+                        <h3>{habits}</h3>
+                    </li>
+                    )}
+                </ul>
             </div>
         </>
     )
