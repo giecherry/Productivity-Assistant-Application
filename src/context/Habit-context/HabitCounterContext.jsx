@@ -4,7 +4,7 @@ export const HabitCounterContext = createContext();
 
 export function HabitCounterContextProvider ({children}) {
 
-    const [counter, setCounter] = useState(0);
+    const [counter, setCounter] = useState(1);
 
     const increment = () => {
         setCounter(counter+1);
