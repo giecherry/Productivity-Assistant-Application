@@ -1,4 +1,4 @@
-import CreateNewHabit from "../component/components/CreateNewHabit"
+import CreateNewHabit from "../components/Habit-components/CreateNewHabit"
 
 const Habits = () => {
     return (
