@@ -29,7 +29,7 @@ function CreateNewHabit() {
             <p>Count your repetitions {counter}</p>
             <button onClick={increment}>+</button>
 
-            <div className="createNewHabit">
+            <div className="createHabit">
                 <form onSubmit={AddHabit}>
                     <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required/>
 
