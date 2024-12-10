@@ -6,6 +6,10 @@ export function HabitCounterContextProvider ({children}) {
 
     const [counter, setCounter] = useState(0);
 
+    const increment = () => {
+        setCounter(counter+1);
+    }
+
     return (
         <>
             <HabitCounterContext.Provider value={{counter,increment}}>
