@@ -45,9 +45,9 @@ function CreateNewHabit() {
                     <button onClick={AddHabit}>Save habit</button>
                 </form>
                 <ul>
-                    {habits.map((habit,i) =>
+                    {habits.map((habits,i) =>
                     <li key={i}>
-                        <h3>{habits}</h3>
+                        <h3>{habits.title.repeat.priority}</h3>
                     </li>
                     )}
                 </ul>
