@@ -11,8 +11,8 @@ function CreateNewHabit() {
     let [repeat, setRepeat] = useState('');
     let [priority, setPriority] = useState('');
 
-    const AddHabit = () => {
-
+    const AddHabit = (e) => {
+        e.preventDefault();
         let newHabit = {
             title,
             repeat,
@@ -20,8 +20,10 @@ function CreateNewHabit() {
         }
 
         let updatedHabits = [...habits, newHabit]
+        console.log("dfgdg")
         setHabits(updatedHabits)
         increment();
+
     };
 
     return (
