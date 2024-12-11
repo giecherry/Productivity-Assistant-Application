@@ -8,11 +8,11 @@ const SignUp = () => {
     const [userName, setUserName]= useState("")
     const [password, setPassword]= useState("")
     const [email, setEmail]= useState("")
-    const [regUsers, setRegUsers] = useState(JSON.parse(localStorage.getItem("Registrerad users:")) || []); 
+    const [regUsers, setRegUsers] = useState(JSON.parse(localStorage.getItem("Users:")) || []); 
 
     useEffect(() => {
         console.log("Sparar värdet i storage...")
-        localStorage.setItem("Registrerad users:", JSON.stringify(regUsers))
+        localStorage.setItem("Users:", JSON.stringify(regUsers))
     },[regUsers])
     
     //Spara user info funktion
