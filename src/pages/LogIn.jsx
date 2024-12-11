@@ -39,7 +39,7 @@ const LogIn = () => {
                 <input type="text" placeholder='Username' />
                 <input type="password" placeholder='Password'/>
                 <h5>Are you new? <Link to="/signup" element= {<SignUp/>} >Sign up!</Link></h5>
-                <Link to= "/home" element= {<HomePage/> }> <button onClick={addData}>Log in</button> </Link>
+                <button onClick={addData}>Log in</button>
             </div>
             
         </>

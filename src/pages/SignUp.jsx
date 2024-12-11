@@ -36,7 +36,7 @@ const SignUp = () => {
                 <input type="text" onChange={(e) => setEmail(e.target.value)}  placeholder="E-mail" />
                 <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder='Password'/>
                 <h5>Already a member? <Link to="/" element= {<LogIn/>}>Log in!</Link></h5>
-                <Link to= "/home" element= {<HomePage/>}> <button onClick={addData}>Sign in</button> </Link>
+                <button onClick={addData}>Sign in</button>
             </div>
             
         </>
