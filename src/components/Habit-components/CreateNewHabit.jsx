@@ -31,18 +31,18 @@ function CreateNewHabit() {
 
             <div className="createHabit">
                 <form onSubmit={AddHabit}>
-                    <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required/>
+                    <input className="HabitTitle" type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required/>
 
-                    <input type="number" placeholder="Repeat" value={repeat} onChange={(e) => setRepeat(e.target.value)} required/>
+                    <input className="HabitRepeat" type="number" placeholder="Repeat" value={repeat} onChange={(e) => setRepeat(e.target.value)} required/>
 
-                    <select value={priority} onChange={(e) => setPriority(e.target.value)} required>
+                    <select className="HabitPriority" value={priority} onChange={(e) => setPriority(e.target.value)} required>
                         <option value="" disabled>Select priority</option>
                         <option value="High">High</option>
                         <option value="Medium">Medium</option>
                         <option value="Low">Low</option>
                     </select>
 
-                    <button type="submit">Save habit</button>
+                    <button className="HabitButton" type="submit">Save habit</button>
                 </form>
 
                 <ul>
@@ -52,7 +52,7 @@ function CreateNewHabit() {
                         <p>Repeat: {habit.repeat}</p>
                         <p>Priority: {habit.priority}</p>
                         <p>Count your repetitions {counter}</p>
-                        <button onClick={increment}>+</button>
+                        <button className="HabitButton" onClick={increment}>+</button>
                         <button onClick={() => deleteHabit(i)}>Delete</button>
                     </li>
                     ))}
