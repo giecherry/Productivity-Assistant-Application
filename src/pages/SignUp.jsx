@@ -6,16 +6,16 @@ const SignUp = () => {
     const [userName, setUserName]= useState("")
     const [password, setPassword]= useState("")
     const [email, setEmail]= useState("")
-    const [myJSON, setJSON] = useState(JSON.parse(sessionStorage.getItem("Data")) || []); 
+    const [myJSON, setJSON] = useState(JSON.parse(localStorage.getItem("Data")) || []); 
 
     useEffect(() => {
         console.log("Sparar värdet i storage...")
-        sessionStorage.setItem("Data", JSON.stringify(myJSON))
+        localStorage.setItem("Data", JSON.stringify(myJSON))
     },[myJSON])
     
     //Spara user info funktion
     const addData = () => {
-        let newData = 
+        let newData = {userName, password, email};
         let updatedData = [...myJSON, newData]
         setMyJSON(updatedData);
     }
