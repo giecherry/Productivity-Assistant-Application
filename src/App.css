@@ -13,3 +13,35 @@
 --tea-rose-red: #F3C3C3ff;
 --baby-powder: #FEFBF5ff; 
 */
+
+.HabitHOne {
+  color: #939F71ff;
+}
+
+.HabitHome {
+  border-color: #939F71ff;
+  border-radius: 15px;
+  background-color: #FCE8E9ff;
+}
+
+.createHabit {
+  background-color: #FCE8E9ff;
+  color: #939F71ff;
+  flex-direction: column;
+}
+
+.HabitTitle {
+  background-color: #939F71ff;
+}
+
+.HabitRepeat {
+  background-color: #939F71ff;
+}
+
+.HabitPriority {
+  background-color: #939F71ff;
+}
+
+.HabitButton {
+  background-color: #939F71ff;
+}
