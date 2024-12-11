@@ -20,7 +20,6 @@ function CreateNewHabit() {
         }
 
         let updatedHabits = [...habits, newHabit]
-        console.log("dfgdg")
         setHabits(updatedHabits)
         increment();
 
@@ -29,8 +28,6 @@ function CreateNewHabit() {
     return (
         <>
             <h1>Add new habit</h1>
-            <p>Count your repetitions {counter}</p>
-            <button onClick={increment}>+</button>
 
             <div className="createHabit">
                 <form onSubmit={AddHabit}>
@@ -54,6 +51,9 @@ function CreateNewHabit() {
                         <h3>Habit: {habit.title}</h3>
                         <p>Repeat: {habit.repeat}</p>
                         <p>Priority: {habit.priority}</p>
+                        <p>Count your repetitions {counter}</p>
+                        <button onClick={increment}>+</button>
+                        <button onClick={() => deleteHabit(i)}>Delete</button>
                     </li>
                     ))}
                 </ul>
