@@ -3,6 +3,16 @@ import SignUp from "./SignUp"
 import Logo from "../assets/logo.png"
 
 const LogIn = () => {
+
+        //Logga in funktion
+        const saveData = () => {
+            let newData = [
+                
+            ]
+            setMyJSON(newData);
+        }
+
+        //Error message när man inte är regristrerad eller fel lösenord
     return (
         <>
             <h1>Log In</h1>
