@@ -3,8 +3,10 @@ import CreateNewHabit from "../components/Habit-components/CreateNewHabit"
 const Habits = () => {
     return (
         <>
-            <h1>Habits</h1>
-            <CreateNewHabit />
+            <div className="HabitHome">
+                <h1 className="HabitHOne">Habits</h1>
+                <CreateNewHabit />
+            </div>
         </>
     )
 }
