@@ -36,8 +36,8 @@ const LogIn = () => {
                     <img src={Logo} alt="Taskoo logo" />
                 </div>
                 <h1>Welcome to Taskoo</h1>
-                <input type="text" placeholder='Username' />
-                <input type="password" placeholder='Password'/>
+                <input type="text" onChange={(e) => setUserName(e.target.value)} placeholder='Username' />
+                <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder='Password'/>
                 <h5>Are you new? <Link to="/signup" element= {<SignUp/>} >Sign up!</Link></h5>
                 <button onClick={addData}>Log in</button>
             </div>
