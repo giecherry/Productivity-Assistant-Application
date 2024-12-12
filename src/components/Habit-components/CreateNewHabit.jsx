@@ -1,19 +1,24 @@
 import { useState } from "react";
 import { HabitCounterContext } from "../../context/Habit-context/HabitCounterContext";
+import { HabitReduceContext } from '../../context/Habit-context/HabitReduceContext.jsx';
+import { DeleteHabitContext } from "../../context/Habit-context/DeleteHabitContext.jsx";
 import { useContext } from "react";
 
 function CreateNewHabit() {
     let [habits, setHabits] = useState([]);
 
     let {counter, increment} = useContext(HabitCounterContext)
+    let {reduceCounter, reduce} = useContext(HabitReduceContext)
+    let {deleteHabit, reset} = useContext(DeleteHabitContext)
 
     let [title, setTitle] = useState('');
-    let [repeat, setRepeat] = useState('');
+    let [repeat, setRepeat] = useState(0);
     let [priority, setPriority] = useState('');
 
     const AddHabit = (e) => {
         e.preventDefault();
         let newHabit = {
+            id:Date.now(),
             title,
             repeat,
             priority,
@@ -22,7 +27,7 @@ function CreateNewHabit() {
         let updatedHabits = [...habits, newHabit]
         setHabits(updatedHabits)
         increment();
-
+        // reduce();
     };
 
     return (
@@ -46,14 +51,16 @@ function CreateNewHabit() {
                 </form>
 
                 <ul>
-                    {habits.map((habit,i) => (
+                    {habits.map((habit, i) => (
                     <li key={i}>
                         <h3>Habit: {habit.title}</h3>
                         <p>Repeat: {habit.repeat}</p>
                         <p>Priority: {habit.priority}</p>
                         <p>Count your repetitions {counter}</p>
                         <button className="HabitButton" onClick={increment}>+</button>
-                        <button onClick={() => deleteHabit(i)}>Delete</button>
+                        <button className="HabitButton" onClick={reduce}>-</button>
+                        {/* <button className="HabitButton" onClick={reset}></button> */}
+                        <button className="HabitButton"onClick={() => reset(habits, setHabits, habit)}>Delete</button>
                     </li>
                     ))}
                 </ul>
@@ -63,3 +70,4 @@ function CreateNewHabit() {
 }
 
 export default CreateNewHabit
+
