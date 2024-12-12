@@ -7,7 +7,7 @@ export function HabitReduceContextProvider ({children}) {
     const [reduceCounter, setReduceCounter] = useState(1);
 
     const reduce = () => {
-        setReduceCounter(reduceCounter-1);
+         setReduceCounter(reduceCounter-1);
     }
 
     return (
