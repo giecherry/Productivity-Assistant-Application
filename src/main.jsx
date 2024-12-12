@@ -10,13 +10,13 @@ import { HabitReduceContextProvider } from './context/Habit-context/HabitReduceC
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <HabitReduceContextProvider>
-    <DeleteHabitContextProvider>
-    <HabitCounterContextProvider>
-      <BrowserRouter>    
-        <App />
-      </BrowserRouter>
-    </HabitCounterContextProvider>
-    </DeleteHabitContextProvider>
+      <DeleteHabitContextProvider>
+        <HabitCounterContextProvider>
+          <BrowserRouter>    
+            <App />
+          </BrowserRouter>
+        </HabitCounterContextProvider>
+      </DeleteHabitContextProvider>
     </HabitReduceContextProvider>
   </StrictMode>,
 )
