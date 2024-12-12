@@ -1,20 +1,17 @@
-import { createContext, useState } from "react";
-import Habits from "../../pages/Habits";
+import { createContext } from "react";
 
 export const DeleteHabitContext = createContext();
 
 export function DeleteHabitContextProvider ({children}) {
 
-    const [deleteHabit, setDeleteHabit] = useState();
-
-    const deleteThisHabit = (i) => {
-        let updatedHabits = Habits.filter((habit,i) => {return i !== index})
-    deleteHabit(setDeleteHabit);
-    }
+    const reset = (habits, setHabits, habitToDelete) => {
+        const updatedHabits = habits.filter((habit) => habit.id !== habitToDelete.id);
+        setHabits(updatedHabits);
+    };
 
     return (
         <>
-            <DeleteHabitContext.Provider value={{deleteHabit,increment}}>
+            <DeleteHabitContext.Provider value={{reset}}>
                 {children}
             </DeleteHabitContext.Provider>
         </>
