@@ -2,14 +2,16 @@ import { useEffect, useState, useContext } from "react";
 import { HabitCounterContext } from "../../context/Habit-context/HabitCounterContext";
 import { HabitReduceContext } from '../../context/Habit-context/HabitReduceContext.jsx';
 import { DeleteHabitContext } from "../../context/Habit-context/DeleteHabitContext.jsx";
+import { HabitFiltSortContext } from "../../context/Habit-context/HabitFiltSortContext.jsx";
 
 function CreateNewHabit() {
 
     const [habits, setHabits] = useState(JSON.parse(sessionStorage.getItem("Data")) || []);
 
     let {counter, increment} = useContext(HabitCounterContext)
-    let {reduceCounter, reduce} = useContext(HabitReduceContext)
+    let {reduce} = useContext(HabitReduceContext)
     let {reset} = useContext(DeleteHabitContext)
+    let {filterHabits, setFilterHabits} = useContext(HabitFiltSortContext)
 
     let [title, setTitle] = useState('');
     let [description, setDescription] = useState('');
@@ -39,9 +41,28 @@ function CreateNewHabit() {
         // reduce();
     };
 
+    const filteredHabits = filterHabits === "All" || !filterHabits
+    ? habits
+    : habits.filter((habit) => habit.priority === filterHabits);
+
     return (
         <>
             <h4 className="habitHFour">Add new habit</h4>
+
+            <div>
+            <select value={filterHabits} onChange={(e) => setFilterHabits(e.target.value)}>
+                    <option value="All">All</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+            </div>
+            
+            {filteredHabits.map((habit) => 
+            <li key={habit.id}>
+                {habit.priority}
+                <button onClick={filterHabits}></button>
+            </li>)}
 
             <div className="createHabit">
                 <form onSubmit={AddHabit}>
