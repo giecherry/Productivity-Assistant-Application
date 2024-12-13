@@ -47,7 +47,7 @@ function CreateNewHabit() {
                 <form onSubmit={AddHabit}>
                     <input className="HabitTitle" type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required/>
 
-                    <input className="HabitDescription" type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}/>
+                    <input className="HabitDescription" type="text" placeholder="Habit description" value={description} onChange={(e) => setDescription(e.target.value)}/>
 
                     <input className="HabitRepeat" type="number" placeholder="Repeat" value={repeat} onChange={(e) => setRepeat(e.target.value)} required/>
 
@@ -70,7 +70,6 @@ function CreateNewHabit() {
                         <p>Count your repetitions {counter}</p>
                         <button className="HabitButton" onClick={increment}>+</button>
                         <button className="HabitButton" onClick={reduce}>-</button>
-                        {/* <button className="HabitButton" onClick={reset}></button> */}
                         <button className="HabitButton"onClick={() => reset(habits, setHabits, habit)}>Delete</button>
                     </li>
                     ))}
