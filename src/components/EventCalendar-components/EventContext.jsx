@@ -4,18 +4,21 @@ import { createContext, useState } from "react";
 export const EventContext = createContext();
 
 export function EventContextProvider ({children}){
+    
+    const [events, setEvents] = useState(() => {
+        const savedEvents = JSON.parse(localStorage.getItem("events")) || [];
+        return savedEvents;
+    });
 
-    const [events, setEvents] = useState([])
+    const addEvent = (newEvent) => {
+        const updatedEvents = [...events, newEvent];
+        setEvents(updatedEvents);
+        localStorage.setItem("events", JSON.stringify(updatedEvents));
+    };
 
-    const addEvent = () => {
-        //logic for adding an event
-        setEvents(...events, newEvent)
-    }
-
-
-    return(
-        <EventContext.Provider value={{events, addEvent}}>
+    return (
+        <EventContext.Provider value={{ events, addEvent }}>
             {children}
         </EventContext.Provider>
-    )
+    );
 }
