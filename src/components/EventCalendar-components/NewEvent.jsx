@@ -2,10 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import { format } from 'date-fns';
 import { EventContext } from "./EventContext";
 import NewEventCSS from './NewEvent.module.css'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const NewEvent = () => {
+    const navigate = useNavigate();
 
     const {addEvent, events} = useContext(EventContext)
 
@@ -32,6 +33,8 @@ const NewEvent = () => {
 
         addEvent(newEvent);
         alert("Event added successfully!");
+
+        navigate('/calendar'); 
     };
     
     
