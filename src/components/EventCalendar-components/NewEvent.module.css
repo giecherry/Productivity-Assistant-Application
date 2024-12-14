@@ -11,8 +11,29 @@
 .input {
     margin: 1rem;
     border: transparent;
-    padding: 0.7rem 4rem;
+    padding: 0.7rem 2rem;
     border-radius: 15px;
     background-color: #FEFBF5ff;
-    min-width: 60%;
+    width: 30dvh;
+}
+
+.startTimeContainer, .endTimeContainer, .eventDateContainer, .eventTitleContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 1rem;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }

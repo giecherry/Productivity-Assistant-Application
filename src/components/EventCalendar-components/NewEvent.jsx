@@ -18,11 +18,27 @@ const NewEvent = () => {
         <>
             <div className={NewEventCSS.newEventContainer}>
                 <h1>New Event</h1>
-                <input className={NewEventCSS.input} type="text" placeholder="Event title" onChange={(e)=> setEventTitle(e.target.value)}/>
-                {console.log(eventTitle)}
-                <input className={NewEventCSS.input} type="date" placeholder="Event date" />
-                <input className={NewEventCSS.input} type="time" placeholder="Start time" />
-                <input className={NewEventCSS.input} type="time" placeholder="End time" />
+                <div className={NewEventCSS.inputContainer}>
+                    
+                    <div className={NewEventCSS.eventTitleContainer}>
+                        <label htmlFor="eventTitle">Title</label>
+                        <input className={NewEventCSS.input} type="text" id ="eventTitle" placeholder="Event title" onChange={(e)=> setEventTitle(e.target.value)}/> 
+                    </div>
+
+                    <div className={NewEventCSS.eventDateContainer}>
+                        <label htmlFor="'eventDate">Date</label>
+                        <input className={NewEventCSS.input} id="eventDate" type="date" placeholder="Event date" /> 
+                    </div>
+                    
+                    <div className={NewEventCSS.startTimeContainer}>
+                        <label htmlFor="startTime"> Start Time </label>
+                        <input className={NewEventCSS.input} id="startTime" type="time" placeholder="Start time" />
+                    </div>
+                    <div className={NewEventCSS.endTimeContainer}>
+                        <label htmlFor="endTime"> End Time </label>
+                        <input className={NewEventCSS.input} id="endTime" type="time" placeholder="End time" />
+                    </div>
+                </div>
                 <button onClick={addEvent}>Add</button>
             </div>
             
