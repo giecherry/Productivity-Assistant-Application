@@ -9,31 +9,33 @@
 }
 
 .input {
-    margin: 1rem;
+    margin: 1rem 0.7rem;
     border: transparent;
     padding: 0.7rem 2rem;
     border-radius: 15px;
     background-color: #FEFBF5ff;
-    width: 30dvh;
 }
 
-.startTimeContainer, .endTimeContainer, .eventDateContainer, .eventTitleContainer {
+.eventStartContainer, .eventEndContainer, .eventTitleContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
+    justify-content: space-around;
+    width: auto;
     text-align: left;
-
 }
+
+.eventTitleContainer .input  {
+    min-width: 100%;
+    padding: 0.7rem 2.4rem;
+}
+
 
 .inputContainer {
     display: flex;
     flex-direction: column;
-    width: 70%;
     margin: 1rem;
     align-content: center;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    align-items: flex-start;
+    padding: 1rem;
 }

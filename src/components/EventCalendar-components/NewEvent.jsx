@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { format } from 'date-fns';
 import { EventContext } from "./EventContext";
 import NewEventCSS from './NewEvent.module.css'
 import { Link } from "react-router-dom";
@@ -6,37 +7,38 @@ import { Link } from "react-router-dom";
 
 const NewEvent = () => {
 
-    const {addEvent} = useContext(EventContext)
+    const {addEvent, events} = useContext(EventContext)
 
     const [eventTitle, setEventTitle] = useState("") 
-    const [eventDate, setEventDate] = useState(null)
+    const [eventStartDate, setEventStartDate] = useState(null)
     const [eventStartTime, setEventStartTime] = useState(null)
+    const [eventEndDate, setEventEndDate] = useState(null)
     const [eventEndTime, setEventEndTime] = useState(null)
 
     const handleAddEvent = () => {
-        if (!eventTitle || !eventDate || !eventStartTime || !eventEndTime) {
+        if (!eventTitle || !eventStartDate || !eventStartTime || !eventEndTime || !eventEndDate) {
             alert("Please fill out all event details.");
             return;
         }
 
         const newEvent = {
-            id: Date.now(),
+            id: events.length + 1,
             title: eventTitle,
-            date: new Date(eventDate),
-            time: `${eventStartTime} - ${eventEndTime}`,
+            startDate:new Date(eventStartDate),
+            endDate:new Date(eventEndDate),
+            startTime: eventStartTime,
+            endTime: eventEndTime
         };
 
         addEvent(newEvent);
         alert("Event added successfully!");
     };
-
     
-
-
+    
     return (
         <>
             <div className={NewEventCSS.newEventContainer}>
-                <h1>New Event</h1>
+                {eventTitle? <h1>{eventTitle}</h1> :<h1>New Event</h1>}
                 <div className={NewEventCSS.inputContainer}>
                     
                     <div className={NewEventCSS.eventTitleContainer}>
@@ -44,21 +46,22 @@ const NewEvent = () => {
                         <input className={NewEventCSS.input} type="text" id ="eventTitle" placeholder="Event title" onChange={(e)=> setEventTitle(e.target.value)}/> 
                     </div>
 
-                    <div className={NewEventCSS.eventDateContainer}>
-                        <label htmlFor="'eventDate">Date</label>
-                        <input className={NewEventCSS.input} id="eventDate" type="date" placeholder="Event date" onChange={(e) => setEventDate(new Date(e.target.value)) } /> 
+                    <div className={NewEventCSS.eventStartContainer}>
+                        <label htmlFor="'eventStart">Start</label>
+                        <div>
+                            <input className={NewEventCSS.input} id="eventStart" type="date" onChange={(e) => setEventStartDate(e.target.value) } /> 
+                            <input className={NewEventCSS.input} id="eventStart" type="time" onChange={(e) => setEventStartTime(e.target.value) } />
+                        </div>
                     </div>
-                    
-                    <div className={NewEventCSS.startTimeContainer}>
-                        <label htmlFor="startTime"> Start Time </label>
-                        <input className={NewEventCSS.input} id="startTime" type="time" placeholder="Start time" onChange={(e) => setEventStartTime(e.target.value) } />
-                    </div>
-                    <div className={NewEventCSS.endTimeContainer}>
-                        <label htmlFor="endTime"> End Time </label>
-                        <input className={NewEventCSS.input} id="endTime" type="time" placeholder="End time"  onChange={(e) => setEventEndTime(e.target.value) }/>
+                    <div className={NewEventCSS.eventEndContainer}>
+                        <label htmlFor="eventEnd"> End </label>
+                        <div>
+                            <input className={NewEventCSS.input} id="eventEnd" type="date" onChange={(e) => setEventEndDate(e.target.value) } /> 
+                            <input className={NewEventCSS.input} id="eventEnd" type="time" onChange={(e) => setEventEndTime(e.target.value) }/>
+                        </div>
                     </div>
                 </div>
-                <button onClick={handleAddEvent} >Add</button>
+                <button onClick={handleAddEvent}>Add</button>
             </div>
             <Link to="/calendar"><button>&#8592;</button></Link>
             

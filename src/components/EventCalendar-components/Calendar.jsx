@@ -1,8 +1,7 @@
-import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, isSameMonth, isToday, isBefore } from 'date-fns';
+import { format, addMonths, subMonths, isToday, isBefore } from 'date-fns';
 import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom';
 import CalendarCSS from './Calendar.module.css'
-import NewEvent from './NewEvent';
 import { EventContext } from "./EventContext";
 
 const Calendar = () => {
@@ -11,7 +10,7 @@ const Calendar = () => {
     
     //*Handle month change------------------
     const [currentMonth, setCurrentMonth] = useState(new Date());
-    const eventsThisMonth = (events || testEvents).filter(event =>format(event.date, "yyyy-MM") === format(currentMonth, "yyyy-MM"));
+    const eventsThisMonth = events .filter(event =>format(event.startDate, "yyyy-MM") === format(currentMonth, "yyyy-MM"));
     const handlePrevMonth = () => setCurrentMonth(subMonths(currentMonth, 1));
     const handleNextMonth = () => setCurrentMonth(addMonths(currentMonth, 1));
 
@@ -39,13 +38,13 @@ const Calendar = () => {
             <Link to="/calendar/newEvent"><button className={CalendarCSS.addEventButton}>+</button></Link>
             <div className={CalendarCSS.eventsListContainer}>
                 {eventsThisMonth.map((event,i) => (
-                <Link to={`/event/${event.id}`} key={i}>
-                <div key={i} className={CalendarCSS[isBefore(event?.date, new Date()) && !isToday(event?.date) ? "past-event" : "upcoming-event"]}>
-                    <div className={CalendarCSS.eventDate}>{format(event.date, "EEE dd")}</div>
-                    <div>{event.title}</div>
-                    <div>{event.time}</div>
-                </div>
-                </Link>
+                    <Link to={`/event/${event.id}`} key={i}>
+                    <div key={i} className={CalendarCSS[isBefore(event?.startDate, new Date()) && !isToday(event?.startDate) ? "past-event" : "upcoming-event"]}>
+                        <div className={CalendarCSS.eventDate}>{format(event.startDate, "EEE dd")}</div>
+                        <div>{event.title}</div>
+                        <div>{event.startTime} - {event.endTime}</div>
+                    </div>
+                    </Link>
                 ))}
             </div>
         </div>
