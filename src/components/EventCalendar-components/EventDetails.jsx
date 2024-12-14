@@ -1,8 +1,10 @@
 import { format } from 'date-fns';
 import { Link } from "react-router-dom";
 import { EventContext } from "./EventContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
+import NewEventCSS from './NewEvent.module.css'
+import { se } from 'date-fns/locale';
 
 
 const EventDetails = () => {
@@ -10,6 +12,7 @@ const EventDetails = () => {
     const {events, setEvents} = useContext(EventContext)
     const { id } = useParams();
     const navigate = useNavigate();
+    const [showEditForm, setShowEditForm] = useState(false);
 
     const event = events.find(event => event.id === parseInt(id)); 
 
@@ -18,21 +21,60 @@ const EventDetails = () => {
         setEvents(updatedEvents);
         localStorage.setItem("events", JSON.stringify(updatedEvents));
     };
-    const handleClick = () => {
+    const handleDelete = () => {
             deleteEvent(event.id);
             navigate('/calendar');     
+    };
+
+    const handleEdit = () => {
+        setShowEditForm(!showEditForm);
     };
     
     return (
         <>
-            <h1>{events[0].title}</h1>
-            <h2>Date: {format((events[0].startDate), "yyyy/MM/dd")} - {format((events[0].endDate), "yyyy/MM/dd")}</h2>
-            <h2>Time: {events[0].startTime} - {events[0].endTime}</h2>
+        {showEditForm ? 
+        
+        <div>
+            <div className={NewEventCSS.newEventContainer}>
+                            <h1>{event.title}</h1>
+                            <div className={NewEventCSS.inputContainer}>
+                                <div className={NewEventCSS.eventTitleContainer}>
+                                    <label htmlFor="eventTitle">Title</label>
+                                    <input className={NewEventCSS.input} type="text" id ="eventTitle" placeholder="Event title" /> 
+                                </div>
+            
+                                <div className={NewEventCSS.eventStartContainer}>
+                                    <label htmlFor="'eventStart">Start</label>
+                                    <div>
+                                        <input className={NewEventCSS.input} id="eventStart" type="date" /> 
+                                        <input className={NewEventCSS.input} id="eventStart" type="time" />
+                                    </div>
+                                </div>
+                                <div className={NewEventCSS.eventEndContainer}>
+                                    <label htmlFor="eventEnd"> End </label>
+                                    <div>
+                                        <input className={NewEventCSS.input} id="eventEnd" type="date" /> 
+                                        <input className={NewEventCSS.input} id="eventEnd" type="time" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            <button>Save</button>
+            <Link to="/calendar" onClick={setShowEditForm(false)}><button>&#8592;</button></Link>
+        </div>
+        
+        :
+            <div>
+                <h1>{events[0].title}</h1>
+                <h2>Date: {format((events[0].startDate), "yyyy/MM/dd")} - {format((events[0].endDate), "yyyy/MM/dd")}</h2>
+                <h2>Time: {events[0].startTime} - {events[0].endTime}</h2>
 
-            <button onClick={handleClick}>Delete</button>
-            <button>Edit</button>
+                <button onClick={handleDelete}>Delete</button>
+                <button onClick={handleEdit}>Edit</button>
 
-            <Link to="/calendar"><button>&#8592;</button></Link>
+                <Link to="/calendar"><button>&#8592;</button></Link>
+            </div>
+        }
         </>
     )
 }
