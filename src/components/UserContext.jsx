@@ -19,11 +19,18 @@ export function UserContextProvider ({children}){
             setPassword(e.target.value);
         }
         const addNewUser = () => {
-            let newUserData = {userName, password};
-            let updatedRegUsers = [...regUsers, newUserData];
-            setRegUsers(updatedRegUsers);
-            localStorage.setItem("Registrerad users:", JSON.stringify(updatedUsers));
-            console.log("Registered users:", updatedUsers);
+            if (regUsers.some(user => user.userName === userName)) {
+                alert("Username already exists.");
+                return;
+            }
+            else {
+                let newUserData = {userName, password};
+                let updatedRegUsers = [...regUsers, newUserData];
+                setRegUsers(updatedRegUsers);
+                localStorage.setItem("Registrerad users:", JSON.stringify(updatedRegUsers));
+                console.log("Registered users:", updatedRegUsers);
+                alert("User registered successfully!");}
+            
         }
         const handleLogIn = () => {
             let newInUserData = {userName, password};
@@ -36,6 +43,7 @@ export function UserContextProvider ({children}){
             let user = regUsers.find(user => user.userName === userName && user.password === password);
             return user;
         }
+
 
     return(
         <UserContext.Provider value={{ handleLogIn, handleUserName, handlePassword, addNewUser, regUsers, inUser, userName, password, checkUser}}>
