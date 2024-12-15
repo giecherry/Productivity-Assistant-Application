@@ -13,10 +13,14 @@ export function HabitCounterContextProvider ({children}) {
     const reduce = () => {
          setCounter(counter-1);
     }
+    
+    const  zero = () => {
+        setCounter(counter===0);
+    }
 
     return (
         <>
-            <HabitCounterContext.Provider value={{counter,increment,reduce}}>
+            <HabitCounterContext.Provider value={{counter,increment,reduce,zero}}>
                 {children}
             </HabitCounterContext.Provider>
         </>
