@@ -1,8 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { HabitCounterContext } from "../../context/Habit-context/HabitCounterContext";
-import { HabitReduceContext } from '../../context/Habit-context/HabitReduceContext.jsx';
-import { DeleteHabitContext } from "../../context/Habit-context/DeleteHabitContext.jsx";
-import { HabitFiltSortContext } from "../../context/Habit-context/HabitFiltSortContext.jsx";
+import { DeleteHabitContext } from "../../context/Habit-context/DeleteHabitContext";
+import { HabitFiltSortContext } from "../../context/Habit-context/HabitFiltSortContext";
 
 function CreateNewHabit() {
 
