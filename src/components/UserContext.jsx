@@ -32,9 +32,13 @@ export function UserContextProvider ({children}){
             console.log("Inloggad user:",inUser)
         }
 
+        const checkUser = () => {
+            let user = regUsers.find(user => user.userName === userName && user.password === password);
+            return user;
+        }
 
     return(
-        <UserContext.Provider value={{ handleLogIn, handleUserName, handlePassword, addNewUser, regUsers, inUser, userName, password}}>
+        <UserContext.Provider value={{ handleLogIn, handleUserName, handlePassword, addNewUser, regUsers, inUser, userName, password, checkUser}}>
             {children}
         </UserContext.Provider>
     )
