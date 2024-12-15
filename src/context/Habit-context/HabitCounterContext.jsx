@@ -10,9 +10,15 @@ export function HabitCounterContextProvider ({children}) {
          setCounter(counter+1);
     }
 
+    const [reduceCounter, setReduceCounter] = useState(1);
+
+    const reduce = () => {
+         setReduceCounter(reduceCounter-1);
+    }
+
     return (
         <>
-            <HabitCounterContext.Provider value={{counter,increment}}>
+            <HabitCounterContext.Provider value={{counter,increment,reduce}}>
                 {children}
             </HabitCounterContext.Provider>
         </>
