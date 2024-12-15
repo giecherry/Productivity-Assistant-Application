@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"  
 import { useContext } from 'react';
 import { UserContext } from '../UserContext';  
+import HomePageCSS from "./HomePage.module.css"
 const GreetingAndQuote = () => {
 
     const [randomQuote, setRandomQuote] = useState([]);
@@ -17,10 +18,12 @@ const GreetingAndQuote = () => {
 
     return (
         <>
-            <h1>Welcome, {inUser?.userName || "Guest"}</h1>
+            <div className={HomePageCSS.greetingContainer}>
+                <h1>Welcome, {inUser?.userName || "Guest"}</h1>
+                <h2><i>"{randomQuote.content}"</i></h2>
+                <h4>- {randomQuote.author}</h4>
+            </div>
             
-            <h2><i>"{randomQuote.content}"</i></h2>
-            <h4>- {randomQuote.author}</h4>
         </>
     )
 }
