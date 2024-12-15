@@ -2,32 +2,24 @@ import {Link} from 'react-router-dom'
 import SignUp from "./SignUp"
 import Logo from "../assets/logo.png"
 import { useEffect, useState } from 'react'
-import HomePage from './HomePage'
+import { useNavigate } from "react-router-dom";
+import { useContext } from 'react';
+import { UserContext } from '../components/UserContext';
 
 const LogIn = () => {
-
-    const [userName, setUserName]= useState("")
-    const [password, setPassword]= useState("")
-    /* const [regUsers, setRegUsers] = useState(JSON.parse(localStorage.getItem("Registrerad users:")) || []); */
-    const [inUser, setInUser] = useState(JSON.parse(sessionStorage.getItem("Inloggad user:")) || []); 
+    const Navigate = useNavigate();
+    const {handleUserName, handlePassword, inUser, handleLogIn} = useContext(UserContext)
 
     useEffect(() => {
         sessionStorage.setItem("Inloggad user:", JSON.stringify(inUser))
     },[inUser])
     
-    //Spara user info funktion
-    const addData = () => {
-        let newData = {userName, password};
-        setInUser(newData);
+    const handleClick = () => {
+        handleLogIn();
+        Navigate('/home');
     }
+    //?Error message när man inte är regristrerad eller fel lösenord
 
-    //Logga in funktion
-    const saveData = () => {
-        let newData = []
-        setMyJSON(newData);
-    }
-
-    //Error message när man inte är regristrerad eller fel lösenord
     return (
         <>
             <h1>Log In</h1>
@@ -36,10 +28,10 @@ const LogIn = () => {
                     <img src={Logo} alt="Taskoo logo" />
                 </div>
                 <h1>Welcome to Taskoo</h1>
-                <input type="text" onChange={(e) => setUserName(e.target.value)} placeholder='Username' />
-                <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder='Password'/>
+                <input type="text" onChange={handleUserName} placeholder='Username' />
+                <input type="password" onChange={handlePassword} placeholder='Password'/>
                 <h5>Are you new? <Link to="/signup" element= {<SignUp/>} >Sign up!</Link></h5>
-                <button onClick={addData}>Log in</button>
+                <button onClick={handleClick}>Log in</button>
             </div>
             
         </>

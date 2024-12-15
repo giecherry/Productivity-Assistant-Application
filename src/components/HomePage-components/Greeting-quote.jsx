@@ -1,22 +1,23 @@
-import { useState, useEffect } from "react"    
+import { useState, useEffect } from "react"  
+import { useContext } from 'react';
+import { UserContext } from '../UserContext';  
 const GreetingAndQuote = () => {
 
-    const [inUser, setInUser] = useState(JSON.parse(sessionStorage.getItem("Inloggad user:")) || "my friend"); 
-
     const [randomQuote, setRandomQuote] = useState([]);
+    const {inUser} = useContext(UserContext)
 
-    useEffect (() => {getQuote();},[])  
+    useEffect (() => {
+        getQuote();
+    },[])
     const getQuote= async()=>{
         let response = await fetch("https://api.quotable.io/quotes/random")
         let json = await response.json()
-        console.log(json[0].content)
         setRandomQuote(json[0]);
     }
 
-
     return (
         <>
-            <h1>Welcome, {inUser} </h1>
+            <h1>Welcome, {inUser?.userName || "Guest"}</h1>
             
             <h2><i>"{randomQuote.content}"</i></h2>
             <h4>- {randomQuote.author}</h4>

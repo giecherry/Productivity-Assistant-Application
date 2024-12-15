@@ -1,25 +1,23 @@
 import {Link} from 'react-router-dom'
 import LogIn from "./LogIn"
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import Logo from "../assets/logo.png"
-import HomePage from './HomePage' 
+import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react';
+import { UserContext } from '../components/UserContext';
 
 const SignUp = () => { 
-    const [userName, setUserName]= useState("")
-    const [password, setPassword]= useState("")
-    const [email, setEmail]= useState("")
-    const [regUsers, setRegUsers] = useState(JSON.parse(localStorage.getItem("Users:")) || []); 
+    const Navigate = useNavigate();
+    const {handleUserName, handlePassword, regUsers, addNewUser, inUser} = useContext(UserContext)
 
     useEffect(() => {
-        console.log("Sparar värdet i storage...")
-        localStorage.setItem("Users:", JSON.stringify(regUsers))
+        localStorage.setItem("Registrerad users:", JSON.stringify(regUsers))
+        console.log("Registrerad users:",regUsers)
     },[regUsers])
-    
-    //Spara user info funktion
-    const addData = () => {
-        let newData = {userName, password, email};
-        let updatedData = [...regUsers, newData]
-        setRegUsers(updatedData);
+
+    const handleClick = () => {
+        addNewUser();
+        Navigate('/');
     }
 
     //Funktion för att jämföra username och email  
@@ -32,11 +30,11 @@ const SignUp = () => {
                     <img src={Logo} alt="Taskoo logo" />
                 </div>
                 <h1>Welcome to Taskoo</h1>
-                <input type="text" onChange={(e) => setUserName(e.target.value)} placeholder="Username"/>
-                <input type="text" onChange={(e) => setEmail(e.target.value)}  placeholder="E-mail" />
-                <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder='Password'/>
+                <input type="text" onChange={handleUserName} placeholder="Username"/>
+                <input type="text" placeholder="E-mail" />
+                <input type="password" onChange={handlePassword} placeholder='Password'/>
                 <h5>Already a member? <Link to="/" element= {<LogIn/>}>Log in!</Link></h5>
-                <button onClick={addData}>Sign in</button>
+                <button onClick={handleClick}>Sign in</button>
             </div>
             
         </>
