@@ -7,8 +7,7 @@ function CreateNewHabit() {
 
     const [habits, setHabits] = useState(JSON.parse(sessionStorage.getItem("Data")) || []);
 
-    let {counter, increment} = useContext(HabitCounterContext)
-    // let {reduce} = useContext(HabitReduceContext)
+    let {counter, increment, reduce} = useContext(HabitCounterContext)
     let {reset} = useContext(DeleteHabitContext)
     let {filterHabits, setFilterHabits} = useContext(HabitFiltSortContext)
 
@@ -37,7 +36,6 @@ function CreateNewHabit() {
         let updatedHabits = [...habits, newHabit]
         setHabits(updatedHabits)
         increment();
-        // reduce();
     };
 
     const filteredHabits = filterHabits === "All" || !filterHabits ? habits : habits.filter((habit) => habit.priority === filterHabits);
@@ -89,7 +87,7 @@ function CreateNewHabit() {
                         <p>Priority: {habit.priority}</p>
                         <p>Count your repetitions {counter}</p>
                         <button className="HabitButton" onClick={increment}>+</button>
-                        <button className="HabitButton">-</button>
+                        <button className="HabitButton" onClick={reduce}>-</button>
                         <button className="HabitButton"onClick={() => reset(habits, setHabits, habit)}>Delete</button>
                     </li>
                     ))}
