@@ -9,7 +9,7 @@ export function HabitFiltSortContextProvider ({children}) {
 
     return (
         <>
-            <HabitFiltSortContext.Provider value={{filterHabits}}>
+            <HabitFiltSortContext.Provider value={{filterHabits, setFilterHabits}}>
                 {children}
             </HabitFiltSortContext.Provider>
         </>
