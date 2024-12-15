@@ -4,13 +4,17 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { EventContextProvider } from "./components/EventCalendar-components/EventContext";
+import { UserContextProvider } from './components/UserContext.jsx'
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <EventContextProvider>
+    <UserContextProvider>
+      <EventContextProvider>
       <BrowserRouter>    
         <App />
       </BrowserRouter>
       </EventContextProvider>
+    </UserContextProvider>
   </StrictMode>,
 )
