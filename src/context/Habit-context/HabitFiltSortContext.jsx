@@ -1,17 +1,17 @@
 import { createContext, useState } from "react";
 
-export const HabitFiltSortoContext = createContext();
+export const HabitFiltSortContext = createContext();
 
-export function HabitFiltSortoContextProvider ({children}) {
+export function HabitFiltSortContextProvider ({children}) {
 
-    const [sortHabits, setSortHabits] = useState('');
+    // const [sortHabits, setSortHabits] = useState('');
     const [filterHabits, setFilterHabits] = useState('')
 
     return (
         <>
-            <HabitFiltSortoContext.Provider value={{sortHabits}}>
+            <HabitFiltSortContext.Provider value={{filterHabits}}>
                 {children}
-            </HabitFiltSortoContext.Provider>
+            </HabitFiltSortContext.Provider>
         </>
     )
 }
