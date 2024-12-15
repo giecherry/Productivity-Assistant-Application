@@ -8,7 +8,7 @@ function CreateNewHabit() {
     const [habits, setHabits] = useState(JSON.parse(sessionStorage.getItem("Data")) || []);
 
     let {counter, increment} = useContext(HabitCounterContext)
-    let {reduce} = useContext(HabitReduceContext)
+    // let {reduce} = useContext(HabitReduceContext)
     let {reset} = useContext(DeleteHabitContext)
     let {filterHabits, setFilterHabits} = useContext(HabitFiltSortContext)
 
@@ -40,16 +40,14 @@ function CreateNewHabit() {
         // reduce();
     };
 
-    const filteredHabits = filterHabits === "All" || !filterHabits
-    ? habits
-    : habits.filter((habit) => habit.priority === filterHabits);
+    const filteredHabits = filterHabits === "All" || !filterHabits ? habits : habits.filter((habit) => habit.priority === filterHabits);
 
     return (
         <>
             <h4 className="habitHFour">Add new habit</h4>
 
             <div>
-            <select value={filterHabits} onChange={(e) => setFilterHabits(e.target.value)}>
+            <select value={filterHabits || "All"} onChange={(e) => setFilterHabits(e.target.value)}>
                     <option value="All">All</option>
                     <option value="High">High</option>
                     <option value="Medium">Medium</option>
@@ -57,11 +55,13 @@ function CreateNewHabit() {
                 </select>
             </div>
             
-            {filteredHabits.map((habit) => 
-            <li key={habit.id}>
-                {habit.priority}
-                <button onClick={filterHabits}></button>
-            </li>)}
+            <ul>
+                {filteredHabits.map((habit) => 
+                    <li key={habit.id}>
+                        {habit.priority}
+                    </li>
+                )}
+            </ul>
 
             <div className="createHabit">
                 <form onSubmit={AddHabit}>
@@ -89,7 +89,7 @@ function CreateNewHabit() {
                         <p>Priority: {habit.priority}</p>
                         <p>Count your repetitions {counter}</p>
                         <button className="HabitButton" onClick={increment}>+</button>
-                        <button className="HabitButton" onClick={reduce}>-</button>
+                        <button className="HabitButton">-</button>
                         <button className="HabitButton"onClick={() => reset(habits, setHabits, habit)}>Delete</button>
                     </li>
                     ))}
