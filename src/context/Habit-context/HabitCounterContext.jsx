@@ -10,10 +10,8 @@ export function HabitCounterContextProvider ({children}) {
          setCounter(counter+1);
     }
 
-    const [reduceCounter, setReduceCounter] = useState(1);
-
     const reduce = () => {
-         setReduceCounter(reduceCounter-1);
+         setCounter(counter-1);
     }
 
     return (
