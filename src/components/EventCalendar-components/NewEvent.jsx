@@ -16,20 +16,26 @@ const NewEvent = () => {
     const [eventEndDate, setEventEndDate] = useState(null)
     const [eventEndTime, setEventEndTime] = useState(null)
 
+
     const handleAddEvent = () => {
         if (!eventTitle || !eventStartDate || !eventStartTime || !eventEndTime || !eventEndDate) {
             alert("Please fill out all event details.");
             return;
         }
 
+        // Combine the date and time so i can save them in the same variable
+        const startDateTimeString = `${eventStartDate}T${eventStartTime}`;
+        const endDateTimeString = `${eventEndDate}T${eventEndTime}`;
+        //Makes them dates
+        const startDateTime = new Date(startDateTimeString); 
+        const endDateTime = new Date(endDateTimeString);
+
         const newEvent = {
             id: events.length + 1,
             owner: JSON.parse(sessionStorage.getItem("Inloggad user:")).userName,
             title: eventTitle,
-            startDate:new Date(eventStartDate),
-            endDate:new Date(eventEndDate),
-            startTime: eventStartTime,
-            endTime: eventEndTime
+            startDateTime:new Date(startDateTime),
+            endDateTime:new Date(endDateTime),
         };
 
         addEvent(newEvent);

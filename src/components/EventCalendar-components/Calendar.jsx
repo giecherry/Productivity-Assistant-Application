@@ -12,10 +12,21 @@ const Calendar = () => {
     
     //*Handle month change------------------
     const [currentMonth, setCurrentMonth] = useState(new Date());
-    const eventsThisMonth = events .filter(event =>format(event.startDate, "yyyy-MM") === format(currentMonth, "yyyy-MM") && event.owner === inUser.userName);
+    const eventsThisMonth = events .filter(event =>format(event.startDateTime, "yyyy-MM") === format(currentMonth, "yyyy-MM") && event.owner === inUser.userName);
     const handlePrevMonth = () => setCurrentMonth(subMonths(currentMonth, 1));
     const handleNextMonth = () => setCurrentMonth(addMonths(currentMonth, 1));
 
+    events.sort((a, b) => new Date(a.startDateTime) - new Date(b.startDateTime));
+
+    const handleEventClassName = (event) => {
+        const now = new Date();
+        const startTime = new Date(event.startDateTime);
+        if (startTime < now) {
+            return "past-event";
+        } else {
+            return "upcoming-event";
+        }
+    };
 
     return (
         <>
@@ -30,10 +41,10 @@ const Calendar = () => {
             <div className={CalendarCSS.eventsListContainer}>
                 {eventsThisMonth.map((event,i) => (
                     <Link to={`/event/${event.id}`} key={i}>
-                    <div key={i} className={CalendarCSS[isBefore(event?.startDate, new Date()) && !isToday(event?.startDate) ? "past-event" : "upcoming-event"]}>
-                        <div className={CalendarCSS.eventDate}>{format(event.startDate, "EEE dd")}</div>
+                    <div key={i} className={CalendarCSS[handleEventClassName(event)]}>
+                        <div className={CalendarCSS.eventDate}>{format(event.startDateTime, "EEE dd")}-{format(event.endDateTime, "EEE dd")}</div>
                         <div>{event.title}</div>
-                        <div>{event.startTime} - {event.endTime}</div>
+                        <div>{format(new Date(event.startDateTime), "HH:mm")} - {format(new Date(event.endDateTime), "HH:mm")}</div>
                     </div>
                     </Link>
                 ))}
