@@ -47,12 +47,12 @@ function CreateNewHabit() {
         e.preventDefault();
 
         let newHabit = {
-            id: Date.now(),
+            id:Date.now(),
             title,
             description,
             repeat,
             priority,
-            counter: 0,
+            counter:0,
         };
 
         let updatedHabits = [...habits, newHabit]
