@@ -4,10 +4,10 @@ export const DeleteHabitContext = createContext();
 
 export function DeleteHabitContextProvider ({children}) {
 
-    const reset = (habits, setHabits, habitToDelete) => {
-        const updatedHabits = habits.filter((habit) => habit.id !== habitToDelete.id);
+    let reset = (id, habits, setHabits) => {
+        const updatedHabits = habits.filter((habit) => habit.id !== id);
         setHabits(updatedHabits);
-    };
+    }
 
     return (
         <>
