@@ -24,6 +24,7 @@ const NewEvent = () => {
 
         const newEvent = {
             id: events.length + 1,
+            owner: JSON.parse(sessionStorage.getItem("Inloggad user:")).userName,
             title: eventTitle,
             startDate:new Date(eventStartDate),
             endDate:new Date(eventEndDate),
@@ -32,6 +33,7 @@ const NewEvent = () => {
         };
 
         addEvent(newEvent);
+        console.log("Event added:", newEvent);
         alert("Event added successfully!");
 
         navigate('/calendar'); 
