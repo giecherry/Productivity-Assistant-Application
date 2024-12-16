@@ -29,6 +29,10 @@ const EventDetails = () => {
     const handleEdit = () => {
         setShowEditForm(!showEditForm);
     };
+
+    const isSameDay = (startDateTime, endDateTime) => {
+            return format(new Date(startDateTime), "MM-dd") === format(new Date(endDateTime), "MM-dd");
+        };
     
     return (
         <>
@@ -66,8 +70,11 @@ const EventDetails = () => {
         :
             <div>
                 <h1>{events[0].title}</h1>
-                <h2>Date: {format((events[0].startDate), "yyyy/MM/dd")} - {format((events[0].endDate), "yyyy/MM/dd")}</h2>
-                <h2>Time: {events[0].startTime} - {events[0].endTime}</h2>
+                { isSameDay(event.startDateTime, event.endDateTime) ?
+                    <h2>Date: {format(new Date(event.startDateTime), "EEEE dd")}</h2>:
+                    <h2>Date: {format(event.startDateTime, "EEEE dd")} - {format(event.endDateTime, "EEEE dd")}</h2>
+                }
+                <h2>Time: {format((events[0].startDateTime), "HH:mm")} - {format((events[0].endDateTime), "HH:mm")}</h2>
 
                 <button onClick={handleDelete}>Delete</button>
                 <button onClick={handleEdit}>Edit</button>

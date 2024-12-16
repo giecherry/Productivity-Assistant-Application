@@ -16,6 +16,7 @@ const Calendar = () => {
     const handlePrevMonth = () => setCurrentMonth(subMonths(currentMonth, 1));
     const handleNextMonth = () => setCurrentMonth(addMonths(currentMonth, 1));
 
+
     events.sort((a, b) => new Date(a.startDateTime) - new Date(b.startDateTime));
 
     const handleEventClassName = (event) => {
@@ -26,6 +27,10 @@ const Calendar = () => {
         } else {
             return "upcoming-event";
         }
+    };
+
+    const isSameDay = (startDateTime, endDateTime) => {
+        return format(new Date(startDateTime), "MM-dd") === format(new Date(endDateTime), "MM-dd");
     };
 
     return (
@@ -41,11 +46,18 @@ const Calendar = () => {
             <div className={CalendarCSS.eventsListContainer}>
                 {eventsThisMonth.map((event,i) => (
                     <Link to={`/event/${event.id}`} key={i}>
-                    <div key={i} className={CalendarCSS[handleEventClassName(event)]}>
-                        <div className={CalendarCSS.eventDate}>{format(event.startDateTime, "EEE dd")}-{format(event.endDateTime, "EEE dd")}</div>
-                        <div>{event.title}</div>
-                        <div>{format(new Date(event.startDateTime), "HH:mm")} - {format(new Date(event.endDateTime), "HH:mm")}</div>
-                    </div>
+                        <div className={CalendarCSS.eventContainer}>
+                            <div className={CalendarCSS.eventDate}>
+                            { isSameDay(event.startDateTime, event.endDateTime) ?
+                                <div>{format(new Date(event.startDateTime), "EEE dd")}</div>:
+                                <div>{format(event.startDateTime, "EEE dd")}-{format(event.endDateTime, "EEE dd")}</div>
+                            }
+                            </div>
+                            <div key={i} className={CalendarCSS[handleEventClassName(event)]}>
+                                <div>{event.title}</div>
+                                <div>{format(new Date(event.startDateTime), "HH:mm")} - {format(new Date(event.endDateTime), "HH:mm")}</div>
+                            </div>
+                        </div>
                     </Link>
                 ))}
             </div>

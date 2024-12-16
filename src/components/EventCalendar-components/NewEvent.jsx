@@ -39,7 +39,6 @@ const NewEvent = () => {
         };
 
         addEvent(newEvent);
-        console.log("Event added:", newEvent);
         alert("Event added successfully!");
 
         navigate('/calendar'); 

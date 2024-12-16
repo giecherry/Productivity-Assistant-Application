@@ -15,7 +15,7 @@ export function EventContextProvider ({children}){
         const updatedEvents = [...events, newEvent];
         setEvents(updatedEvents);
         localStorage.setItem("events", JSON.stringify(updatedEvents));
-        console.log("Event added in local storage:", newEvent);
+        console.log("New event added in local storage:", newEvent);
     };
 
     return (

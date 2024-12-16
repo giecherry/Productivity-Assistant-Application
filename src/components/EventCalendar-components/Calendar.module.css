@@ -6,6 +6,10 @@ html, body, #root {
     overflow: hidden; 
     font-family: "Gaegu";
 }
+a:hover {
+    color:#F3C3C3ff;
+    font-weight: bold;
+}
 
 h1 {
     margin: 0;
@@ -41,7 +45,7 @@ h1 {
 }
 
 .past-event, .upcoming-event {
-    background-color: #FEFBF5ff;
+    background-color: #F3C3C3ff;
     display: flex;
     flex: 0 0 auto;
     flex-direction: row;
@@ -55,7 +59,7 @@ h1 {
 }
 .past-event {
     color: #6b6b6b;
-    background-color: #b4b4b47f;
+    background-color: #97a27b5f;
 }
 
 .eventDate {
@@ -65,7 +69,9 @@ h1 {
     padding: 1rem;
     margin: 1rem 0rem;
     font-weight: bold;
-    background-color: #939f7181;
+    background-color: #fefbf5;
+    max-width: 10dvh;
+    min-width: 10dvh;
     border-radius: 15px;
 }
 
@@ -79,4 +85,11 @@ h1 {
     margin: 0;
     padding: 0.2rem 7rem;
     min-width: 100%;
+}
+.eventContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
 }
