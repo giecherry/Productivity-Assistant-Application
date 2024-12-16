@@ -7,9 +7,9 @@ function CreateNewHabit() {
 
     const [habits, setHabits] = useState(JSON.parse(sessionStorage.getItem("Data")) || []);
 
-    let {counter, increment, reduce, zero} = useContext(HabitCounterContext)
+    let {increment, reduce, zero} = useContext(HabitCounterContext)
     let {reset} = useContext(DeleteHabitContext)
-    let {filterHabits, setFilterHabits} = useContext(HabitFiltSortContext)
+    let {filterHabits, setFilterHabits, sortHabits, setSortHabits} = useContext(HabitFiltSortContext)
 
     let [title, setTitle] = useState('');
     let [description, setDescription] = useState('');
@@ -21,11 +21,33 @@ function CreateNewHabit() {
         sessionStorage.setItem("Data", JSON.stringify(habits))
     }, [habits])
 
+    function getSortedArray (arrayToSort) {
+        return arrayToSort.sort((a, b) => {
+            if (sortHabits.keyToSort === 'repeat') {
+                return sortHabits.direction === 'asc' ? a.repeat - b.repeat : b.repeat - a.repeat;
+            }
+            if (sortHabits.keyToSort === 'priority') {
+                const priorityOrder = {'High': 3, 'Medium': 2, 'Low':1};
+                return sortHabits.direction === 'asc'
+                    ? priorityOrder[a.priority] - priorityOrder[b.priority]
+                    : priorityOrder[b.priority] - priorityOrder[a.priority];
+            }
+            return 0;
+        });
+    }
+
+    function handleSortChange(keyToSort, direction) {
+        setSortHabits({
+            keyToSort,
+            direction
+        });
+    }
+
     const AddHabit = (e) => {
         e.preventDefault();
 
         let newHabit = {
-            id:Date.now(),
+            id: Date.now(),
             title,
             description,
             repeat,
@@ -37,86 +59,69 @@ function CreateNewHabit() {
         setHabits(updatedHabits)
     }
 
-    let deleteHabit = (id) => {
-        let updatedHabits = habits.filter((habit) => habit.id !== id)
-        setHabits(updatedHabits);
-    }
-
-    let incrementCounter = (id) => {
-        setHabits(habits.map(habit => habit.id === id ? {...habit, counter: habit.counter +1} : habit));
-    }
-
-    let reduceCounter = (id) => {
-        setHabits(habits.map(habit => habit.id === id ? {...habit, counter: habit.counter -1} : habit));
-    }
-
-    let zeroCounter = (id) => {
-        setHabits(habits.map(habit => habit.id === id ? {...habit, counter: 0} : habit));
-    }
-
-    let filteredHabits = filterHabits && filterHabits !== "All" ? habits.filter((habit) => habit.priority === filterHabits) : habits;
-
-    let sortedHabits = filteredHabits.sort((a, b) => {
-        const priority = ['Low', 'Medium', 'High'];
-        return priority.indexOf(a.priority) - priority.indexOf(b.priority); 
-    });
-
     return (
         <>
-            <h4 className="habitHFour">Add new habit</h4>
-
-            <div>
-            <select value={filterHabits || "All"} onChange={(e) => setFilterHabits(e.target.value)}>
+            <div className="FilterDiv">
+                <select className="FilterPriority" value={filterHabits} onChange={(e) => setFilterHabits(e.target.value)}>
+                    <option value="" disabled>Filter habits</option>
                     <option value="All">All</option>
                     <option value="High">High</option>
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                 </select>
             </div>
-            
-            <ul>
-                {filteredHabits.map((habit) => 
-                    <li key={habit.id}>
-                        {habit.priority}
-                    </li>
-                )}
-            </ul>
 
-            <div className="createHabit">
-                <input className="HabitTitle" type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required/>
-
-                <input className="HabitDescription" type="text" placeholder="Habit description" value={description} onChange={(e) => setDescription(e.target.value)}/>
-
-                <input className="HabitRepeat" type="number" placeholder="Repeat" value={repeat} onChange={(e) => setRepeat(e.target.value)} required/>
-
-                <select className="HabitPriority" value={priority} onChange={(e) => setPriority(e.target.value)} required>
-                    <option value="" disabled>Select priority</option>
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
+            <div className="SortDiv">
+                <select className="SortPriority" onChange={(e) => handleSortChange('priority', e.target.value)}>
+                    <option value="" disabled>Sort habits by priority</option>
+                    <option value="asc">Low to high</option>
+                    <option value="desc">High to low</option>
                 </select>
+                <select className="SortRepeat" onChange={(e) => handleSortChange('repeat', e.target.value)}>
+                    <option value="" disabled>Sort habits by repeat</option>
+                    <option value="asc">Lowest to highest</option>
+                    <option value="desc">Highest to lowest</option>
+                </select>
+            </div>
+            
+            <div className="createHabitContainer">
+                <h4 className="habitHFour">Add new habit</h4>
 
-                <button className="HabitButton" onClick={AddHabit}>Save habit</button>
+                <div className="createHabit">
+                    <input className="HabitTitle" type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required/>
+                    <input className="HabitDescription" type="text" placeholder="Habit description" value={description} onChange={(e) => setDescription(e.target.value)}/>
+                    <input className="HabitRepeat" type="number" placeholder="Repeat" value={repeat} onChange={(e) => setRepeat(e.target.value)} required/>
+                    <select className="HabitPriority" value={priority} onChange={(e) => setPriority(e.target.value)} required>
+                        <option value="" disabled>Select priority</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
 
-                <ul>
-                    {habits.map((habit, i) => (
-                    <li className="habitCard" key={habit.id}>
-                        <h3>Habit: {habit.title}</h3>
-                        <p>Repeat: {habit.repeat}</p>
-                        <p>Priority: {habit.priority}</p>
-                        <p>Count your repetitions {habit.counter}</p>
-                        <button className="HabitButton" onClick={() => incrementCounter(habit.id)}>+</button>
-                        <button className="HabitButton" onClick={() => reduceCounter(habit.id)}>-</button>
-                        <button className="HabitButton" onClick={() => zeroCounter(habit.id)}>Reset counter</button>
-                        <button className="HabitButton"onClick={() => deleteHabit(habit.id)}>Delete</button>
-                        {/* <button className="HabitButton" onClick={increment}>+</button>
-                        <button className="HabitButton" onClick={reduce}>-</button>
-                        <button className="HabitButton" onClick={zero}>Reset counter</button>
-                        <button className="HabitButton"onClick={reset}>Delete</button> */}
-                        {/* <button className="HabitButton"onClick={() => reset(habits, setHabits, habit)}>Delete</button> */}
-                    </li>
-                    ))}
-                </ul>
+                    <button className="HabitButton" onClick={AddHabit}>Save habit</button>
+                </div>
+
+                <div>  
+                    <ul>
+                        {getSortedArray(
+                            (filterHabits === "All" || !filterHabits
+                                ? habits
+                                : habits.filter((habit) => habit.priority === filterHabits)
+                            )
+                            ).map((habit) => (
+                                <li className="habitCard" key={habit.id}>
+                                    <h3>Habit: {habit.title}</h3>
+                                    <p>Repeat: {habit.repeat}</p>
+                                    <p>Priority: {habit.priority}</p>
+                                    <p>Count your repetitions {habit.counter}</p>
+                                    <button className="HabitButton" onClick={() => increment(habit.id, habits, setHabits)}>+</button>
+                                    <button className="HabitButton" onClick={() => reduce(habit.id, habits, setHabits)}>-</button>
+                                    <button className="HabitButton" onClick={() => zero(habit.id, habits, setHabits)}>Reset counter</button>
+                                    <button className="HabitButton"onClick={() => reset(habit.id, habits, setHabits)}>Delete</button>
+                                </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </>
     )
