@@ -1,0 +1,26 @@
+.overviewContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.greetingContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin: 1rem;
+    background-color: #939F71ff;
+    border-radius: 15px;
+}
+.calendarContainer, .todosContainer, .habitsContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin: 1rem;
+    background-color: #FEFBF5ff;
+    border-radius: 15px;
+}

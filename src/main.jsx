@@ -18,5 +18,14 @@ createRoot(document.getElementById('root')).render(
         </HabitCounterContextProvider>
       </DeleteHabitContextProvider>
     </HabitFiltSortContextProvider>
+import { UserContextProvider } from './components/UserContext.jsx'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <UserContextProvider>
+      <BrowserRouter>    
+        <App />
+      </BrowserRouter>
+    </UserContextProvider>
   </StrictMode>,
 )
