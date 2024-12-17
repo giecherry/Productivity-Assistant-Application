@@ -1,20 +1,5 @@
 import CreateNewHabit from "../components/Habit-components/CreateNewHabit"
 
-const [ifNoOther] = useState([
-    {
-        title: "Clean",
-        priority: "High",
-    },
-    {
-        title: "Train",
-        priority: "Medium",
-    },
-    {
-        title: "Paint",
-        priority: "Low",
-    }
-]);
-
 const Habits = () => {
     return (
         <>
