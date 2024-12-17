@@ -5,6 +5,7 @@ const Habits = () => {
         <>
             <div className="HabitHome">
                 <h1 className="HabitHOne">Habits</h1>
+                
                 <CreateNewHabit />
             </div>
         </>
