@@ -1,23 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Gaegu&family=Modak&display=swap');
 
-html, body, #root {
-    max-height: 100dvh; 
-    margin: 0;
-    overflow: hidden; 
-    font-family: "Gaegu";
-}
-a:hover {
-    color:#F3C3C3ff;
-    font-weight: bold;
-}
-
-h1 {
-    margin: 0;
-    padding: 0;
-    font-family: "Modak";
-    font-size: 5rem;
-    text-align: center;
-}
 .monthSelector {
     display: flex;
     justify-content: space-between;
@@ -87,6 +69,14 @@ h1 {
     min-width: 100%;
 }
 .eventContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.overviewEvents {
     display: flex;
     flex-direction: row;
     align-items: center;

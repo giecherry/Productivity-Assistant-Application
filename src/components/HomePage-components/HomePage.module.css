@@ -21,6 +21,17 @@
     align-items: center;
     padding: 2rem;
     margin: 1rem;
-    background-color: #FEFBF5ff;
+    background-color: #939f71ac;
     border-radius: 15px;
+}
+
+.overviewEvent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.2rem 4rem;
+    margin: 1rem 0.2rem;
+    border-radius: 15px;
+    background-color: #FCE8E9ff;
 }
