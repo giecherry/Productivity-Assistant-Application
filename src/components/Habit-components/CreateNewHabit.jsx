@@ -5,7 +5,7 @@ import { HabitFiltSortContext } from "../../context/Habit-context/HabitFiltSortC
 
 function CreateNewHabit() {
 
-    const [habits, setHabits] = useState(JSON.parse(sessionStorage.getItem("Data")) || []);
+    const [habits, setHabits] = useState(JSON.parse(localStorage.getItem("Data")) || []);
 
     let {increment, reduce, zero} = useContext(HabitCounterContext)
     let {reset} = useContext(DeleteHabitContext)
@@ -17,8 +17,8 @@ function CreateNewHabit() {
     let [priority, setPriority] = useState('');
 
     useEffect(() => {
-        console.log("Save habit in sessionStorage")
-        sessionStorage.setItem("Data", JSON.stringify(habits))
+        console.log("Save habit in localStorage")
+        localStorage.setItem("Data", JSON.stringify(habits))
     }, [habits])
 
     function getSortedArray (arrayToSort) {
