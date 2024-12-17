@@ -104,10 +104,7 @@ function CreateNewHabit() {
                 <div>  
                     <ul>
                         {getSortedArray(
-                            (filterHabits === "All" || !filterHabits
-                                ? habits
-                                : habits.filter((habit) => habit.priority === filterHabits)
-                            )
+                            (filterHabits === "All" || !filterHabits ? habits : habits.filter((habit) => habit.priority === filterHabits))
                             ).map((habit) => (
                                 <li className="habitCard" key={habit.id}>
                                     <h3>Habit: {habit.title}</h3>
