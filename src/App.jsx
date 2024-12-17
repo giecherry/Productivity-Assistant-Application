@@ -19,11 +19,8 @@ function App() {
         <Route path="/todo=:id" element={<TodosAndActivities />} />
         <Route path="/habits" element={<Habits />} />
         <Route path="/calendar" element={<EventCalendar />} />
-<<<<<<< HEAD
         <Route path="/createNewHabit" element={<CreateNewHabit />} />
-=======
         <Route path="/random" element={<HomePage/>}/>
->>>>>>> 71450728a6c6c72fa4f7d755e5a7a2adc38f73db
       </Routes>
     </>
   )
