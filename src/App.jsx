@@ -5,6 +5,7 @@ import TodosAndActivities from './pages/TodosAndActivities'
 import Habits from './pages/Habits'
 import EventCalendar from './pages/EventCalendar'
 import LogIn from './pages/LogIn'
+import CreateNewHabit from './components/Habit-components/CreateNewHabit'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/todo=:id" element={<TodosAndActivities />} />
         <Route path="/habits" element={<Habits />} />
         <Route path="/calendar" element={<EventCalendar />} />
+        <Route path="/createNewHabit" element={<CreateNewHabit />} />
       </Routes>
     </>
   )
