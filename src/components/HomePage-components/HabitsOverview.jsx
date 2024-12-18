@@ -6,11 +6,12 @@ import { HabitCounterContext } from "../../context/Habit-context/HabitCounterCon
 
 const HabitsOverview = () => {
 
-    const {inUser} = useContext(UserContext);
-    const {habits} = useState(HabitCounterContext);
+    const [habits, setHabits] = useState(() => {
+        const storedHabits = localStorage.getItem("habit");
+        return storedHabits ? JSON.parse(storedHabits) : [];
+    });
 
-    const highestCount = (habits || [])
-        .filter(habit => habit.owner === inUser?.userName)
+    const highestCount = habits
         .sort((a, b) => b.repeat - a.repeat)
         .slice(0, 3);
 
@@ -39,7 +40,7 @@ const HabitsOverview = () => {
                         </div>
                     </div>
                 ))}
-                <Link to="/createnewhabits"><button>Show more</button></Link>
+                <Link to="/habits"><button>Show more</button></Link>
             </div>
         </>
     )
