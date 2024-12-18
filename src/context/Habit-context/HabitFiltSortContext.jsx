@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-import Habits from "../../pages/Habits";
 
 export const HabitFiltSortContext = createContext();
 
