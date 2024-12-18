@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { useContext } from 'react';
+import { TodoContext } from '../components/Todos-components/TodosContext.jsx';
 
 /*Fråga om alla labels är rätt konstruerade och namngivna, då jag hittade i consolen 17 fel de va något med id:
       https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label*/
 function TodosAndActivities() {
-  const [todos, setTodos] = useState([]);
   const [todoTitle, setTodoTitle] = useState("");
   const [todoCategory, setTodoCategory] = useState("");
   const [todoDescription, setTodoDescription] = useState("");
@@ -11,12 +12,17 @@ function TodosAndActivities() {
   const [todoEsTime, setTodoEsTime] = useState("");
   const [todoDeadline, setTodoDeadline] = useState("");
   
+  const {todos, addTodo} = useContext(TodoContext)
 
-  function addTodo() {
+  function handleClick() {
+    if (!todoTitle || !todoCategory || !todoDescription ||  !todoStatus ||  !todoEsTime || !todoDeadline) {
+      alert("Please fill out all event details.");
+      return;
+  }
     const newTodo = { 
       id: todos.length+1,
       owner: JSON.parse(sesionstorage.getItem("Inloggad user:")).userName,
-      todoTitle: todoTitile,
+      todoTitle: todoTitle,
       todoCategory: todoCategory,
       todoDescription: todoDescription,
       todoStatus: todoStatus,
@@ -24,10 +30,8 @@ function TodosAndActivities() {
       todoDeadline: todoDeadline
     }
 
-
-
-
-      
+    addTodo(newTodo);
+    alert("You've added a to do");  
     }
   
   return (
@@ -36,9 +40,12 @@ function TodosAndActivities() {
       <h2>Ärende</h2>
       <h2>Lista med ärenden att utföra:</h2>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
+        {todos.map((todo,i)=> (
+          <div>
+              <h3>{todo.todoTitle}</h3>
+              <h3>{todo.todoStatus}</h3>
+          </div>
+        ))}
       </ul>
       <h2>Skapa nya ärenden</h2>
       <h3>Varje ärende ska innehålla följande:</h3>
