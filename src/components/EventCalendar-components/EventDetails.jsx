@@ -4,7 +4,6 @@ import { EventContext } from "./EventContext";
 import { useContext, useState } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import NewEventCSS from './NewEvent.module.css'
-import { se } from 'date-fns/locale';
 
 
 const EventDetails = () => {
@@ -27,7 +26,8 @@ const EventDetails = () => {
     };
 
     const handleEdit = () => {
-        setShowEditForm(!showEditForm);
+        console.log("körs");
+        setShowEditForm(true);
     };
 
     const isSameDay = (startDateTime, endDateTime) => {
@@ -37,36 +37,34 @@ const EventDetails = () => {
     return (
         <>
         {showEditForm ? 
-        
-        <div>
-            <div className={NewEventCSS.newEventContainer}>
-                            <h1>{event.title}</h1>
-                            <div className={NewEventCSS.inputContainer}>
-                                <div className={NewEventCSS.eventTitleContainer}>
-                                    <label htmlFor="eventTitle">Title</label>
-                                    <input className={NewEventCSS.input} type="text" id ="eventTitle" placeholder="Event title" /> 
-                                </div>
-            
-                                <div className={NewEventCSS.eventStartContainer}>
-                                    <label htmlFor="'eventStart">Start</label>
-                                    <div>
-                                        <input className={NewEventCSS.input} id="eventStart" type="date" /> 
-                                        <input className={NewEventCSS.input} id="eventStart" type="time" />
+            <div>
+                <div className={NewEventCSS.newEventContainer}>
+                                <h1>{event.title}</h1>
+                                <div className={NewEventCSS.inputContainer}>
+                                    <div className={NewEventCSS.eventTitleContainer}>
+                                        <label htmlFor="eventTitle">Title</label>
+                                        <input className={NewEventCSS.input} type="text" id ="eventTitle" placeholder="Event title" /> 
                                     </div>
-                                </div>
-                                <div className={NewEventCSS.eventEndContainer}>
-                                    <label htmlFor="eventEnd"> End </label>
-                                    <div>
-                                        <input className={NewEventCSS.input} id="eventEnd" type="date" /> 
-                                        <input className={NewEventCSS.input} id="eventEnd" type="time" />
+                
+                                    <div className={NewEventCSS.eventStartContainer}>
+                                        <label htmlFor="'eventStart">Start</label>
+                                        <div>
+                                            <input className={NewEventCSS.input} id="eventStart" type="date" /> 
+                                            <input className={NewEventCSS.input} id="eventStart" type="time" />
+                                        </div>
+                                    </div>
+                                    <div className={NewEventCSS.eventEndContainer}>
+                                        <label htmlFor="eventEnd"> End </label>
+                                        <div>
+                                            <input className={NewEventCSS.input} id="eventEnd" type="date" /> 
+                                            <input className={NewEventCSS.input} id="eventEnd" type="time" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-            <button>Save</button>
-            <Link to="/calendar" onClick={setShowEditForm(false)}><button>&#8592;</button></Link>
-        </div>
-        
+                <button>Save</button>
+                <Link to="/calendar" onClick={() => setShowEditForm(false)}><button>&#8592;</button></Link>
+            </div>
         :
             <div>
                 <h1>{events[0].title}</h1>
