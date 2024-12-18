@@ -30,9 +30,14 @@ export function HabitCounterContextProvider ({children}) {
         setHabits(habits.map(habit => habit.id === id ? {...habit, counter: 0} : habit));
     }
 
+    let reset = (id, habits, setHabits) => {
+        const updatedHabits = habits.filter((habit) => habit.id !== id);
+        setHabits(updatedHabits);
+    }
+
     return (
         <>
-            <HabitCounterContext.Provider value={{counter,increment,reduce,zero}}>
+            <HabitCounterContext.Provider value={{counter,increment,reduce,zero,reset}}>
                 {children}
             </HabitCounterContext.Provider>
         </>
