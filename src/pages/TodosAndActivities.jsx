@@ -117,8 +117,9 @@ import { TodoContext } from '../components/Todos-components/TodosContext.jsx';
 
 export default TodosAndActivities;*/
 
-import { useState, useContext } from "react";
-import { TodoContext } from "../components/Todos-components/TodosContext.jsx";
+import { useState } from "react";
+import { useContext } from 'react';
+import { TodoContext } from '../components/Todos-components/TodosContext.jsx';
 
 function TodosAndActivities() {
   const [todoTitle, setTodoTitle] = useState("");
@@ -159,7 +160,11 @@ function TodosAndActivities() {
         {todos.map((todo, i) => (
           <div key={todo.id}>
             <h3>{todo.todoTitle}</h3>
+            <h3>{todo.todoCategory}</h3>
+            <h3>{todo.todoDescription}</h3>
             <h3>{todo.todoStatus}</h3>
+            <h3>{todo.todoEsTime}</h3>
+            <h3>{todo.todoDeadline}</h3>
           </div>
         ))}
       </ul>
