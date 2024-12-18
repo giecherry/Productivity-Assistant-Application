@@ -109,7 +109,7 @@ function TodosAndActivities() {
         <br />
         <br />
         <br />
-        <button onClick={AddTodo}>Add to list</button>
+        <button onClick={handleClick}>Add to list</button>
       </form>
     </div>
   );
