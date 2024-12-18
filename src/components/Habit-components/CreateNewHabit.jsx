@@ -18,7 +18,7 @@ function CreateNewHabit() {
 
     useEffect(() => {
         console.log("Save habit in localStorage")
-        localStorage.setItem("Data", JSON.stringify(habits))
+        localStorage.setItem("habit", JSON.stringify(habits))
     }, [habits])
 
     function getSortedArray (arrayToSort) {
@@ -116,12 +116,12 @@ function CreateNewHabit() {
                                     <button className="HabitButton" onClick={() => zero(habit.id, habits, setHabits)}>Reset counter</button>
                                     <button className="HabitButton"onClick={() => reset(habit.id, habits, setHabits)}>Delete</button>
                                 </li>
-                        ))}
-                    </ul>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </>
-    )
-}
+            </>
+        )
+    }
 
 export default CreateNewHabit
