@@ -2,6 +2,7 @@ import { useContext } from "react";
 import HomePageCSS from "./HomePage.module.css"
 import { Link } from "react-router-dom";
 import { UserContext } from "../UserContext";
+import CreateNewHabit from "../components/Habit-components/CreateNewHabit";
 
 const HabitsOverview = ({habits}) => {
 
