@@ -1,15 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import HomePageCSS from "./HomePage.module.css"
 import { Link } from "react-router-dom";
 import { UserContext } from "../UserContext";
-import CreateNewHabit from "../components/Habit-components/CreateNewHabit";
+import { HabitCounterContext } from "../../context/Habit-context/HabitCounterContext";
 
-const HabitsOverview = ({habits}) => {
+const HabitsOverview = () => {
 
     const {inUser} = useContext(UserContext);
+    const {habits} = useState(HabitCounterContext);
 
-    const highestCount = habits
-        .filter(habit => habit.owner === inUser.userName)
+    const highestCount = (habits || [])
+        .filter(habit => habit.owner === inUser?.userName)
         .sort((a, b) => b.repeat - a.repeat)
         .slice(0, 3);
 
@@ -38,7 +39,7 @@ const HabitsOverview = ({habits}) => {
                         </div>
                     </div>
                 ))}
-                <Link to="/habits"><button>Show more</button></Link>
+                <Link to="/createnewhabits"><button>Show more</button></Link>
             </div>
         </>
     )
