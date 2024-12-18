@@ -7,6 +7,7 @@ import EventCalendar from './pages/EventCalendar'
 import LogIn from './pages/LogIn'
 import NewEvent from './components/EventCalendar-components/NewEvent'
 import EventDetails from './components/EventCalendar-components/EventDetails'
+import CreateNewHabit from './components/Habit-components/CreateNewHabit'
 import SignUp from './pages/SignUp'
 
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/calendar" element={<EventCalendar />} />
         <Route path="/calendar/newEvent" element={<NewEvent />} />
         <Route path="/event/:id" element={<EventDetails />} />
+        <Route path="/createNewHabit" element={<CreateNewHabit />} />
       </Routes>
     </>
   )
