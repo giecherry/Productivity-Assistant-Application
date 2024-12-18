@@ -159,12 +159,12 @@ function TodosAndActivities() {
       <ul>
         {todos.map((todo, i) => (
           <div key={todo.id}>
-            <h3>{todo.todoTitle}</h3>
-            <h3>{todo.todoCategory}</h3>
-            <h3>{todo.todoDescription}</h3>
-            <h3>{todo.todoStatus}</h3>
-            <h3>{todo.todoEsTime}</h3>
-            <h3>{todo.todoDeadline}</h3>
+            <h3> Title: {todo.todoTitle}</h3>
+            <h3> Category: {todo.todoCategory}</h3>
+            <h3> Description: {todo.todoDescription } </h3>
+            <h3> Status: {todo.todoStatus}</h3>
+            <h3> Estimated time: {todo.todoEsTime}</h3>
+            <h3> Deadline: {todo.todoDeadline}</h3>
           </div>
         ))}
       </ul>
