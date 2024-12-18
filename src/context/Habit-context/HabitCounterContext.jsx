@@ -6,17 +6,26 @@ export function HabitCounterContextProvider ({children}) {
 
     const [counter, setCounter] = useState(1);
 
-    /* const increment = () => {
-         setCounter(counter+1);
-    }
+    const [habits, setHabits] = useState(() => {
+        const storedHabits = localStorage.getItem("habit");
+        return storedHabits ? JSON.parse(storedHabits) : [];
+    });
 
-    const reduce = () => {
-         setCounter(counter-1);
+    const AddHabit = (e) => {
+        e.preventDefault();
+
+        let newHabit = {
+            id:Date.now(),
+            title,
+            description,          
+            repeat,
+            priority,
+            counter:0,
+        };
+
+        let updatedHabits = [...habits, newHabit]
+        setHabits(updatedHabits)
     }
-    
-    const  zero = () => {
-        setCounter(counter===0);
-    } */
 
     let increment = (id, habits, setHabits) => {
         setHabits(habits.map(habit => habit.id === id ? {...habit, counter: habit.counter +1} : habit));
@@ -37,7 +46,7 @@ export function HabitCounterContextProvider ({children}) {
 
     return (
         <>
-            <HabitCounterContext.Provider value={{counter,increment,reduce,zero,reset}}>
+            <HabitCounterContext.Provider value={{counter, increment, reduce, zero, reset, habits, AddHabit}}>
                 {children}
             </HabitCounterContext.Provider>
         </>
