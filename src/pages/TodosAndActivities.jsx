@@ -10,11 +10,26 @@ function TodosAndActivities() {
   const [todoStatus, setTodoStatus] = useState("");
   const [todoEsTime, setTodoEsTime] = useState("");
   const [todoDeadline, setTodoDeadline] = useState("");
+  
 
-  function addTodo(e) {
-    e.preventDefault();
-    console.log(todoTitle);
-  }
+  function addTodo() {
+    const newTodo = { 
+      id: todos.length+1,
+      owner: JSON.parse(sesionstorage.getItem("Inloggad user:")).userName,
+      todoTitle: todoTitile,
+      todoCategory: todoCategory,
+      todoDescription: todoDescription,
+      todoStatus: todoStatus,
+      todoEsTime: todoEsTime,
+      todoDeadline: todoDeadline
+    }
+
+
+
+
+      
+    }
+  
   return (
     <div className="App">
       <h1>Todo List - Activities</h1>
@@ -57,7 +72,7 @@ function TodosAndActivities() {
         />
         <br />
         <br />
-        <label htmlFor="Checkbox">Status - Completed</label>
+        <label htmlFor="status">Status</label>
         <select
           name="status"
           id="status"
@@ -87,7 +102,7 @@ function TodosAndActivities() {
         <br />
         <br />
         <br />
-        <button type="submit">Add to list</button>
+        <button onClick={AddTodo}>Add to list</button>
       </form>
     </div>
   );
