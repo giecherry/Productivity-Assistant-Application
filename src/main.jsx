@@ -9,6 +9,7 @@ import { HabitCounterContextProvider } from './context/Habit-context/HabitCounte
 import { DeleteHabitContextProvider } from './context/Habit-context/DeleteHabitContext.jsx'
 import { HabitFiltSortContextProvider } from './context/Habit-context/HabitFiltSortContext.jsx'
 
+import {TodoContextProvider} from './components/Todos-components/TodosContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -17,13 +18,15 @@ createRoot(document.getElementById('root')).render(
         <DeleteHabitContextProvider>
           <HabitCounterContextProvider>
             <EventContextProvider>
-              <BrowserRouter>    
-                <App />
-              </BrowserRouter>
+              <TodoContextProvider>
+                <BrowserRouter>    
+                  <App />
+                </BrowserRouter>
+              </TodoContextProvider>
             </EventContextProvider>
           </HabitCounterContextProvider>
         </DeleteHabitContextProvider>
       </HabitFiltSortContextProvider>
-    </UserContextProvider>
+      </UserContextProvider>
   </StrictMode>,
 )

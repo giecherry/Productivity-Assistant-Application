@@ -18,7 +18,7 @@ function App() {
         <Route path="/" element={<LogIn/>} />
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/todo=:id" element={<TodosAndActivities />} />
+        <Route path="/todo" element={<TodosAndActivities />} />
         <Route path="/habits" element={<Habits />} />
         <Route path="/calendar" element={<EventCalendar />} />
         <Route path="/calendar/newEvent" element={<NewEvent />} />
@@ -26,7 +26,7 @@ function App() {
         <Route path="/createNewHabit" element={<CreateNewHabit />} />
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
