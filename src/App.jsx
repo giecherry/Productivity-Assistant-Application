@@ -5,6 +5,8 @@ import TodosAndActivities from './pages/TodosAndActivities'
 import Habits from './pages/Habits'
 import EventCalendar from './pages/EventCalendar'
 import LogIn from './pages/LogIn'
+import NewEvent from './components/EventCalendar-components/NewEvent'
+import EventDetails from './components/EventCalendar-components/EventDetails'
 import CreateNewHabit from './components/Habit-components/CreateNewHabit'
 import SignUp from './pages/SignUp'
 
@@ -16,14 +18,15 @@ function App() {
         <Route path="/" element={<LogIn/>} />
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/todo=:id" element={<TodosAndActivities />} />
+        <Route path="/todo" element={<TodosAndActivities />} />
         <Route path="/habits" element={<Habits />} />
         <Route path="/calendar" element={<EventCalendar />} />
+        <Route path="/calendar/newEvent" element={<NewEvent />} />
+        <Route path="/event/:id" element={<EventDetails />} />
         <Route path="/createNewHabit" element={<CreateNewHabit />} />
-        <Route path="/random" element={<HomePage/>}/>
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

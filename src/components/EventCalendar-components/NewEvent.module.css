@@ -1,0 +1,41 @@
+.newEventContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    margin: 1rem;
+    background-color: #FCE8E9ff;
+    border-radius: 15px;
+}
+
+.input {
+    margin: 1rem 0.7rem;
+    border: transparent;
+    padding: 0.7rem 2rem;
+    border-radius: 15px;
+    background-color: #FEFBF5ff;
+}
+
+.eventStartContainer, .eventEndContainer, .eventTitleContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: auto;
+    text-align: left;
+}
+
+.eventTitleContainer .input  {
+    min-width: 100%;
+    padding: 0.7rem 2.4rem;
+}
+
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    align-content: center;
+    align-items: flex-start;
+    padding: 1rem;
+}

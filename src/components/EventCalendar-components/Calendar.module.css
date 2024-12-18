@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Gaegu&family=Modak&display=swap');
+
+.monthSelector {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding: 0rem 0rem;
+    min-width: 100dvh;
+    font-weight: bold;
+    font-size: 1.3rem;
+    
+}
+.eventsListContainer {
+    background-color: #FCE8E9ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.7rem;
+    min-width: 100dvh;
+    border-radius: 15px;
+    min-height: 100%;
+    max-height: 65vh;
+    overflow-y: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.past-event, .upcoming-event {
+    background-color: #F3C3C3ff;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem;
+    margin: 1rem 0rem;
+    min-width: 100dvh;
+    border-radius: 15px;
+    min-height: 50px;
+}
+.past-event {
+    color: #6b6b6b;
+    background-color: #97a27b5f;
+}
+
+.eventDate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+    margin: 1rem 0rem;
+    font-weight: bold;
+    background-color: #fefbf5;
+    max-width: 10dvh;
+    min-width: 10dvh;
+    border-radius: 15px;
+}
+
+.addEventButton, .prevMonthButton, .nextMonthButton {
+    font-size:30px;
+    font-weight: bolder;
+    padding: 0.2rem 4rem;
+}
+
+.addEventButton {
+    margin: 0;
+    padding: 0.2rem 7rem;
+    min-width: 100%;
+}
+.eventContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.overviewEvents {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
