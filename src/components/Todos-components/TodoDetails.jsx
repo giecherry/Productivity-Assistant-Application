@@ -11,6 +11,12 @@ function TodoDetails() {
 
     return
     <div>
+        <h1>{todos.todoTitle}</h1>
+        <p>Category: {todo.todoCategory}</p>
+        <p>Description: {todo.todoDescription}</p>
+        <p>Status: {todo.Status}</p>
+        <p>Estimated Time: {todo.todoEsTime}</p>
+        <p>Deadline: {todo.todoDeadline}</p>
         <button> Status</button>
         <button> Delite </button>
         <button> Edit </button>
