@@ -21,10 +21,8 @@ function CreateNewHabit() {
 
     return (
         <>
-            
             <div className="createHabitContainer">
                 <h4 className="habitHFour">Add new habit</h4>
-
                 <div className="createHabit">
                     <input className="HabitTitle" type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required/>
                     <input className="HabitDescription" type="text" placeholder="Habit description" value={description} onChange={(e) => setDescription(e.target.value)}/>
@@ -36,7 +34,7 @@ function CreateNewHabit() {
                         <option value="Low">Low</option>
                     </select>
 
-                    <button className="HabitButton" onClick={AddHabit}>Save habit</button>
+                    <button className="HabitButton" onClick={handleSavedHabit}>Save habit</button>
                 </div>
             </div>
         </>
