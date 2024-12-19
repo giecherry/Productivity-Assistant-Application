@@ -38,9 +38,9 @@ function TodoDetails() {
         <p>Status: {todo.todoStatus}</p>
         <p>Estimated Time In Minutes: {todo.todoEsTime}</p>
         <p>Deadline: {todo.todoDeadline}</p>
-        <button> Status</button>
-        <button> Delite </button>
-        <button> Edit </button>
+        <button onClick={handleComplete}> Completed</button>
+        <button onClick={handleDelite}> Delite </button>
+        <button onClick={handleEdit}> Edit </button>
     </div>
  );
 }
