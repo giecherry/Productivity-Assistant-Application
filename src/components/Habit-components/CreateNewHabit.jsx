@@ -15,7 +15,7 @@ function CreateNewHabit() {
         AddHabit({title, description, repeat, priority});
         setTitle('');
         setDescription('');
-        setRepeat('');
+        setRepeat(0);
         setPriority('');
     };
 
