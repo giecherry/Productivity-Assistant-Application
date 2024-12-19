@@ -119,6 +119,7 @@ export default TodosAndActivities;*/
 
 import { useState } from "react";
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { TodoContext } from '../components/Todos-components/TodosContext.jsx';
 
 function TodosAndActivities() {
@@ -157,14 +158,16 @@ function TodosAndActivities() {
       <h2>Ärende</h2>
       <h2>Lista med ärenden att utföra:</h2>
       <ul>
-        {todos.map((todo, i) => (
+        {todos.map((todo) => (
           <div key={todo.id}>
             <h3> Title: {todo.todoTitle}</h3>
             <h3> Category: {todo.todoCategory}</h3>
             <h3> Description: {todo.todoDescription } </h3>
             <h3> Status: {todo.todoStatus}</h3>
-            <h3> Estimated time: {todo.todoEsTime}</h3>
+            <h3> Estimated time in minutes: {todo.todoEsTime}</h3>
             <h3> Deadline: {todo.todoDeadline}</h3>
+            {/*Kom ihåg att denna Navigerar / Tar oss till TodoDetails*/ }
+            <Link to={`/todo/${todo.id}`}>View Details</Link>
           </div>
         ))}
       </ul>
