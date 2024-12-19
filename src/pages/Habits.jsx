@@ -5,19 +5,20 @@ import HabitFiltSort from "../components/Habit-components/HabitFiltSort";
 
 const Habits = () => {
     
-    let {increment, reduce, zero, reset, habits, AddHabit} = useContext(HabitCounterContext)
+    let {increment, reduce, zero, reset, habits} = useContext(HabitCounterContext)
+    const [filterHabits, setFilterHabits] = useState(habits);
 
-    useEffect(() => {
+    /* useEffect(() => {
             console.log("Save habit in localStorage")
             localStorage.setItem("habit", JSON.stringify(habits))
-        }, [habits])
+        }, [habits]) */
 
     return (
         <>
             <div className="HabitHome">
                 <h1 className="HabitHOne">Habits</h1>
                 <CreateNewHabit />
-                <HabitFiltSort />   
+                <HabitFiltSort onFilterChange={setFilterHabits} habit={habits}/>   
 
                 <div>  
                     <ul>
@@ -27,10 +28,10 @@ const Habits = () => {
                                 <p>Repeat: {habits.repeat}</p>
                                 <p>Priority: {habits.priority}</p>
                                 <p>Count your repetitions {habits.counter}</p>
-                                <button className="HabitButton" onClick={() => increment(habits.id, habits, setHabits)}>+</button>
-                                <button className="HabitButton" onClick={() => reduce(habits.id, habits, setHabits)}>-</button>
-                                <button className="HabitButton" onClick={() => zero(habits.id, habits, setHabits)}>Reset counter</button>
-                                <button className="HabitButton"onClick={() => reset(habits.id, habits, setHabits)}>Delete</button>
+                                <button className="HabitButton" onClick={() => increment(habits.id, habits)}>+</button>
+                                <button className="HabitButton" onClick={() => reduce(habits.id, habits)}>-</button>
+                                <button className="HabitButton" onClick={() => zero(habits.id, habits)}>Reset counter</button>
+                                <button className="HabitButton"onClick={() => reset(habits.id, habits)}>Delete</button>
                             </li>
                         ))}
                     </ul>
