@@ -24,6 +24,7 @@ function App() {
         <Route path="/calendar/newEvent" element={<NewEvent />} />
         <Route path="/event/:id" element={<EventDetails />} />
         <Route path="/createNewHabit" element={<CreateNewHabit />} />
+        <Route path="/todo/:id" element={<TodoDetails/>} />
       </Routes>
     </>
   );
