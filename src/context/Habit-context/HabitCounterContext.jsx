@@ -24,22 +24,22 @@ export function HabitCounterContextProvider ({children}) {
         };
 
         let updatedHabits = [...habits, newHabit]
-        setHabits(updatedHabits)
+        /* setHabits(updatedHabits) */
     }
 
-    let increment = (id, habits, setHabits) => {
+    let increment = (id) => {
         setHabits(habits.map(habit => habit.id === id ? {...habit, counter: habit.counter +1} : habit));
     }
 
-    let reduce = (id, habits, setHabits) => {
+    let reduce = (id) => {
         setHabits(habits.map(habit => habit.id === id ? {...habit, counter: habit.counter -1} : habit));
     }
 
-    let zero = (id, habits, setHabits) => {
+    let zero = (id) => {
         setHabits(habits.map(habit => habit.id === id ? {...habit, counter: 0} : habit));
     }
 
-    let reset = (id, habits, setHabits) => {
+    let reset = (id) => {
         const updatedHabits = habits.filter((habit) => habit.id !== id);
         setHabits(updatedHabits);
     }
