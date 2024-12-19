@@ -24,6 +24,7 @@ function HabitFiltSort () {
             updatedHabits.sort((a, b) => {
                 return sortOrder === "asc" ? a.repeat - b.repeat : b.repeat - a.repeat;
             });
+        }
         }, [habits, filterHabits, sortHabits, sortHabits]);
     
     useEffect(() => {
