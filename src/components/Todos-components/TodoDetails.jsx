@@ -9,12 +9,33 @@ function TodoDetails() {
     const navigate = useNavigate();
     const { todos, updateTodo, deliteTodo } = useContext (TodoContext);
 
+    const todo = todo.find((item) => item.id === parseInt(id));
+   
+    if (!todo) {
+        return <h2>Todo not found</h2>;
+    }
+
+    const handleComplete = () => {
+        updateTodo({ ...todo, todoStatus: 'Completed'});
+    
+   };
+
+   const handleDelite = () => {
+    deliteTodo(todo.id);
+    // kom ihåg denna för att Tas tillbaka till /todo
+    navigate('/todo');
+   };
+
+   const handleEdit = () => {
+    alert ('Edit');
+   };
+
     return
     <div>
         <h1>{todos.todoTitle}</h1>
         <p>Category: {todo.todoCategory}</p>
         <p>Description: {todo.todoDescription}</p>
-        <p>Status: {todo.Status}</p>
+        <p>Status: {todo.todoStatus}</p>
         <p>Estimated Time: {todo.todoEsTime}</p>
         <p>Deadline: {todo.todoDeadline}</p>
         <button> Status</button>
