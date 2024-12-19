@@ -8,6 +8,13 @@ function TodoDetails() {
     const { id } = useParams(); 
     const navigate = useNavigate();
     const { todos, updateTodo, deliteTodo } = useContext (TodoContext);
+
+    return
+    <div>
+        <button> Status</button>
+        <button> Delite </button>
+        <button> Edit </button>
+    </div>
 }
 
 export default TodoDetails;
