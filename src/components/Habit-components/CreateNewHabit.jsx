@@ -1,19 +1,23 @@
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { HabitCounterContext } from "../../context/Habit-context/HabitCounterContext";
 
 function CreateNewHabit() {
 
-    const {habits, AddHabit} = useContext(HabitCounterContext);
+    const {AddHabit} = useContext(HabitCounterContext);
 
-    let [title, setTitle] = useState('');
-    let [description, setDescription] = useState('');
-    let [repeat, setRepeat] = useState(0);
-    let [priority, setPriority] = useState('');
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [repeat, setRepeat] = useState(0);
+    const [priority, setPriority] = useState('');
 
-    useEffect(() => {
-        console.log("Save habit in localStorage")
-        localStorage.setItem("habit", JSON.stringify(habits))
-    }, [habits])
+    const handleSavedHabit = (e) => {
+        e.preventDefault();
+        AddHabit({title, description, repeat, priority});
+        setTitle('');
+        setDescription('');
+        setRepeat('');
+        setPriority('');
+    };
 
     return (
         <>
