@@ -9,6 +9,7 @@ import NewEvent from './components/EventCalendar-components/NewEvent'
 import EventDetails from './components/EventCalendar-components/EventDetails'
 import CreateNewHabit from './components/Habit-components/CreateNewHabit'
 import SignUp from './pages/SignUp'
+import TodoDetails from  './components/Todos-components/TodoDetails'
 
 
 function App() {
