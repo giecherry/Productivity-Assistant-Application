@@ -2,23 +2,24 @@ import { useEffect, useState, useContext } from "react";
 import CreateNewHabit from "../components/Habit-components/CreateNewHabit"
 import { HabitCounterContext } from "/src/context/Habit-context/HabitCounterContext";
 import HabitFiltSort from "../components/Habit-components/HabitFiltSort";
+import HabitCSS from "../components/Habit-components/Habit.module.css"
 
 const Habits = () => {
     
-    let {increment, reduce, zero, reset, habits} = useContext(HabitCounterContext)
+    let {increment, reduce, zero, reset, habits, AddHabits} = useContext(HabitCounterContext)
     const [filterHabits, setFilterHabits] = useState(habits);
 
-    /* useEffect(() => {
+    useEffect(() => {
             console.log("Save habit in localStorage")
             localStorage.setItem("habit", JSON.stringify(habits))
-        }, [habits]) */
+        }, [habits])
 
     return (
         <>
             <div className="HabitHome">
                 <h1 className="HabitHOne">Habits</h1>
                 <CreateNewHabit />
-                <HabitFiltSort onFilterChange={setFilterHabits} habit={habits}/>   
+                <HabitFiltSort />   
 
                 <div>  
                     <ul>

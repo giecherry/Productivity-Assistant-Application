@@ -1,18 +1,18 @@
 import { useContext, useEffect, useState } from "react";
 import { HabitCounterContext } from "../../context/Habit-context/HabitCounterContext";
 
-function HabitFiltSort ({onFilterChange}) {
+function HabitFiltSort () {
 
     const {habits} = useContext(HabitCounterContext);
     const [sortHabits, setSortHabits] = useState('');
-    const [filterHabits, setFilterHabits] = useState('All');
+    const [filterHabits, setFilterHabits] = useState('');
     const [sortOrder, setSortOrder] = useState('');
 
     useEffect(() => {
         let updatedHabits = [...habits];
 
         if (filterHabits) {
-            updatedHabits = updatedHabits.filter((habits) => habits.priority === filterHabits);
+            updatedHabits = updatedHabits.filter((habits) => habits.selectedPriority === filterHabits);
         }
 
         if (sortHabits === "priority")  {
@@ -25,13 +25,12 @@ function HabitFiltSort ({onFilterChange}) {
                 return sortOrder === "asc" ? a.repeat - b.repeat : b.repeat - a.repeat;
             });
         }
-        onFilterChange(updatedHabits);
         }, [habits, filterHabits, sortHabits, sortHabits]);
     
-   /*  useEffect(() => {
+   useEffect(() => {
         console.log("Save habit in localStorage")
         localStorage.setItem("habit", JSON.stringify(habits))
-    }, [habits]); */
+    }, [habits]);
 
     return (
         <>

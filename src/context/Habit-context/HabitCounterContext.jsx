@@ -1,18 +1,26 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const HabitCounterContext = createContext();
 
 export function HabitCounterContextProvider ({children}) {
 
     const [counter, setCounter] = useState(1);
+    const [habits, setHabits] = useState([]);
 
-    const [habits, setHabits] = useState(() => {
-        const storedHabits = localStorage.getItem("habit");
-        return storedHabits ? JSON.parse(storedHabits) : [];
-    });
+  /*   useEffect(() => {
+        console.log("Save habit in localStorage")
+        const savedHabits = JSON.parse(localStorage.getItem("habit"));
+        if (savedHabits) {
+            setHabits(savedHabits);
+        }
+    }, []); */
 
-    const AddHabit = (e) => {
-        e.preventDefault();
+    useEffect(() => {
+        console.log("Save habit in localStorage")
+        localStorage.setItem("habit", JSON.stringify(habits))
+    }, [habits]);
+
+    const AddHabit = ({title, description, repeat, priority}) => {
 
         let newHabit = {
             id:Date.now(),
@@ -24,7 +32,7 @@ export function HabitCounterContextProvider ({children}) {
         };
 
         let updatedHabits = [...habits, newHabit]
-        /* setHabits(updatedHabits) */
+        setHabits(updatedHabits)
     }
 
     let increment = (id) => {
