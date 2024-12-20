@@ -3,6 +3,7 @@ import CreateNewHabit from "../components/Habit-components/CreateNewHabit"
 import { HabitCounterContext } from "/src/context/Habit-context/HabitCounterContext";
 import HabitFiltSort from "../components/Habit-components/HabitFiltSort";
 import HabitCSS from "../components/Habit-components/Habit.module.css";
+import LogOutBtn from "../components/HomePage-components/LogOutBtn"
 
 const Habits = () => {
     
@@ -20,6 +21,7 @@ const Habits = () => {
                 <h1 className={HabitCSS.HabitHOne}>Habits</h1>
                 <CreateNewHabit />
                 <HabitFiltSort />   
+                <LogOutBtn/>
 
                 <div>  
                     <ul>

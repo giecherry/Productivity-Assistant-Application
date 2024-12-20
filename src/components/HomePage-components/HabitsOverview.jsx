@@ -27,16 +27,6 @@ const HabitsOverview = () => {
                                 <h3>{habit.repeat}</h3>
                                 <h3>{habit.priority}</h3>
                             </div>
-                            <div className={HomePageCSS.HabitContent}>
-                                <h4>{habit.title}</h4>
-                                <h3>{habit.repeat}</h3>
-                                <h3>{habit.priority}</h3>
-                            </div>
-                            <div className={HomePageCSS.HabitContent}>
-                                <h4>{habit.title}</h4>
-                                <h3>{habit.repeat}</h3>
-                                <h3>{habit.priority}</h3>
-                            </div>
                         </div>
                     </div>
                 ))}

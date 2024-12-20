@@ -69,7 +69,7 @@ function HabitFiltSort () {
                         <p>Repeat: {habit.repeat}</p>
                     </div>
                 ))}
-            </div>
+            </div> 
 
         </>
     )
