@@ -20,11 +20,8 @@ const SignUp = () => {
         Navigate('/');
     }
 
-    //Funktion för att jämföra username och email  
-
     return (
-        <>
-            <h1>Sign Up</h1>
+        <div className="SignUpBody">
             <div className="signUpContainer">
                 <div className="logo">
                     <img src={Logo} alt="Taskoo logo" />
@@ -37,7 +34,7 @@ const SignUp = () => {
                 <button onClick={handleClick}>Sign in</button>
             </div>
             
-        </>
+        </div>
     )
 }
 

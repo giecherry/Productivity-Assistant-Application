@@ -13,7 +13,7 @@ const LogIn = () => {
     useEffect(() => {
         sessionStorage.setItem("Inloggad user:", JSON.stringify(inUser))
     },[inUser])
-    
+
     const handleClick = () => {
         if(checkUser() === undefined){
             alert("Wrong username or password. Try again!");
@@ -22,11 +22,9 @@ const LogIn = () => {
         Navigate('/home');
         }
     }
-    //?Error message när man inte är regristrerad eller fel lösenord
 
     return (
-        <>
-            <h1>Log In</h1>
+        <div className='logInBody'>
             <div className="logInContainer">
                 <div className="logo">
                     <img src={Logo} alt="Taskoo logo" />
@@ -38,7 +36,7 @@ const LogIn = () => {
                 <button onClick={handleClick}>Log in</button>
             </div>
             
-        </>
+        </div>
     )
 }
 

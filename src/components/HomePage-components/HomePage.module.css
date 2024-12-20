@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Jua&display=swap');
+
+body{
+    font-family: "Jua";
+}
+
 .overviewContainer{
     display: flex;
     flex-direction: row;
@@ -13,6 +19,8 @@
     margin: 1rem;
     background-color: #939F71ff;
     border-radius: 15px;
+    box-shadow: #41443839 0px 50px 100px -20px, #3c432839 0px 30px 60px -30px, #3d4b1239 0px -2px 6px 0px inset;
+
 }
 .calendarContainer, .todosContainer, .habitsContainer{
     display: flex;
@@ -23,7 +31,9 @@
     margin: 1rem;
     background-color: #939f71ac;
     border-radius: 15px;
+    box-shadow: #41443839 0px 50px 100px -20px, #3c432839 0px 30px 60px -30px, #3d4b1239 0px -2px 6px 0px inset;
 }
+
 
 .overviewEvent{
     display: flex;
@@ -33,5 +43,29 @@
     padding: 0.2rem 4rem;
     margin: 1rem 0.2rem;
     border-radius: 15px;
-    background-color: #FCE8E9ff;
+    background-color: #FEFBF5ff;
+    box-shadow: #4440362e 0px 50px 100px -20px, #4c45362b 0px 30px 60px -30px, #4334132f 0px -2px 6px 0px inset;
+}
+
+.HabitHOne {
+    color: #495733ff;
+}
+
+.HabitContent {
+    border-radius: 15px;
+    padding: 1rem;
+    border: 2px solid #939F71ff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    gap: 2rem;
+    color: #F3C3C3ff;
+    background-color: #FEFBF5ff;
+}
+
+button {
+    box-shadow: #5941414e 0px 50px 100px -20px, #57323274 0px 30px 60px -30px, #42101058 0px -2px 6px 0px inset;
+}
+
+.logOutBtnContainer{
+    position: fixed;
+    margin: 1rem;
 }

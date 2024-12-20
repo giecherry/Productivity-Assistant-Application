@@ -11,12 +11,12 @@ export function EventContextProvider ({children}){
     });
 
     const addEvent = (newEvent) => {
-        newEvent.id = events.length + 1;
         const updatedEvents = [...events, newEvent];
         setEvents(updatedEvents);
         localStorage.setItem("events", JSON.stringify(updatedEvents));
         console.log("New event added in local storage:", newEvent);
     };
+
 
     return (
         <EventContext.Provider value={{ events, addEvent, setEvents }}>

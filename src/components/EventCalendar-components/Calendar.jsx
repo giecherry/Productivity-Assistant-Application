@@ -35,7 +35,7 @@ const Calendar = () => {
 
     return (
         <>
-        <div>
+        <div className={CalendarCSS.CaledarBody}>
             <h1>{format(currentMonth, "yyyy")}</h1>
             <div className={CalendarCSS.monthSelector}>
                 <button className={CalendarCSS.prevMonthButton} onClick={handlePrevMonth}>&lt;</button>
@@ -61,6 +61,7 @@ const Calendar = () => {
                     </Link>
                 ))}
             </div>
+            <Link to="/home"><button className={CalendarCSS.addEventButton}>&#8592;</button></Link>
         </div>
         </>
     )

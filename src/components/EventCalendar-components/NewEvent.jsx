@@ -46,7 +46,7 @@ const NewEvent = () => {
     
     
     return (
-        <>
+        <div className={NewEventCSS.NewEventBody}>
             <div className={NewEventCSS.newEventContainer}>
                 {eventTitle? <h1>{eventTitle}</h1> :<h1>New Event</h1>}
                 <div className={NewEventCSS.inputContainer}>
@@ -75,7 +75,7 @@ const NewEvent = () => {
             </div>
             <Link to="/calendar"><button>&#8592;</button></Link>
             
-        </>
+        </div>
     )
 }
 

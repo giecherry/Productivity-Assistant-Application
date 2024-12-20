@@ -1,40 +1,76 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const HabitCounterContext = createContext();
 
 export function HabitCounterContextProvider ({children}) {
 
     const [counter, setCounter] = useState(1);
+    const [habits, setHabits] = useState(() => {
+        const savedHabits = localStorage.getItem("habit");
+        return savedHabits ? JSON.parse(savedHabits) : [];
+});
 
-    /* const increment = () => {
-         setCounter(counter+1);
+    useEffect(() => {
+        console.log("Save habit in localStorage")
+        localStorage.setItem("habit", JSON.stringify(habits));
+    }, [habits]);
+
+    const AddHabit = ({title, description, repeat, priority}) => {
+
+        let newHabit = {
+            id:Date.now(),
+            title,
+            description,          
+            repeat,
+            priority,
+            counter:0,
+        };
+
+        setHabits((prevHabits) => [...prevHabits, newHabit]);
     }
 
-    const reduce = () => {
-         setCounter(counter-1);
-    }
-    
-    const  zero = () => {
-        setCounter(counter===0);
-    } */
+    const increment = (id) => {
+        setHabits((prevHabits) =>
+            prevHabits.map((habit) =>
+                habit.id === id ? { ...habit, counter: habit.counter + 1 } : habit
+            )
+        );
+    };
 
-    let increment = (id, habits, setHabits) => {
-        setHabits(habits.map(habit => habit.id === id ? {...habit, counter: habit.counter +1} : habit));
-    }
+    const reduce = (id) => {
+        setHabits((prevHabits) =>
+            prevHabits.map((habit) =>
+                habit.id === id ? { ...habit, counter: habit.counter - 1 } : habit
+            )
+        );
+    };
 
-    let reduce = (id, habits, setHabits) => {
-        setHabits(habits.map(habit => habit.id === id ? {...habit, counter: habit.counter -1} : habit));
-    }
+    const zero = (id) => {
+        setHabits((prevHabits) =>
+            prevHabits.map((habit) =>
+                habit.id === id ? { ...habit, counter: 0 } : habit
+            )
+        );
+    };
 
-    let zero = (id, habits, setHabits) => {
-        setHabits(habits.map(habit => habit.id === id ? {...habit, counter: 0} : habit));
-    }
+    const reset = (id) => {
+        setHabits((prevHabits) =>
+            prevHabits.filter((habit) => habit.id !== id)
+        );
+    };
+
+    const filtHabits = () => {
+        const filterHabits = habits.filter(habits =>
+            habits.priority(sortOrder)
+        );
+        setFilterHabits(filterHabits);
+      };
 
     return (
         <>
-            <HabitCounterContext.Provider value={{counter,increment,reduce,zero}}>
+            <HabitCounterContext.Provider value={{counter, increment, reduce, zero, reset, habits, AddHabit, filtHabits}}>
                 {children}
             </HabitCounterContext.Provider>
         </>
     )
-}
+} 

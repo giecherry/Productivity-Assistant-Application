@@ -1,0 +1,167 @@
+
+.HabitHOne {
+    color: #939F71ff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: xx-large;
+}
+  
+.habitHFour {
+    color: #939F71ff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+  
+.HabitHome {
+    border-color: #939F71ff;
+    border-radius: 15px;
+    background-color: #FCE8E9ff;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-items: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+}
+.CreateHabitContainer {
+    flex-direction: column;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.CreateHabit {
+    background-color: white;
+    color: #939F71ff;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #FCE8E9ff;
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.FiltAndSort {
+    background-color: #FCE8E9ff;
+    color: #939F71ff;
+    display: flex;
+    flex-direction: row;
+    border: 2px solid #FCE8E9ff;
+    border-radius: 15px;
+    padding: 1rem; 
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+  
+.HabitTitle {
+    background-color: #939F71ff;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    padding: 1em;
+    box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+    margin: 10px;
+}
+  
+.HabitDescription {
+    background-color: #939F71ff;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    padding: 1em;
+    box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+    margin: 10px;
+}
+  
+.HabitRepeat {
+    background-color: #939F71ff;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    padding: 1em;
+    box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+    margin: 10px;
+}
+  
+.HabitPriority {
+    background-color: #939F71ff;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    padding: 1em;
+    box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+    margin: 10px;
+}
+  
+.HabitButton {
+    background-color: #939F71ff;
+    padding: 0.5rem;
+    border-radius: 15px;
+    margin: 5px;
+}
+  
+.HabitButton:hover {
+    transform: scale(1.08);
+}
+  
+ul {
+    list-style: none;
+    padding: 1px;
+    margin: 1px;
+    display: grid;
+    grid-template-columns: repeat(3, 4fr);
+    gap: 2rem;
+    justify-content: center;
+}
+  
+li {
+    background-color: #FEFBF5ff;
+    border-radius: 15px;
+    padding: 1rem;
+    border: 2px solid #939F71ff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    gap: 2rem;
+}
+  
+li:hover {
+    transform: scale(1.08);
+}
+
+.SortRepeat {
+    background-color: #939F71ff;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    padding: 1em;
+    box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+    margin: 10px;
+}
+
+.SortPriority {
+    background-color: #939F71ff;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    padding: 1em;
+    box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+    margin: 10px;
+}
+
+.FilterPriority {
+    background-color: #939F71ff;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    padding: 1em;
+    box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+    margin: 10px;
+    
+}
+
+/* COLOR PALETTE */
+/* 
+--misty-rose: #FCE8E9ff;
+--dark-moss-green: #495733ff;
+--moss-green: #939F71ff;
+--tea-rose-red: #F3C3C3ff;
+--baby-powder: #FEFBF5ff; 
+*/
+
+
+  

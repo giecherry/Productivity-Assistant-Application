@@ -9,7 +9,6 @@ export function UserContextProvider ({children}){
         const [password, setPassword]= useState("")
         const [regUsers, setRegUsers] = useState(JSON.parse(localStorage.getItem("Registrerad users:")) || []);
         const [inUser, setInUser] = useState(JSON.parse(sessionStorage.getItem("Inloggad user:")) || null); 
-    
 
         const handleUserName = (e) => {
             setUserName(e.target.value);
@@ -40,13 +39,18 @@ export function UserContextProvider ({children}){
         }
 
         const checkUser = () => {
+            console.log(regUsers);
             let user = regUsers.find(user => user.userName === userName && user.password === password);
             return user;
         }
 
+        const handleLogOut = () =>{
+            setInUser([])
+        }
+
 
     return(
-        <UserContext.Provider value={{ handleLogIn, handleUserName, handlePassword, addNewUser, regUsers, inUser, userName, password, checkUser}}>
+        <UserContext.Provider value={{ handleLogIn, handleUserName, handlePassword, addNewUser, regUsers, inUser, userName, password, checkUser, handleLogOut}}>
             {children}
         </UserContext.Provider>
     )
