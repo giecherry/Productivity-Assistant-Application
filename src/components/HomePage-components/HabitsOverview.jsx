@@ -18,21 +18,21 @@ const HabitsOverview = () => {
     return (
         <>
             <div className={HomePageCSS.habitsContainer}>
-                <h1 className="HabitHOne">Habits</h1>
+                <h1 className={HomePageCSS.HabitHOne}>Habits</h1>
                 {highestCount.map((habit) => (
                     <div key={habit.id}>
                         <div>
-                            <div>
+                            <div className={HomePageCSS.HabitContent}>
                                 <h4>{habit.title}</h4>
                                 <h3>{habit.repeat}</h3>
                                 <h3>{habit.priority}</h3>
                             </div>
-                            <div>
+                            <div className={HomePageCSS.HabitContent}>
                                 <h4>{habit.title}</h4>
                                 <h3>{habit.repeat}</h3>
                                 <h3>{habit.priority}</h3>
                             </div>
-                            <div>
+                            <div className={HomePageCSS.HabitContent}>
                                 <h4>{habit.title}</h4>
                                 <h3>{habit.repeat}</h3>
                                 <h3>{habit.priority}</h3>
