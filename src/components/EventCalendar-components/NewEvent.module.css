@@ -8,6 +8,14 @@
 --baby-powder: #FEFBF5ff; 
 */
 
+.NewEventBody{
+    font-family: "Jua";
+}
+.NewEventBody button{
+    border: transparent;
+    color:#495733ff;
+}
+
 .newEventContainer {
     display: flex;
     flex-direction: column;
@@ -16,6 +24,7 @@
     margin: 1rem;
     background-color: #FCE8E9ff;
     border-radius: 15px;
+    box-shadow: #5941414e 0px 50px 100px -20px, #57323274 0px 30px 60px -30px, #42101058 0px -2px 6px 0px inset;
 }
 
 .input {
