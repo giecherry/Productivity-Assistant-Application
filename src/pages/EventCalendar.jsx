@@ -4,6 +4,7 @@ const EventCalendar = () => {
     return (
         <>
             <Calendar />
+            <br></br>
             <LogOutBtn/>
         </>
     )
