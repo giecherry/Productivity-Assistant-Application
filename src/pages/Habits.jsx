@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import CreateNewHabit from "../components/Habit-components/CreateNewHabit"
 import { HabitCounterContext } from "/src/context/Habit-context/HabitCounterContext";
 import HabitFiltSort from "../components/Habit-components/HabitFiltSort";
-import HabitCSS from "../components/Habit-components/Habit.module.css"
+import HabitCSS from "../components/Habit-components/Habit.module.css";
 
 const Habits = () => {
     
@@ -16,8 +16,8 @@ const Habits = () => {
 
     return (
         <>
-            <div className="HabitHome">
-                <h1 className="HabitHOne">Habits</h1>
+            <div className={HabitCSS.HabitHome}>
+                <h1 className={HabitCSS.HabitHOne}>Habits</h1>
                 <CreateNewHabit />
                 <HabitFiltSort />   
 
@@ -26,13 +26,13 @@ const Habits = () => {
                         {habits.map((habits) => (
                             <li key={habits.id}>        
                                 <h3>Habit: {habits.title}</h3>
-                                <p>Repeat: {habits.repeat}</p>
-                                <p>Priority: {habits.priority}</p>
-                                <p>Count your repetitions {habits.counter}</p>
-                                <button className="HabitButton" onClick={() => increment(habits.id, habits)}>+</button>
-                                <button className="HabitButton" onClick={() => reduce(habits.id, habits)}>-</button>
-                                <button className="HabitButton" onClick={() => zero(habits.id, habits)}>Reset counter</button>
-                                <button className="HabitButton"onClick={() => reset(habits.id, habits)}>Delete</button>
+                                <p><strong>Repeat:</strong> {habits.repeat}</p>
+                                <p><strong>Priority:</strong> {habits.priority}</p>
+                                <p><strong>Count your repetitions</strong> {habits.counter}</p>
+                                <button className={HabitCSS.HabitButton} onClick={() => increment(habits.id, habits)}>+</button>
+                                <button className={HabitCSS.HabitButton} onClick={() => reduce(habits.id, habits)}>-</button>
+                                <button className={HabitCSS.HabitButton} onClick={() => zero(habits.id, habits)}>Reset counter</button>
+                                <button className={HabitCSS.HabitButton}onClick={() => reset(habits.id, habits)}>Delete</button>
                             </li>
                         ))}
                     </ul>
