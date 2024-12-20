@@ -21,7 +21,7 @@ const Habits = () => {
                 <h1 className={HabitCSS.HabitHOne}>Habits</h1>
                 <CreateNewHabit />
                 <HabitFiltSort />   
-                <LogOutBtn/>
+                
 
                 <div>  
                     <ul>
@@ -40,6 +40,7 @@ const Habits = () => {
                     </ul>
                 </div>
             </div>
+            <div className={HabitCSS.OutButton}><LogOutBtn /></div>
         </>
     )
 }

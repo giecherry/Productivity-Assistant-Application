@@ -19,7 +19,6 @@ function HabitFiltSort () {
         }
 
         if (sortHabits === "priority") {
-            console.log("hej")
             updatedHabits.sort((a, b) =>
                 sortOrder === "asc" ? a.priority.localeCompare(b.priority) : b.priority.localeCompare(a.priority)
             );
@@ -34,7 +33,6 @@ function HabitFiltSort () {
     return (
         <>
             <div className={HabitCSS.FiltAndSort}>
-                <h5>Filter and sort your habits</h5>
                 <div className="FiltSort">
                     <label htmlFor="FilterPriority">Filter by priority</label>
                     <select className={HabitCSS.FilterPriority} id="FilterPriority" value={filterHabits} onChange={(e) => setFilterHabits(e.target.value)}>
@@ -46,7 +44,7 @@ function HabitFiltSort () {
                     </select>
                 </div>
                 
-                <div className="SortDiv">
+                <div className={HabitCSS.SortDiv}>
                 <label htmlFor="SortPriority">Sort by priority</label>
                     <select className={HabitCSS.SortPriority} id="SortPriority" onChange={(e) => setSortHabits('priority')}>
                         <option value="" disabled>Sort habits by priority</option>
