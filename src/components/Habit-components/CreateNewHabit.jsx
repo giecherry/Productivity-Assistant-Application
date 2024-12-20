@@ -26,8 +26,8 @@ function CreateNewHabit() {
     return (
         <>
             <div className={HabitCSS.CreatHabitContainer}>
-                <h4 className={HabitCSS.HabitHFour}>Add new habit</h4>
                 <div className={HabitCSS.CreateHabit}>
+                    <h4 className={HabitCSS.HabitHFour}>Add new habit</h4>
                     <input className={HabitCSS.HabitTitle} type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required/>
                     <input className={HabitCSS.HabitDescription} type="text" placeholder="Habit description" value={description} onChange={(e) => setDescription(e.target.value)}/>
                     <input className={HabitCSS.HabitRepeat} type="number" placeholder="Repeat" value={repeat} onChange={(e) => setRepeat(e.target.value)} required/>
