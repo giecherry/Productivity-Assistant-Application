@@ -65,6 +65,7 @@ button {
     box-shadow: #5941414e 0px 50px 100px -20px, #57323274 0px 30px 60px -30px, #42101058 0px -2px 6px 0px inset;
 }
 
-.logOutBtn{
+.logOutBtnContainer{
     position: fixed;
+    margin: 1rem;
 }

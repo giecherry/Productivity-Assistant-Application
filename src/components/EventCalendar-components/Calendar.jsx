@@ -61,6 +61,7 @@ const Calendar = () => {
                     </Link>
                 ))}
             </div>
+            <Link to="/home"><button className={CalendarCSS.addEventButton}>&#8592;</button></Link>
         </div>
         </>
     )

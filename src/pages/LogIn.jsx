@@ -8,7 +8,7 @@ import { UserContext } from '../components/UserContext';
 
 const LogIn = () => {
     const Navigate = useNavigate();
-    const {handleUserName, handlePassword, inUser, handleLogIn, checkUser, handleAdminData} = useContext(UserContext)
+    const {handleUserName, handlePassword, inUser, handleLogIn, checkUser} = useContext(UserContext)
 
     useEffect(() => {
         sessionStorage.setItem("Inloggad user:", JSON.stringify(inUser))
@@ -21,7 +21,6 @@ const LogIn = () => {
         else {handleLogIn();
         Navigate('/home');
         }
-        handleAdminData();
     }
 
     return (
