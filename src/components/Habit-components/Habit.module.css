@@ -1,0 +1,108 @@
+
+.HabitHOne {
+    color: #939F71ff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: xx-large;
+}
+  
+.habitHFour {
+    color: #939F71ff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+  
+.HabitHome {
+    border-color: #939F71ff;
+    border-radius: 15px;
+    background-color: #FCE8E9ff;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 2fr));
+    gap: 2rem;
+    justify-items: center;
+}
+  
+.createHabit {
+    background-color: #FCE8E9ff;
+    color: #939F71ff;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border: 2px #939F71ff;
+    border-radius: 15px;
+    padding: 1rem;
+}
+  
+.HabitTitle {
+    background-color: #939F71ff;
+}
+  
+.HabitDescription {
+    background-color: #939F71ff;
+}
+  
+.HabitRepeat {
+    background-color: #939F71ff;
+}
+  
+.HabitPriority {
+    background-color: #939F71ff;
+}
+  
+.HabitButton {
+    background-color: #939F71ff;
+    padding: 0.5rem;
+    border-radius: 15px;
+}
+  
+.HabitButton:hover {
+    transform: scale(1.08);
+}
+  
+ul {
+    list-style: none;
+    padding: 1px;
+    margin: 1px;
+    display: grid;
+    grid-template-columns: repeat(3, 4fr);
+    gap: 2rem;
+    justify-content: center;
+}
+  
+li {
+    background-color: #FEFBF5ff;
+    border-radius: 15px;
+    padding: 1rem;
+    border: 2px solid #939F71ff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1.0);
+    gap: 2rem;
+}
+  
+li:hover {
+    transform: scale(1.08);
+}
+
+.SortRepeat {
+    background-color: #939F71ff;
+}
+
+.SortPriority {
+    background-color: #939F71ff;
+}
+
+.FilterPriority {
+    background-color: #939F71ff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
+}
+
+/* COLOR PALETTE */
+/* 
+--misty-rose: #FCE8E9ff;
+--dark-moss-green: #495733ff;
+--moss-green: #939F71ff;
+--tea-rose-red: #F3C3C3ff;
+--baby-powder: #FEFBF5ff; 
+*/
+
+
+  
