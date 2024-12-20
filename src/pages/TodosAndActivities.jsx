@@ -117,7 +117,7 @@ import { TodoContext } from '../components/Todos-components/TodosContext.jsx';
 
 export default TodosAndActivities;*/
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { TodoContext } from '../components/Todos-components/TodosContext.jsx';
@@ -154,12 +154,13 @@ function TodosAndActivities() {
     alert("You've added a to-do");
   }
 
-  const handleShowList = () => {
+  useEffect(()=>{
     if (todos.length > 0)
     {
       setShowList(true)
-    }
-  }
+    }}
+  ,[todos])
+
 
   return (
     <div className={HomePageCSS.todosContainer}>
