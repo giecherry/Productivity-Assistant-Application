@@ -96,9 +96,13 @@ export function UserContextProvider ({children}){
             return user;
         }
 
+        const handleLogOut = () =>{
+            setInUser([])
+        }
+
 
     return(
-        <UserContext.Provider value={{ handleLogIn, handleUserName, handlePassword, addNewUser, regUsers, inUser, userName, password, checkUser, handleAdminData}}>
+        <UserContext.Provider value={{ handleLogIn, handleUserName, handlePassword, addNewUser, regUsers, inUser, userName, password, checkUser, handleAdminData, handleLogOut}}>
             {children}
         </UserContext.Provider>
     )
