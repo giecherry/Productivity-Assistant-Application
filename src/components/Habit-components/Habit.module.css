@@ -131,6 +131,7 @@ li:hover {
     padding: 1em;
     box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
     margin: 10px;
+    align-content: center;
 }
 
 .SortPriority {
@@ -143,6 +144,10 @@ li:hover {
     margin: 10px;
 }
 
+.SortDiv {
+    display: flex;
+}
+
 .FilterPriority {
     background-color: #939F71ff;
     border: none;
@@ -152,6 +157,10 @@ li:hover {
     box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
     margin: 10px;
     
+}
+
+.OutButton {
+    align-items: baseline;
 }
 
 /* COLOR PALETTE */
