@@ -8,6 +8,7 @@ import LogIn from './pages/LogIn'
 import NewEvent from './components/EventCalendar-components/NewEvent'
 import EventDetails from './components/EventCalendar-components/EventDetails'
 import SignUp from './pages/SignUp'
+import TodoDetails from  './components/Todos-components/TodoDetails'
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <Route path="/" element={<LogIn/>} />
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/todo" element={<TodosAndActivities />} />
+        <Route path="/todos" element={<TodosAndActivities />} />
         <Route path="/habits" element={<Habits />} />
         <Route path="/calendar" element={<EventCalendar />} />
         <Route path="/calendar/newEvent" element={<NewEvent />} />

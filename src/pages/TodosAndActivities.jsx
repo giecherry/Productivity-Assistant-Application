@@ -1,10 +1,10 @@
-import { useState } from "react";
+/*import { useState } from "react";
 import { useContext } from 'react';
 import { TodoContext } from '../components/Todos-components/TodosContext.jsx';
 
 /*Fråga om alla labels är rätt konstruerade och namngivna, då jag hittade i consolen 17 fel de va något med id:
       https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label*/
-function TodosAndActivities() {
+/*function TodosAndActivities() {
   const [todoTitle, setTodoTitle] = useState("");
   const [todoCategory, setTodoCategory] = useState("");
   const [todoDescription, setTodoDescription] = useState("");
@@ -107,6 +107,146 @@ function TodosAndActivities() {
           onChange={(e) => setTodoDeadline(e.target.value)}
         />
         <br />
+        <br />
+        <br />
+        <button onClick={handleClick}>Add to list</button>
+      </form>
+    </div>
+  );
+}
+
+export default TodosAndActivities;*/
+
+import { useState } from "react";
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { TodoContext } from '../components/Todos-components/TodosContext.jsx';
+
+function TodosAndActivities() {
+  const [todoTitle, setTodoTitle] = useState("");
+  const [todoCategory, setTodoCategory] = useState("");
+  const [todoDescription, setTodoDescription] = useState("");
+  const [todoStatus, setTodoStatus] = useState("");
+  const [todoEsTime, setTodoEsTime] = useState("");
+  const [todoDeadline, setTodoDeadline] = useState("");
+
+  const { todos, addTodo } = useContext(TodoContext);
+
+  function handleClick() {
+    if (!todoTitle || !todoCategory || !todoDescription || !todoStatus || !todoEsTime || !todoDeadline) {
+      alert("Please fill out all event details.");
+      return;
+    }
+    const newTodo = {
+      id: todos.length + 1,
+      owner: JSON.parse(sessionStorage.getItem("Inloggad user:")).userName,
+      todoTitle,
+      todoCategory,
+      todoDescription,
+      todoStatus,
+      todoEsTime,
+      todoDeadline,
+    };
+
+    addTodo(newTodo);
+    alert("You've added a to-do");
+  }
+
+  return (
+    <div className="App">
+      <h1>Todo List - Activities</h1>
+      <h2>Ärende</h2>
+      <h2>Lista med ärenden att utföra:</h2>
+      <ul>
+        {todos.map((todo) => (
+          <div key={todo.id}>
+            <h3> Title: {todo.todoTitle}</h3>
+            <h3> Category: {todo.todoCategory}</h3>
+            <h3> Description: {todo.todoDescription } </h3>
+            <h3> Status: {todo.todoStatus}</h3>
+            <h3> Estimated time in minutes: {todo.todoEsTime}</h3>
+            <h3> Deadline: {todo.todoDeadline}</h3>
+            {/*Kom ihåg att denna Navigerar / Tar oss till TodoDetails*/ }
+            <Link to={`/todo/${todo.id}`}>View Details</Link>
+          </div>
+        ))}
+      </ul>
+      <h2>Skapa nya ärenden</h2>
+      <h3>Varje ärende ska innehålla följande:</h3>
+
+      <form onSubmit={(e) => e.preventDefault()}>
+        <label htmlFor="todo-title">Title:</label>
+        <input
+          id="todo-title"
+          type="text"
+          value={todoTitle}
+          onChange={(e) => setTodoTitle(e.target.value)}
+          placeholder="Enter todo here"
+        />
+        <br />
+        <br />
+
+        <label htmlFor="todo-category">Category:</label>
+        <select
+          id="todo-category"
+          value={todoCategory}
+          onChange={(e) => setTodoCategory(e.target.value)}
+        >
+          <option value="" disabled>
+            Select a category
+          </option>
+          <option value="Health">Health</option>
+          <option value="Housekeeping">Housekeeping</option>
+          <option value="Job related">Job related</option>
+          <option value="Entertainment">Entertainment</option>
+        </select>
+        <br />
+        <br />
+
+        <label htmlFor="todo-description">Description:</label>
+        <input
+          id="todo-description"
+          type="text"
+          value={todoDescription}
+          onChange={(e) => setTodoDescription(e.target.value)}
+        />
+        <br />
+        <br />
+
+        <label htmlFor="todo-status">Status:</label>
+        <select
+          id="todo-status"
+          value={todoStatus}
+          onChange={(e) => setTodoStatus(e.target.value)}
+        >
+          <option value="" disabled>
+            Select status
+          </option>
+          <option value="Completed">Completed</option>
+          <option value="Uncompleted">Uncompleted</option>
+        </select>
+        <br />
+
+        <h4>Tidsestimat - Hur lång tid ärendet tar att utföra.</h4>
+        <label htmlFor="todo-estimated-time">Estimated time (in minutes):</label>
+        <input
+          id="todo-estimated-time"
+          type="number"
+          min={1}
+          value={todoEsTime}
+          onChange={(e) => setTodoEsTime(e.target.value)}
+          placeholder="e.g., 30"
+        />
+        <br />
+
+        <h4>Deadline - Datum som det senast ska vara utfört.</h4>
+        <label htmlFor="todo-deadline">Deadline:</label>
+        <input
+          id="todo-deadline"
+          type="date"
+          value={todoDeadline}
+          onChange={(e) => setTodoDeadline(e.target.value)}
+        />
         <br />
         <br />
         <button onClick={handleClick}>Add to list</button>
