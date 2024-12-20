@@ -7,7 +7,7 @@ function TodoDetails() {
     //Denna hämtar id från URLen
     const { id } = useParams(); 
     const navigate = useNavigate();
-    const { todos, updateTodo, deliteTodo } = useContext (TodoContext);
+    const { todos, updateTodo, deleteTodo } = useContext (TodoContext);
 
     const todo = todos.find((item) => item.id === parseInt(id));
    
@@ -24,28 +24,32 @@ function TodoDetails() {
    };
 
    const handleDelite = () => {
-    deliteTodo(todo.id);
+        if (typeof deleteTodo === 'function') {
+        deleteTodo(todo.id);
     // kom ihåg denna för att Tas tillbaka till /todo
-    navigate('/todo');
+        navigate('/todos');
+         } else {
+        console.error('deleteTodo is not a function');
+         }
    };
 
    const handleEdit = () => {
-    alert ('Edit');
+        alert ('Edit');
    };
 
     return (
-    <div>
-        <h1>{todo.todoTitle}</h1>
-        <p>Category: {todo.todoCategory}</p>
-        <p>Description: {todo.todoDescription}</p>
-        <p>Status: {todo.todoStatus}</p>
-        <p>Estimated Time In Minutes: {todo.todoEsTime}</p>
-        <p>Deadline: {todo.todoDeadline}</p>
-        <button onClick={handleComplete}> Completed</button>
-        <button onClick={handleDelite}> Delite </button>
-        <button onClick={handleEdit}> Edit </button>
-    </div>
- );
+        <div>
+            <h1>{todo.todoTitle}</h1>
+            <p>Category: {todo.todoCategory}</p>
+            <p>Description: {todo.todoDescription}</p>
+            <p>Status: {todo.todoStatus}</p>
+            <p>Estimated Time In Minutes: {todo.todoEsTime}</p>
+            <p>Deadline: {todo.todoDeadline}</p>
+            <button onClick={handleComplete}> Completed</button>
+            <button onClick={handleDelite}> Delete </button>
+            <button onClick={handleEdit}> Edit </button>
+        </div>
+    );
 }
 
 export default TodoDetails;
