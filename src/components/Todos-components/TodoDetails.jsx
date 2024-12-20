@@ -16,8 +16,11 @@ function TodoDetails() {
     }
 
     const handleComplete = () => {
-        updateTodo({ ...todo, todoStatus: 'Completed'});
-    
+        if (typeof updateTodo === 'function') {
+            updateTodo({...todo, todoStatus:'Completed'});
+        } else {
+            console.error('updateTodo is not function');
+        }
    };
 
    const handleDelite = () => {
