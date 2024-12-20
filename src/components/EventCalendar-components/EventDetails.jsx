@@ -4,6 +4,8 @@ import { EventContext } from "./EventContext";
 import { useContext, useState } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import NewEventCSS from './NewEvent.module.css'
+import EventDetailsCSS from './EventDetails.module.css'
+
 
 
 const EventDetails = () => {
@@ -78,7 +80,7 @@ const EventDetails = () => {
     };
     
     return (
-        <>
+        <div className={EventDetailsCSS.EventDetailsBody}>
         {showEditForm ? 
             <div>
                 <div className={NewEventCSS.newEventContainer}>
@@ -109,7 +111,7 @@ const EventDetails = () => {
                 <Link to="/calendar" onClick={() => setShowEditForm(false)}><button>&#8592;</button></Link>
             </div>
         :
-            <div>
+            <div className={EventDetailsCSS.EventDetailsContainer}>
                 <h1>{event.title}</h1>
                 { isSameDay(event.startDateTime, event.endDateTime) ?
                     <h2>Date: {format(new Date(event.startDateTime), "EEEE dd")}</h2>:
@@ -117,13 +119,16 @@ const EventDetails = () => {
                 }
                 <h2>Time: {format((event.startDateTime), "HH:mm")} - {format((event.endDateTime), "HH:mm")}</h2>
 
-                <button onClick={handleDelete}>Delete</button>
-                <button onClick={handleEditForm}>Edit</button>
+                <div>
+                    <button onClick={handleDelete}>Delete</button>
+                    <button onClick={handleEditForm}>Edit</button>
+                </div>
+                
 
                 <Link to="/calendar"><button>&#8592;</button></Link>
             </div>
         }
-        </>
+        </div>
     )
 }
 

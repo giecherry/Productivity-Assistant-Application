@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Jua&display=swap');
+
 
 /* COLOR PALETTE */
 /* 
@@ -12,10 +14,6 @@
   font-family:Arial, Helvetica, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: black;
-  background-color: white;
   color: #495733ff;
   background-color: #FEFBF5ff;
 
@@ -23,15 +21,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #495733ff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #FCE8E9ff;
+  font-family: "Jua";
 }
 
 body {
@@ -43,12 +33,13 @@ body {
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid black;
+  border: transparent;
+  border-radius: 15px;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
+  color: #495733ff;
   background-color: #F3C3C3ff;
   cursor: pointer;
   transition: border-color 0.25s;
@@ -64,4 +55,24 @@ button:focus-visible {
 .logInContainer, .signUpContainer{
   display: flex;
   flex-direction: column;
+  padding: 4rem;
+  margin: 1rem;
+  border-radius: 15px;
+  background-color: #FCE8E9ff;
+  box-shadow: #5941414e 0px 50px 100px -20px, #57323274 0px 30px 60px -30px, #42101058 0px -2px 6px 0px inset;
 }
+.logInBody input, .SignUpBody input{
+    margin: 0.5rem;
+    border: transparent;
+    padding: 0.7rem 2rem;
+    border-radius: 15px;
+    font-size: 1rem;
+    background-color: #FEFBF5ff;
+}
+
+a:hover, a:focus{
+  color: #495733ff;
+  text-decoration: none;
+}
+
+

@@ -25,8 +25,7 @@ const LogIn = () => {
     }
 
     return (
-        <>
-            <h1>Log In</h1>
+        <div className='logInBody'>
             <div className="logInContainer">
                 <div className="logo">
                     <img src={Logo} alt="Taskoo logo" />
@@ -38,7 +37,7 @@ const LogIn = () => {
                 <button onClick={handleClick}>Log in</button>
             </div>
             
-        </>
+        </div>
     )
 }
 
