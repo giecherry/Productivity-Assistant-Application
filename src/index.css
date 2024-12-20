@@ -44,13 +44,6 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #FCE8E9ff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
 
 .logInContainer, .signUpContainer{
   display: flex;
@@ -70,8 +63,12 @@ button:focus-visible {
     background-color: #FEFBF5ff;
 }
 
-a:hover, a:focus{
+a {
   color: #495733ff;
+  text-decoration: none;
+}
+a:hover, a:focus{
+  color: #4550344d;
   text-decoration: none;
 }
 
