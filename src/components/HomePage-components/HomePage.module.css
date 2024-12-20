@@ -35,3 +35,18 @@
     border-radius: 15px;
     background-color: #FCE8E9ff;
 }
+
+.HabitHOne {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #495733ff;
+}
+
+.HabitContent {
+    border-radius: 15px;
+    padding: 1rem;
+    border: 2px solid #939F71ff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1.0);
+    gap: 2rem;
+    color: #F3C3C3ff;
+    background-color: #FEFBF5ff;
+}
