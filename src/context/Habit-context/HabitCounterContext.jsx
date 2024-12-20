@@ -5,19 +5,14 @@ export const HabitCounterContext = createContext();
 export function HabitCounterContextProvider ({children}) {
 
     const [counter, setCounter] = useState(1);
-    const [habits, setHabits] = useState([]);
+    const [habits, setHabits] = useState(() => {
+        const savedHabits = localStorage.getItem("habit");
+        return savedHabits ? JSON.parse(savedHabits) : [];
+    });
 
-  /*   useEffect(() => {
+useEffect(() => {
         console.log("Save habit in localStorage")
-        const savedHabits = JSON.parse(localStorage.getItem("habit"));
-        if (savedHabits) {
-            setHabits(savedHabits);
-        }
-    }, []); */
-
-    useEffect(() => {
-        console.log("Save habit in localStorage")
-        localStorage.setItem("habit", JSON.stringify(habits))
+        localStorage.setItem("habit", JSON.stringify(habits));
     }, [habits]);
 
     const AddHabit = ({title, description, repeat, priority}) => {
@@ -59,4 +54,4 @@ export function HabitCounterContextProvider ({children}) {
             </HabitCounterContext.Provider>
         </>
     )
-}
+} 
