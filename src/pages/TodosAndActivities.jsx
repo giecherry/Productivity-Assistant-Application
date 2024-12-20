@@ -163,13 +163,9 @@ function TodosAndActivities() {
   return (
     <div className="App">
       <h1>Todo List - Activities</h1>
-      <h2>Ärende</h2>
-      <h2>Lista med ärenden att utföra:</h2>
       
-      <h2>Skapa nya ärenden</h2>
-      <h3>Varje ärende ska innehålla följande:</h3>
-
-      <form onSubmit={(e) => e.preventDefault()}>
+      <h2>Create new todo</h2>
+      <div>
         <label htmlFor="todo-title">Title:</label>
         <input
           id="todo-title"
@@ -221,8 +217,7 @@ function TodosAndActivities() {
           <option value="Uncompleted">Uncompleted</option>
         </select>
         <br />
-
-        <h4>Tidsestimat - Hur lång tid ärendet tar att utföra.</h4>
+        <br />
         <label htmlFor="todo-estimated-time">Estimated time (in minutes):</label>
         <input
           id="todo-estimated-time"
@@ -233,8 +228,7 @@ function TodosAndActivities() {
           placeholder="e.g., 30"
         />
         <br />
-
-        <h4>Deadline - Datum som det senast ska vara utfört.</h4>
+        <br />
         <label htmlFor="todo-deadline">Deadline:</label>
         <input
           id="todo-deadline"
@@ -245,7 +239,7 @@ function TodosAndActivities() {
         <br />
         <br />
         <button onClick={handleClick}>Add to list</button>
-      </form>
+      </div>
       {showList?
       <ul>
         {todos.map((todo) => (
