@@ -59,9 +59,16 @@ export function HabitCounterContextProvider ({children}) {
         );
     };
 
+    const filtHabits = () => {
+        const filterHabits = habits.filter(habits =>
+            habits.priority(sortOrder)
+        );
+        setFilterHabits(filterHabits);
+      };
+
     return (
         <>
-            <HabitCounterContext.Provider value={{counter, increment, reduce, zero, reset, habits, AddHabit}}>
+            <HabitCounterContext.Provider value={{counter, increment, reduce, zero, reset, habits, AddHabit, filtHabits}}>
                 {children}
             </HabitCounterContext.Provider>
         </>
