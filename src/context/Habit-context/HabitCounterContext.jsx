@@ -8,9 +8,9 @@ export function HabitCounterContextProvider ({children}) {
     const [habits, setHabits] = useState(() => {
         const savedHabits = localStorage.getItem("habit");
         return savedHabits ? JSON.parse(savedHabits) : [];
-    });
+});
 
-useEffect(() => {
+    useEffect(() => {
         console.log("Save habit in localStorage")
         localStorage.setItem("habit", JSON.stringify(habits));
     }, [habits]);
@@ -26,26 +26,38 @@ useEffect(() => {
             counter:0,
         };
 
-        let updatedHabits = [...habits, newHabit]
-        setHabits(updatedHabits)
+        setHabits((prevHabits) => [...prevHabits, newHabit]);
     }
 
-    let increment = (id) => {
-        setHabits(habits.map(habit => habit.id === id ? {...habit, counter: habit.counter +1} : habit));
-    }
+    const increment = (id) => {
+        setHabits((prevHabits) =>
+            prevHabits.map((habit) =>
+                habit.id === id ? { ...habit, counter: habit.counter + 1 } : habit
+            )
+        );
+    };
 
-    let reduce = (id) => {
-        setHabits(habits.map(habit => habit.id === id ? {...habit, counter: habit.counter -1} : habit));
-    }
+    const reduce = (id) => {
+        setHabits((prevHabits) =>
+            prevHabits.map((habit) =>
+                habit.id === id ? { ...habit, counter: habit.counter - 1 } : habit
+            )
+        );
+    };
 
-    let zero = (id) => {
-        setHabits(habits.map(habit => habit.id === id ? {...habit, counter: 0} : habit));
-    }
+    const zero = (id) => {
+        setHabits((prevHabits) =>
+            prevHabits.map((habit) =>
+                habit.id === id ? { ...habit, counter: 0 } : habit
+            )
+        );
+    };
 
-    let reset = (id) => {
-        const updatedHabits = habits.filter((habit) => habit.id !== id);
-        setHabits(updatedHabits);
-    }
+    const reset = (id) => {
+        setHabits((prevHabits) =>
+            prevHabits.filter((habit) => habit.id !== id)
+        );
+    };
 
     return (
         <>
