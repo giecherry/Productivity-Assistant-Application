@@ -121,6 +121,7 @@ import { useState } from "react";
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { TodoContext } from '../components/Todos-components/TodosContext.jsx';
+import HomePageCSS from '../components/HomePage-components/HomePage.module.css'
 
 function TodosAndActivities() {
   const [todoTitle, setTodoTitle] = useState("");
@@ -161,7 +162,7 @@ function TodosAndActivities() {
   }
 
   return (
-    <div className="App">
+    <div className={HomePageCSS.todosContainer}>
       <h1>Todo List - Activities</h1>
       
       <h2>Create new todo</h2>
@@ -242,6 +243,7 @@ function TodosAndActivities() {
       </div>
       {showList?
       <ul>
+        {console.log(todos)}
         {todos.map((todo) => (
           <div key={todo.id}>
             <h3> Title: {todo.todoTitle}</h3>
