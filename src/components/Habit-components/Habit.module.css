@@ -80,4 +80,29 @@ li {
 li:hover {
     transform: scale(1.08);
 }
+
+.SortRepeat {
+    background-color: #939F71ff;
+}
+
+.SortPriority {
+    background-color: #939F71ff;
+}
+
+.FilterPriority {
+    background-color: #939F71ff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
+}
+
+/* COLOR PALETTE */
+/* 
+--misty-rose: #FCE8E9ff;
+--dark-moss-green: #495733ff;
+--moss-green: #939F71ff;
+--tea-rose-red: #F3C3C3ff;
+--baby-powder: #FEFBF5ff; 
+*/
+
+
   
