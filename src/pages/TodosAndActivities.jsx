@@ -129,6 +129,7 @@ function TodosAndActivities() {
   const [todoStatus, setTodoStatus] = useState("");
   const [todoEsTime, setTodoEsTime] = useState("");
   const [todoDeadline, setTodoDeadline] = useState("");
+  const [showList, setShowList] = useState(false);
 
   const { todos, addTodo } = useContext(TodoContext);
 
@@ -152,25 +153,19 @@ function TodosAndActivities() {
     alert("You've added a to-do");
   }
 
+  const handleShowList = () => {
+    if (todos.length > 0)
+    {
+      setShowList(true)
+    }
+  }
+
   return (
     <div className="App">
       <h1>Todo List - Activities</h1>
       <h2>Ärende</h2>
       <h2>Lista med ärenden att utföra:</h2>
-      <ul>
-        {todos.map((todo) => (
-          <div key={todo.id}>
-            <h3> Title: {todo.todoTitle}</h3>
-            <h3> Category: {todo.todoCategory}</h3>
-            <h3> Description: {todo.todoDescription } </h3>
-            <h3> Status: {todo.todoStatus}</h3>
-            <h3> Estimated time in minutes: {todo.todoEsTime}</h3>
-            <h3> Deadline: {todo.todoDeadline}</h3>
-            {/*Kom ihåg att denna Navigerar / Tar oss till TodoDetails*/ }
-            <Link to={`/todo/${todo.id}`}>View Details</Link>
-          </div>
-        ))}
-      </ul>
+      
       <h2>Skapa nya ärenden</h2>
       <h3>Varje ärende ska innehålla följande:</h3>
 
@@ -251,6 +246,23 @@ function TodosAndActivities() {
         <br />
         <button onClick={handleClick}>Add to list</button>
       </form>
+      {showList?
+      <ul>
+        {todos.map((todo) => (
+          <div key={todo.id}>
+            <h3> Title: {todo.todoTitle}</h3>
+            <h3> Category: {todo.todoCategory}</h3>
+            <h3> Description: {todo.todoDescription } </h3>
+            <h3> Status: {todo.todoStatus}</h3>
+            <h3> Estimated time in minutes: {todo.todoEsTime}</h3>
+            <h3> Deadline: {todo.todoDeadline}</h3>
+            {/*Kom ihåg att denna Navigerar / Tar oss till TodoDetails*/ }
+            <Link to={`/todos/${todo.id}`}>View Details</Link>
+          </div>
+        ))}
+      </ul>:
+      <h2>No todos yet!</h2>
+      }
     </div>
   );
 }
