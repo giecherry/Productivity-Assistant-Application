@@ -8,12 +8,12 @@ import { UserContext } from '../components/UserContext';
 
 const LogIn = () => {
     const Navigate = useNavigate();
-    const {handleUserName, handlePassword, inUser, handleLogIn, checkUser} = useContext(UserContext)
+    const {handleUserName, handlePassword, inUser, handleLogIn, checkUser, handleAdminData} = useContext(UserContext)
 
     useEffect(() => {
         sessionStorage.setItem("Inloggad user:", JSON.stringify(inUser))
     },[inUser])
-    
+
     const handleClick = () => {
         if(checkUser() === undefined){
             alert("Wrong username or password. Try again!");
@@ -21,8 +21,8 @@ const LogIn = () => {
         else {handleLogIn();
         Navigate('/home');
         }
+        handleAdminData();
     }
-    //?Error message när man inte är regristrerad eller fel lösenord
 
     return (
         <>
