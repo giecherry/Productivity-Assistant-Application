@@ -19,7 +19,6 @@ function HabitFiltSort () {
         }
 
         if (sortHabits === "priority") {
-            console.log("hej")
             updatedHabits.sort((a, b) =>
                 sortOrder === "asc" ? a.priority.localeCompare(b.priority) : b.priority.localeCompare(a.priority)
             );
