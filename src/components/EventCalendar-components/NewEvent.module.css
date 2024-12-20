@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Jua&display=swap');
+/* COLOR PALETTE */
+/* 
+--misty-rose: #FCE8E9ff;
+--dark-moss-green: #495733ff;
+--moss-green: #939F71ff;
+--tea-rose-red: #F3C3C3ff;
+--baby-powder: #FEFBF5ff; 
+*/
+
 .newEventContainer {
     display: flex;
     flex-direction: column;
