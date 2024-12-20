@@ -7,30 +7,26 @@ function HabitFiltSort () {
     const [sortHabits, setSortHabits] = useState('');
     const [filterHabits, setFilterHabits] = useState('');
     const [sortOrder, setSortOrder] = useState('');
+    const [displayedHabits, setDisplayedHabits] = useState([])
 
     useEffect(() => {
         let updatedHabits = [...habits];
 
-        if (filterHabits) {
-            updatedHabits = updatedHabits.filter((habits) => habits.selectedPriority === filterHabits);
+        if (filterHabits && filterHabits !== "All") {
+            updatedHabits = updatedHabits.filter((habit) => habit.priority === filterHabits);
         }
 
-        if (sortHabits === "priority")  {
-            updatedHabits.sort((a, b) => {
-                return sortOrder === "asc" ? a.priority - b.priority : b.priority - a.priority;
-            });
+        if (sortHabits === "priority") {
+            updatedHabits.sort((a, b) =>
+                sortOrder === "asc" ? a.priority.localeCompare(b.priority) : b.priority.localeCompare(a.priority)
+            );
+        } else if (sortHabits === "repeat") {
+            updatedHabits.sort((a, b) =>
+                sortOrder === "asc" ? a.repeat - b.repeat : b.repeat - a.repeat
+            );
         }
-        else if (sortHabits === "repeat") {
-            updatedHabits.sort((a, b) => {
-                return sortOrder === "asc" ? a.repeat - b.repeat : b.repeat - a.repeat;
-            });
-        }
-        }, [habits, filterHabits, sortHabits, sortHabits]);
-    
-   useEffect(() => {
-        console.log("Save habit in localStorage")
-        localStorage.setItem("habit", JSON.stringify(habits))
-    }, [habits]);
+        setDisplayedHabits(updatedHabits);
+    }, [habits, filterHabits, sortHabits, sortOrder]);
 
     return (
         <>
@@ -47,17 +43,27 @@ function HabitFiltSort () {
                 </div>
                 
                 <div className="SortDiv">
-                    <select className="SortPriority" onChange={(e) => setSortHabits('priority', e.target.value)}>
+                    <select className="SortPriority" onChange={(e) => setSortHabits('priority')}>
                         <option value="" disabled>Sort habits by priority</option>
                         <option value="asc">Low to high</option>
                         <option value="desc">High to low</option>
                     </select>
-                    <select className="SortRepeat" onChange={(e) => setSortHabits('repeat', e.target.value)}>
+                    <select className="SortRepeat" onChange={(e) => setSortHabits('repeat')}>
                         <option value="" disabled>Sort habits by repeat</option>
                         <option value="asc">Lowest to highest</option>
                         <option value="desc">Highest to lowest</option>
                     </select>
                 </div>
+            </div>
+
+            <div className="HabitList">
+                {displayedHabits.map((habit) => (
+                    <div key={habit.id} className="HabitItem">
+                        <h4>{habit.title}</h4>
+                        <p>Priority: {habit.priority}</p>
+                        <p>Repeat: {habit.repeat}</p>
+                    </div>
+            ))}
             </div>
         </>
     )
