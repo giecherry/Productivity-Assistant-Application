@@ -17,7 +17,7 @@ function App() {
         <Route path="/" element={<LogIn/>} />
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/todos/:id" element={<TodosAndActivities />} />
+        <Route path="/todos" element={<TodosAndActivities />} />
         <Route path="/habits" element={<Habits />} />
         <Route path="/calendar" element={<EventCalendar />} />
         <Route path="/calendar/newEvent" element={<NewEvent />} />
