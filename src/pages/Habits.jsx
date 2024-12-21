@@ -21,8 +21,6 @@ const Habits = () => {
                 <h1 className={HabitCSS.HabitHOne}>Habits</h1>
                 <CreateNewHabit />
                 <HabitFiltSort />   
-                
-
                 <div>  
                     <ul>
                         {habits.map((habits) => (
