@@ -7,7 +7,7 @@ function HabitFiltSort () {
     const {habits} = useContext(HabitCounterContext);
     const [sortHabits, setSortHabits] = useState('');
     const [filterHabits, setFilterHabits] = useState('');
-    const [sortOrder, setSortOrder] = useState('desc');
+    const [sortOrder] = useState('desc');
     const [displayedHabits, setDisplayedHabits] = useState([])
 
    
@@ -48,8 +48,8 @@ function HabitFiltSort () {
                 <label htmlFor="SortPriority">Sort by priority</label>
                     <select className={HabitCSS.SortPriority} id="SortPriority" onChange={(e) => setSortHabits('priority')}>
                         <option value="" disabled>Sort habits by priority</option>
-                        <option value="asc">Low to high</option>
-                        <option value="desc">High to low</option>
+                        <option value="asc">Lowest to highest</option>
+                        <option value="desc">Highest to lowest</option>
                     </select>
                     <label htmlFor="SortRepear">Sort by repeat</label>
                     <select className={HabitCSS.SortRepeat} id="SortRepear" onChange={(e) => setSortHabits('repeat')}>
@@ -60,11 +60,11 @@ function HabitFiltSort () {
                 </div>
             </div>
             <div className="HabitsList">
-                {displayedHabits.map((habit) => (
-                    <div key={habit.id} className="HabitItem">
-                        <h4>{habit.title}</h4>
-                        <p>Priority: {habit.priority}</p>
-                        <p>Repeat: {habit.repeat}</p>
+                {displayedHabits.map((habits) => (
+                    <div key={habits.id} className="HabitItem">
+                        <h4>{habits.title}</h4>
+                        <p>Priority: {habits.priority}</p>
+                        <p>Repeat: {habits.repeat}</p>
                     </div>
                 ))}
             </div> 
