@@ -1,7 +1,9 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react'
+import { Link } from "react-router-dom";
 import { TodoContext } from '../Todos-components/TodosContext';
 import TodoCSS from '../Todos-components/Todo.module.css'
+import LogOutBtn from '../HomePage-components/LogOutBtn'
 
 function TodoDetails() {
     
@@ -131,6 +133,8 @@ function TodoDetails() {
                 <button onClick={handleDelite}> Delete </button>
                 <button onClick={handleEdit}> Edit </button>
             </div>
+            <LogOutBtn />
+            <Link to="/todos"><button>&#8592;</button></Link>
         </div>
     )}
     </div>
