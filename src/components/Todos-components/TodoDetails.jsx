@@ -69,6 +69,18 @@ function TodoDetails() {
                             setEditedTodo({...editedTodo, todoTitle: e.target.value })
                     }
                 />
+            </label>
+            <label>
+                Category:
+                <input
+                    type="text"
+                    value={editedTodo.todoCategory}
+                    onChange={(e) =>
+                        setEditedTodo({ ...editedTodo, todoCategory: e.target.value })
+
+                    }
+
+                    />
                 </label>
                 <label>
                     Description:
@@ -76,28 +88,6 @@ function TodoDetails() {
                         value={editedTodo.todoDescription}
                         onChange={(e) =>
                             setEditedTodo({ ...editedTodo, todoDescription: e.target.value})
-
-                        }
-                    />
-                </label>
-                <label>
-                    Category:
-                    <input
-                        type="text"
-                        value={editedTodo.todoCategory}
-                        onChange={(e) =>
-                         setEditedTodo({ ...editedTodo, todoCategory: e.target.value })
-
-                        }
-                    />
-                </label>
-                <label>
-                    Deadline:
-                    <input 
-                        type="date" 
-                        value={editedTodo.todoDeadline}
-                        onChange={(e) =>
-                            setEditedTodo({ ...editedTodo, todoDeadline: e.target.value})
 
                         }
                     />
@@ -111,6 +101,18 @@ function TodoDetails() {
                         setEditedTodo({ ...editedTodo, todoEsTime: e.target.value })
 
                         } 
+               
+                    />
+                </label>
+                <label>
+                    Deadline:
+                    <input 
+                        type="date" 
+                        value={editedTodo.todoDeadline}
+                        onChange={(e) =>
+                            setEditedTodo({ ...editedTodo, todoDeadline: e.target.value})
+
+                        }
                 />
             </label>
             <div className={TodoCSS.TodoDetailsEditButtons}>
