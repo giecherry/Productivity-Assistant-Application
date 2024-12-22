@@ -12,7 +12,7 @@ const TodosOverview = () => {
     return (
         <>
         <div className={HomePageCSS.todosContainer}>
-            <h1>Todos Overview</h1>
+            <h1>Todos</h1>
             {recentTodos.length > 0 ? (
                 <div>
                     {recentTodos.map((todo) => (
@@ -24,7 +24,7 @@ const TodosOverview = () => {
                     ))}
                 </div>
             ) : (
-                <p>No todos available</p>
+            " "
             )}
             <Link to="/todos"><button>Show more</button></Link>
         </div>
