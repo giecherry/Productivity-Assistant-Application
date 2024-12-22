@@ -31,13 +31,13 @@ const CalendarOverview = () => {
                             <div>
                                 { isSameDay(event.startDateTime, event.endDateTime) ?
                                 <div>
-                                    <h5>{format(new Date(event.startDateTime), "EEE, do MMM")}</h5>
-                                    <h5>{format(new Date(event.startDateTime), "HH:mm")} - {format(new Date(event.endDateTime), "HH:mm")}</h5>
+                                    <p>{format(new Date(event.startDateTime), "EEE, do MMM")}</p>
+                                    <p>{format(new Date(event.startDateTime), "HH:mm")} - {format(new Date(event.endDateTime), "HH:mm")}</p>
                                 </div>
                                 :
                                 <div>
-                                <h5>{format(new Date(event.startDateTime), "EEE, do MMM")} - {format(new Date(event.startDateTime), "HH:mm")}</h5>
-                                <h5>{format(new Date(event.endDateTime), "EEE, do MMM")} - {format(new Date(event.endDateTime), "HH:mm")}</h5>
+                                <p>{format(new Date(event.startDateTime), "EEE, do MMM")} - {format(new Date(event.startDateTime), "HH:mm")}</p>
+                                <p>{format(new Date(event.endDateTime), "EEE, do MMM")} - {format(new Date(event.endDateTime), "HH:mm")}</p>
                                 </div>
                                 }
                             </div>
