@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react'
+import { Link } from "react-router-dom";
 import { TodoContext } from '../Todos-components/TodosContext';
 import LogOutBtn from '../HomePage-components/LogOutBtn'
 
@@ -129,6 +130,8 @@ function TodoDetails() {
             <br />
             <br />
             <LogOutBtn />
+            <br />
+            <Link to="/home"><button>&#8592;</button></Link>
         </div>
     )}
     </div>

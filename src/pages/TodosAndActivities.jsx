@@ -9,6 +9,7 @@ import TodosCSS from '../components/Todos-components/Todo.module.css'
 import LogOutBtn from '../components/HomePage-components/LogOutBtn.jsx'
 
 
+
 function TodosAndActivities() {
   const [todoTitle, setTodoTitle] = useState("");
   const [todoCategory, setTodoCategory] = useState("");
@@ -222,8 +223,10 @@ function TodosAndActivities() {
       <h2>No todos yet!</h2>
       )}
       <br />
-      
+
       <LogOutBtn />
+      <br />
+      <Link to="/home"><button>&#8592;</button></Link>
     </div>
  
   );
