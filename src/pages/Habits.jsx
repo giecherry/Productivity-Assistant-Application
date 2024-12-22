@@ -4,6 +4,7 @@ import { HabitCounterContext } from "/src/context/Habit-context/HabitCounterCont
 import HabitFiltSort from "../components/Habit-components/HabitFiltSort";
 import HabitCSS from "../components/Habit-components/Habit.module.css";
 import LogOutBtn from "../components/HomePage-components/LogOutBtn"
+import { Link } from "react-router-dom";
 
 const Habits = () => {
     
@@ -38,6 +39,7 @@ const Habits = () => {
                     </ul>
                 </div>
             </div>
+            <Link to="/home"><button>&#8592;</button></Link>
             <div className={HabitCSS.OutButton}><LogOutBtn /></div>
         </>
     )
