@@ -1,48 +1,135 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { TodoContext } from '../Todos-components/TodosContext';
 
 function TodoDetails() {
-    //Vad kommer vi behöva för variablar
-    //Denna hämtar id från URLen
+    
     const { id } = useParams(); 
     const navigate = useNavigate();
-    const { todos, updateTodo, deliteTodo } = useContext (TodoContext);
+    const { todos, updateTodo, deleteTodo } = useContext(TodoContext);
 
     const todo = todos.find((item) => item.id === parseInt(id));
+    const [isEditing, setIsEditing] = useState(false);
+    const [editedTodo, setEditedTodo] = useState(todo);
    
     if (!todo) {
         return <h2>Todo not found</h2>;
     }
 
     const handleComplete = () => {
-        updateTodo({ ...todo, todoStatus: 'Completed'});
-    
+        if (typeof updateTodo === 'function') {
+            updateTodo({...todo, todoStatus:'Completed'});
+        } else {
+            console.error('updateTodo is not function');
+        }
    };
 
    const handleDelite = () => {
-    deliteTodo(todo.id);
-    // kom ihåg denna för att Tas tillbaka till /todo
-    navigate('/todo');
+        if (typeof deleteTodo === 'function') {
+        deleteTodo(todo.id);
+        navigate('/todos');
+         } else {
+        console.error('deleteTodo is not a function');
+         }
    };
 
    const handleEdit = () => {
-    alert ('Edit');
+    setIsEditing(true);
+        alert ('Edit');
+   };
+
+   const handleSave = () => {
+        if (typeof updateTodo === 'function'){
+            updateTodo(editedTodo);
+            setIsEditing(false);
+        } else {
+            console.error('updateTodo is not a function');
+        }
+   };
+
+   const handleCancel = () => {
+        setEditedTodo(todo);
+        setIsEditing(false);
    };
 
     return (
-    <div>
-        <h1>{todo.todoTitle}</h1>
-        <p>Category: {todo.todoCategory}</p>
-        <p>Description: {todo.todoDescription}</p>
-        <p>Status: {todo.todoStatus}</p>
-        <p>Estimated Time In Minutes: {todo.todoEsTime}</p>
-        <p>Deadline: {todo.todoDeadline}</p>
-        <button onClick={handleComplete}> Completed</button>
-        <button onClick={handleDelite}> Delite </button>
-        <button onClick={handleEdit}> Edit </button>
+        <div>
+            {isEditing ? (
+            <div>
+                <h1>Edit Your Todo</h1>
+                <label>
+                    Titel:
+                    <input
+                        type="text"
+                        value={editedTodo.todoTitle}
+                        onChange={(e) =>
+                            setEditedTodo({...editedTodo, TodoTitle: e.target.value })
+                    }
+                />
+                </label>
+                <label>
+                    Description:
+                    <textarea
+                        value={editedTodo.todoDescription}
+                        onChange={(e) =>
+                            setEditedTodo({ ...editedTodo, todoDescription: e.target.value})
+
+                        }
+                    />
+                </label>
+                <label>
+                    Category:
+                    <input
+                        type="text"
+                        value={editedTodo.todoCategory}
+                        onChange={(e) =>
+                         setEditedTodo({ ...editedTodo, todoCategory: e.target.value })
+
+                        }
+                    />
+                </label>
+                <label>
+                    Deadline:
+                    <input 
+                        type="date" 
+                        value={editedTodo.todoDeadline}
+                        onChange={(e) =>
+                            setEditedTodo({ ...editedTodo, todoDeadline: e.target.value})
+
+                        }
+                    />
+                </label>
+                <label>
+                    Estemated Time:
+                    <input 
+                    type="number"
+                    value={editedTodo.todoEsTime}
+                    onChange={(e) => 
+                        setEditedTodo({ ...editedTodo, todoEsTime: e.target.value })
+
+                        } 
+                />
+            </label>
+            <button onClick={handleSave}>Save</button>
+            <button onClick={handleCancel}>Cancel</button>
+        </div>
+    ) : (   
+            
+        <div>
+            <h1>{todo.todoTitle}</h1>
+            <p>Category: {todo.todoCategory}</p>
+            <p>Description: {todo.todoDescription}</p>
+            <p>Status: {todo.todoStatus}</p>
+            <p>Estimated Time In Minutes: {todo.todoEsTime}</p>
+            <p>Deadline: {todo.todoDeadline}</p>
+            <button onClick={handleComplete}> Completed</button>
+            <button onClick={handleDelite}> Delete </button>
+            <button onClick={handleEdit}> Edit </button>
+        </div>
+    )}
     </div>
- );
+);
+
 }
 
 export default TodoDetails;
