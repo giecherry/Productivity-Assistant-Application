@@ -82,7 +82,7 @@ function TodoDetails() {
                     <option value="Health">Health</option>
                     <option value="Housekeeping">HouseKeeping</option>
                     <option value="Job related">Job related</option>
-                    <option value="Entertainmant">Entertainment</option>
+                    <option value="Entertainment">Entertainment</option>
                 </select>
             </label>
             <label>
