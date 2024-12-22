@@ -28,9 +28,13 @@ function CreateNewHabit() {
             <div className={HabitCSS.CreatHabitContainer}>
                 <div className={HabitCSS.CreateHabit}>
                     <h4 className={HabitCSS.HabitHFour}>Add new habit</h4>
+                    <label htmlFor="Title">Title</label>
                     <input className={HabitCSS.HabitTitle} type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required/>
+                    <label htmlFor="Description">Description</label>
                     <input className={HabitCSS.HabitDescription} type="text" placeholder="Habit description" value={description} onChange={(e) => setDescription(e.target.value)}/>
+                    <label htmlFor="Repeat">Repeat</label>
                     <input className={HabitCSS.HabitRepeat} type="number" placeholder="Repeat" value={repeat} onChange={(e) => setRepeat(e.target.value)} required/>
+                    <label htmlFor="Priority">Priority</label>
                     <select className={HabitCSS.HabitPriority} value={priority} onChange={(e) => setPriority(e.target.value)} required>
                         <option value="" disabled>Select priority</option>
                         <option value="High">High</option>
