@@ -9,7 +9,7 @@ const TodosOverview = () => {
     const { todos } = useContext(TodoContext);
     const { inUser } = useContext(UserContext);
 
-    const recentTodos = [...todos].filter(todo => todo.owner === inUser.userName).slice(-3).reverse();
+    const recentTodos = [...todos].filter(todo => todo.owner === inUser.userName && todo.todoStatus === "Uncompleted").slice(-3).reverse();
 
     return (
         <>
