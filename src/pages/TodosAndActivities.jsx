@@ -5,6 +5,8 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { TodoContext } from '../components/Todos-components/TodosContext.jsx';
 import HomePageCSS from '../components/HomePage-components/HomePage.module.css'
+import TodosCSS from '../components/Todos-components/Todo.module.css'
+
 
 function TodosAndActivities() {
   const [todoTitle, setTodoTitle] = useState("");
