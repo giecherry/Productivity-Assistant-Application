@@ -12,7 +12,6 @@ const SignUp = () => {
 
     useEffect(() => {
         localStorage.setItem("Registrerad users:", JSON.stringify(regUsers))
-        console.log("Registrerad users:",regUsers)
     },[regUsers])
 
     const handleClick = () => {

@@ -19,7 +19,7 @@ const GreetingAndQuote = () => {
     return (
         <>
             <div className={HomePageCSS.greetingContainer}>
-                <h1>Welcome, {inUser?.userName || "Guest"}</h1>
+                <h1>Welcome, {inUser?.userName ? inUser.userName.charAt(0).toUpperCase() + inUser.userName.slice(1) : "Guest"}</h1>
                 <h2><i>"{randomQuote.content}"</i></h2>
                 <h4>- {randomQuote.author}</h4>
             </div>

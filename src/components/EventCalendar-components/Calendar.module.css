@@ -69,6 +69,7 @@
 }
 .past-event {
     color: #6b6b6b;
+    text-decoration: line-through;
     background-color: #97a27b39;
     box-shadow: #41443839 0px 50px 100px -20px, #3c432839 0px 30px 60px -30px, #3d4b1239 0px -2px 6px 0px inset;
 }

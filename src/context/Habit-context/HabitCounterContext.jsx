@@ -11,7 +11,6 @@ export function HabitCounterContextProvider ({children}) {
 });
 
     useEffect(() => {
-        console.log("Save habit in localStorage")
         localStorage.setItem("habit", JSON.stringify(habits));
     }, [habits]);
 
@@ -19,6 +18,7 @@ export function HabitCounterContextProvider ({children}) {
 
         let newHabit = {
             id:Date.now(),
+            owner: JSON.parse(sessionStorage.getItem("Inloggad user:")).userName,
             title,
             description,          
             repeat,

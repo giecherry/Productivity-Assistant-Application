@@ -38,7 +38,6 @@ export function UserContextProvider ({children}){
         }
 
         const checkUser = () => {
-            console.log(regUsers);
             let user = regUsers.find(user => user.userName === userName && user.password === password);
             return user;
         }
