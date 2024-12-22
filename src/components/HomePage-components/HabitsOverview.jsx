@@ -23,9 +23,9 @@ const HabitsOverview = () => {
                     <div key={habit.id}>
                         <div>
                             <div className={HomePageCSS.HabitContent}>
-                                <h4>Title: {habit.title}</h4>
-                                <h3>Repeat: {habit.repeat}</h3>
-                                <h3>Priority: {habit.priority}</h3>
+                                <h3>Title: {habit.title}</h3>
+                                <p>Repeat: {habit.repeat}</p>
+                                <p>Priority: {habit.priority}</p>
                             </div>
                         </div>
                     </div>

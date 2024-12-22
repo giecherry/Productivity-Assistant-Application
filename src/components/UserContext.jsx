@@ -35,7 +35,6 @@ export function UserContextProvider ({children}){
             let newInUserData = {userName, password};
             setInUser(newInUserData);
             sessionStorage.setItem("Inloggad user:", JSON.stringify(newInUserData));
-            console.log("Inloggad user:",inUser)
         }
 
         const checkUser = () => {
