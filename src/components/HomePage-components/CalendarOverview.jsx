@@ -27,7 +27,7 @@ const CalendarOverview = () => {
                 <h1>Calendar</h1>
                 <div className={HomePageCSS.overviewEvents}>
                     {threeLastEvents.map((event,i) => (
-                        <Link to={`/event/${event.id}`} key={i}>
+                        <Link to={`/calendar/${event.id}`} key={i}>
                         <div key={event.id} className={HomePageCSS.overviewEvent}>
                             <h3>{event.title}</h3>
                             <div>
