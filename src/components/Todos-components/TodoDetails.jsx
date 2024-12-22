@@ -3,8 +3,7 @@ import { useContext, useState } from 'react'
 import { TodoContext } from '../Todos-components/TodosContext';
 
 function TodoDetails() {
-    //Vad kommer vi behöva för variablar
-    //Denna hämtar id från URLen
+    
     const { id } = useParams(); 
     const navigate = useNavigate();
     const { todos, updateTodo, deleteTodo } = useContext(TodoContext);
@@ -28,7 +27,6 @@ function TodoDetails() {
    const handleDelite = () => {
         if (typeof deleteTodo === 'function') {
         deleteTodo(todo.id);
-    // kom ihåg denna för att Tas tillbaka till /todo
         navigate('/todos');
          } else {
         console.error('deleteTodo is not a function');
