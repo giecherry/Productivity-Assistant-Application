@@ -5,7 +5,7 @@ import HabitCSS from "./Habit.module.css";
 const HabitList = ({filter}) => {
     const { habits, increment, reduce, zero, reset } = useContext(HabitCounterContext);
 
-    const filteredHabits = useMemo(() => { //useMemo för att inte behöva köra om uträkningarna
+    const filteredHabits = useMemo(() => { //useMemo för att inte behöva köra filtreringarna varje gång. 
         let result = habits;
 
         if (filter.priority) {
