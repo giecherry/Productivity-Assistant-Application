@@ -11,7 +11,7 @@ const GreetingAndQuote = () => {
         getQuote();
     },[])
     const getQuote= async()=>{
-        let response = await fetch("https://api.quotable.io/quotes/random")
+        let response = await fetch("http://api.quotable.io/quotes/random")
         let json = await response.json()
         setRandomQuote(json[0]);
     }
