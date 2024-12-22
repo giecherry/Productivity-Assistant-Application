@@ -1,11 +1,11 @@
 import { useContext, useMemo } from "react";
-import { HabitContext } from "../../context/Habit-context/HabitContext";
+import { HabitCounterContext } from "../../context/Habit-context/HabitCounterContext";
 import HabitCSS from "./Habit.module.css";
 
 const HabitList = ({filter}) => {
-    const { habits, increment, reduce, zero, reset } = useContext(HabitContext);
+    const { habits, increment, reduce, zero, reset } = useContext(HabitCounterContext);
 
-    const filteredHabits = useMemo(() => {
+    const filteredHabits = useMemo(() => { //useMemo för att inte behöva köra om uträkningarna
         let result = habits;
 
         if (filter.priority) {
@@ -15,11 +15,13 @@ const HabitList = ({filter}) => {
         }
 
         if (filter.sortBy === "priority") {
+            const prio = { High: 3, Medium: 2, Low: 1 };
+
             result.sort((a, b) => {
                 if (filter.sortOrder === "asc") {
-                    return a.priority.localeCompare(b.priority);
+                    return prio [a.priority] - prio[b.priority];
                 } else {
-                    return b.priority.localeCompare(a.priority);
+                    return prio[b.priority] - prio[a.priority];
                 }
             });
         }
