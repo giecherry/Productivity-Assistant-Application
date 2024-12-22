@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react'
 import { TodoContext } from '../Todos-components/TodosContext';
+import LogOutBtn from '../HomePage-components/LogOutBtn'
 
 function TodoDetails() {
     
@@ -125,6 +126,9 @@ function TodoDetails() {
             <button onClick={handleComplete}> Completed</button>
             <button onClick={handleDelite}> Delete </button>
             <button onClick={handleEdit}> Edit </button>
+            <br />
+            <br />
+            <LogOutBtn />
         </div>
     )}
     </div>
