@@ -38,7 +38,6 @@ function TodoDetails() {
 
    const handleEdit = () => {
     setIsEditing(true);
-        alert ('Edit');
    };
 
    const handleSave = () => {
