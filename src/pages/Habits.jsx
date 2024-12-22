@@ -13,7 +13,6 @@ const Habits = () => {
     const [habitFilter, setHabitFilter] = useState(habits);
 
     useEffect(() => {
-            console.log("Save habit in localStorage")
             localStorage.setItem("habit", JSON.stringify(habits))
         }, [habits])
 

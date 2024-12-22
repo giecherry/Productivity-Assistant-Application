@@ -35,7 +35,6 @@ const EventDetails = () => {
 
     const handleEditForm = () => {
         setShowEditForm(true);
-        console.log("Edit mode: ON")
     };
 
     const updateEvents = (event) => {

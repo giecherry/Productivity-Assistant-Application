@@ -13,8 +13,7 @@ const HabitList = ({filter}) => {
         let result = habits.filter(habit => habit.owner === inUser.userName);
 
         if (filter.priority) {
-            console.log("Filtering by priority");
-            console.log(filter.priority);
+            console.log("Filtering by priority", filter.priority);
             result = result.filter((habit) => habit.priority === filter.priority);
         }
 

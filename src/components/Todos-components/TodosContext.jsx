@@ -23,14 +23,12 @@ export function TodoContextProvider ({children}) {
     );
     setTodos(updatedTodos);
     localStorage.setItem("todos", JSON.stringify(updatedTodos));
-    console.log("Todo updated in local storage:", updatedTodo);
     };
 
     const deleteTodo = (todoId) => {
         const updatedTodos = todos.filter((todo) => todo.id !== todoId);
         setTodos(updatedTodos);
         localStorage.setItem("todos", JSON.stringify(updatedTodos));
-        console.log("Todo deleted from local storage:", todoId);
     };
 
     return (
