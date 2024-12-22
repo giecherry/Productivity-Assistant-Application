@@ -11,7 +11,10 @@ const HabitsOverview = () => {
         return storedHabits ? JSON.parse(storedHabits) : [];
     });
 
+    const { inUser } = useContext(UserContext);
+
     const highestCount = habits
+        .filter(habit => habit.owner === inUser.userName)
         .sort((a, b) => b.repeat - a.repeat)
         .slice(0, 3);
 

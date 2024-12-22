@@ -1,12 +1,16 @@
 import { useContext, useMemo } from "react";
 import { HabitCounterContext } from "../../context/Habit-context/HabitCounterContext";
 import HabitCSS from "./Habit.module.css";
+import { UserContext } from "../UserContext";
+
 
 const HabitList = ({filter}) => {
     const { habits, increment, reduce, zero, reset } = useContext(HabitCounterContext);
+    const { inUser } = useContext(UserContext);
+    
 
     const filteredHabits = useMemo(() => { //useMemo för att inte behöva köra filtreringarna varje gång. 
-        let result = habits;
+        let result = habits.filter(habit => habit.owner === inUser.userName);
 
         if (filter.priority) {
             console.log("Filtering by priority");
