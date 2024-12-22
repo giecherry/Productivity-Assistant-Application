@@ -27,6 +27,7 @@ const Habits = () => {
                         {habits.map((habits) => (
                             <li key={habits.id}>        
                                 <h3>Habit: {habits.title}</h3>
+                                <p><strong>Description:</strong> {habits.description}</p>
                                 <p><strong>Repeat:</strong> {habits.repeat}</p>
                                 <p><strong>Priority:</strong> {habits.priority}</p>
                                 <p><strong>Count your repetitions</strong> {habits.counter}</p>
