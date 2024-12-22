@@ -31,10 +31,12 @@
 
 .input {
     margin: 1rem 0.7rem;
-    border: transparent;
     padding: 0.7rem 2rem;
     border-radius: 15px;
-    background-color: #FEFBF5ff;
+    background-color: #939F71ff;
+    border: none;
+    outline: none;
+    box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
 }
 
 .eventStartContainer, .eventEndContainer, .eventTitleContainer {
