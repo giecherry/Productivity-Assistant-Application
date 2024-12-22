@@ -130,6 +130,9 @@ function TodosAndActivities() {
   const [todoStatus, setTodoStatus] = useState("");
   const [todoEsTime, setTodoEsTime] = useState("");
   const [todoDeadline, setTodoDeadline] = useState("");
+  const [filterStatus, setFilterStatus] = useState("");
+  const [filterCategory, setFilterCategory] = useState("");
+  const [sortOption, setSortOption] = useState("");
   const [showList, setShowList] = useState(false);
 
   const { todos, addTodo } = useContext(TodoContext);
@@ -146,7 +149,7 @@ function TodosAndActivities() {
       todoCategory,
       todoDescription,
       todoStatus,
-      todoEsTime,
+      todoEsTime: parseInt(todoEsTime, 10),
       todoDeadline,
     };
 
@@ -155,11 +158,36 @@ function TodosAndActivities() {
   }
 
   useEffect(()=>{
-    if (todos.length > 0)
-    {
+    if (todos.length > 0) {
       setShowList(true)
     }}
-  ,[todos])
+  ,[todos]);
+
+  const filteredAndSortedTodos = () => {
+    let filteredTodos = [...todos];
+
+    if (filterStatus) {
+      filteredTodos = filteredTodos.filter(todo => todo.todoStatus === filterStatus);
+    }
+
+    if (filterCategory) {
+      filteredTodos = filteredTodos.filter(todo => todo.todoCategory === filterCategory);
+    }
+
+    if (sortOption === "deadline-asc") {
+      filteredTodos.sort((a, b) => new Date(a.todoDeadline) - new Date(b.todoDeadline));
+    } else if (sortOption === "deadline-desc") {
+      filteredTodos.sort((a, b) => new Date(b.todoDeadline) - new Date(a.todoDeadline));
+    } else if (sortOption === "estime-asc") {
+      filteredTodos.sort((a, b) => a.todoEsTime - b.todoEsTime);
+    } else if (sortOption === "estime-desc") {
+      filteredTodos.sort((a, b) => b.todoEsTime - a.todoEsTime);
+    }else if (sortOption === "status") {
+      filteredTodos.sort((a, b) => a.todoStatus.localeCompare(b.todoStatus));
+    }
+
+    return filteredTodos;
+  };
 
 
   return (
@@ -242,24 +270,71 @@ function TodosAndActivities() {
         <br />
         <button onClick={handleClick}>Add to list</button>
       </div>
-      {showList?
-      <ul>
-        {console.log(todos)}
-        {todos.map((todo) => (
-          <div key={todo.id}>
-            <h3> Title: {todo.todoTitle}</h3>
-            <h3> Category: {todo.todoCategory}</h3>
-            <h3> Description: {todo.todoDescription } </h3>
-            <h3> Status: {todo.todoStatus}</h3>
-            <h3> Estimated time in minutes: {todo.todoEsTime}</h3>
-            <h3> Deadline: {todo.todoDeadline}</h3>
-            {/*Kom ihåg att denna Navigerar / Tar oss till TodoDetails*/ }
-            <Link to={`/todos/${todo.id}`}>View Details</Link>
-          </div>
-        ))}
-      </ul>:
+
+      <h2>Filter and Sort</h2>
+      <div>
+        <label htmlFor="filter-status">Filter by Status:</label>
+        <select
+          id="filter-status"
+          value={filterStatus}
+          onChange={(e) => setFilterStatus(e.target.value)}
+          >
+            <option value="">All</option>
+            <option value="Completed">Completed</option>
+            <option value="Uncompleted">Uncompleted</option>
+            </select>
+            <br />
+            <br />
+            <label htmlFor="filter-category">Filter by Category:</label>
+            <select
+            id="filter-category"
+            value={filterCategory}
+            onChange={(e) => setFilterCategory(e.target.value)}
+            >
+              <option value="">All</option>
+              <option value="Health">Health</option>
+              <option value="Housekeeping">Housekeeping</option>
+              <option value="Job related">Job related</option>
+              <option value="Entertainment">Entertainment</option>
+            </select>
+            <br />
+            <br />
+            <label htmlFor="sort-option">Sort By:</label>
+            <select
+            id="sort-option"
+            value={sortOption}
+            onChange={(e) => setSortOption(e.target.value)}
+            >
+              <option value="">None</option>
+              <option value="deadline-asc">Deadline (Ascending)</option>
+              <option value="deadline-desc">Deadline (Descending)</option>
+              <option value="estime-asc">Estimated Time (Ascending)</option>
+              <option value="estime-desc">Estimated Time (Descending)</option>
+              <option value="status">Status</option>
+            </select>
+      </div>
+
+      {showList ? (
+        filteredAndSortedTodos().length > 0 ? (
+        <ul>
+          {filteredAndSortedTodos().map((todo) => (
+            <div key={todo.id}>
+              <h3>Title: {todo.todoTitle}</h3>
+              <h3>Category: {todo.todoCategory}</h3>
+              <h3>Description: {todo.todoDescription}</h3>
+              <h3>Status: {todo.todoStatus}</h3>
+              <h3>Estimated time in minutes: {todo.todoEsTime}</h3>
+              <h3>Deadline: {todo.todoDeadline}</h3>
+              <Link to={`/todos/${todo.id}`}>View Details</Link>
+            </div>
+          ))}
+        </ul>
+      ) : (
+        <h2>No todos match the current filter criteria!</h2>
+        )
+      ) : (
       <h2>No todos yet!</h2>
-      }
+      )}
     </div>
   );
 }

@@ -3,10 +3,11 @@ import { createContext, useState } from "react";
 
 export const TodoContext = createContext();
 
-export function TodoContextProvider ({children}){
+export function TodoContextProvider ({children}) {
     const [todos, setTodos] = useState(() => {
-        const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
-        return savedTodos;
+        const savedTodos = localStorage.getItem("todos");
+        return savedTodos ? JSON.parse(localStorage.getItem("todos")) : [];
+        
     });
 
     const addTodo = (newTodo) => {
