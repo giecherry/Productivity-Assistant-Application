@@ -209,11 +209,11 @@ function TodosAndActivities() {
       ) : (
       <h2>No todos yet!</h2>
       )}
-      <br />
 
-      <LogOutBtn />
       <br />
       <Link to="/home"><button>&#8592;</button></Link>
+      <br />
+      <LogOutBtn />
     </div>
  
   );

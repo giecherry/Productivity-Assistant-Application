@@ -133,8 +133,8 @@ function TodoDetails() {
                 <button onClick={handleDelite}> Delete </button>
                 <button onClick={handleEdit}> Edit </button>
             </div>
-            <LogOutBtn />
             <Link to="/todos"><button>&#8592;</button></Link>
+            <LogOutBtn />
         </div>
     )}
     </div>
