@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { TodoContext } from '../components/Todos-components/TodosContext.jsx';
 import HomePageCSS from '../components/HomePage-components/HomePage.module.css'
-import TodosCSS from '../components/Todos-components/Todo.module.css'
+import TodoCSS from '../components/Todos-components/Todo.module.css'
 
 
 function TodosAndActivities() {
@@ -76,11 +76,10 @@ function TodosAndActivities() {
 
 
   return (
-    <div className={HomePageCSS.todosContainer}>
+    <div className={TodoCSS.TodosPageContainer}>
       <h1>Todo List - Activities</h1>
-      
-      <h2>Create new todo</h2>
-      <div>
+      <div className={TodoCSS.NewTodoContainer}>
+        <h2>Create new todo</h2>
         <label htmlFor="todo-title">Title:</label>
         <input
           id="todo-title"
@@ -89,8 +88,6 @@ function TodosAndActivities() {
           onChange={(e) => setTodoTitle(e.target.value)}
           placeholder="Enter todo here"
         />
-        <br />
-        <br />
 
         <label htmlFor="todo-category">Category:</label>
         <select
@@ -106,8 +103,6 @@ function TodosAndActivities() {
           <option value="Job related">Job related</option>
           <option value="Entertainment">Entertainment</option>
         </select>
-        <br />
-        <br />
 
         <label htmlFor="todo-description">Description:</label>
         <input
@@ -116,8 +111,6 @@ function TodosAndActivities() {
           value={todoDescription}
           onChange={(e) => setTodoDescription(e.target.value)}
         />
-        <br />
-        <br />
 
         <label htmlFor="todo-status">Status:</label>
         <select
@@ -131,8 +124,7 @@ function TodosAndActivities() {
           <option value="Completed">Completed</option>
           <option value="Uncompleted">Uncompleted</option>
         </select>
-        <br />
-        <br />
+
         <label htmlFor="todo-estimated-time">Estimated time (in minutes):</label>
         <input
           id="todo-estimated-time"
@@ -142,8 +134,7 @@ function TodosAndActivities() {
           onChange={(e) => setTodoEsTime(e.target.value)}
           placeholder="e.g., 30"
         />
-        <br />
-        <br />
+
         <label htmlFor="todo-deadline">Deadline:</label>
         <input
           id="todo-deadline"
@@ -151,13 +142,12 @@ function TodosAndActivities() {
           value={todoDeadline}
           onChange={(e) => setTodoDeadline(e.target.value)}
         />
-        <br />
-        <br />
+
         <button onClick={handleClick}>Add to list</button>
       </div>
 
-      <h2>Filter and Sort</h2>
-      <div>
+      
+      <div className={TodoCSS.TodosFilters}>
         <label htmlFor="filter-status">Filter by Status:</label>
         <select
           id="filter-status"
@@ -168,8 +158,7 @@ function TodosAndActivities() {
             <option value="Completed">Completed</option>
             <option value="Uncompleted">Uncompleted</option>
             </select>
-            <br />
-            <br />
+
             <label htmlFor="filter-category">Filter by Category:</label>
             <select
             id="filter-category"
@@ -182,8 +171,7 @@ function TodosAndActivities() {
               <option value="Job related">Job related</option>
               <option value="Entertainment">Entertainment</option>
             </select>
-            <br />
-            <br />
+
             <label htmlFor="sort-option">Sort By:</label>
             <select
             id="sort-option"
@@ -203,15 +191,15 @@ function TodosAndActivities() {
         filteredAndSortedTodos().length > 0 ? (
         <ul>
           {filteredAndSortedTodos().map((todo) => (
-            <div key={todo.id}>
+            <li key={todo.id}>
               <h3>Title: {todo.todoTitle}</h3>
               <h3>Category: {todo.todoCategory}</h3>
               <h3>Description: {todo.todoDescription}</h3>
               <h3>Status: {todo.todoStatus}</h3>
               <h3>Estimated time in minutes: {todo.todoEsTime}</h3>
               <h3>Deadline: {todo.todoDeadline}</h3>
-              <Link to={`/todos/${todo.id}`}>View Details</Link>
-            </div>
+              <Link to={`/todos/${todo.id}`}><button>View Details</button></Link>
+            </li>
           ))}
         </ul>
       ) : (

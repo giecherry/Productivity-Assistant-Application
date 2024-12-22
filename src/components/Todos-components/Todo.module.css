@@ -1,0 +1,96 @@
+.TodoDetailsContainer, .TodoDetailsContainerEdit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+    margin: 1rem;
+    gap: 1.5rem;
+    background-color: #FCE8E9ff;
+    border-radius: 15px;
+    box-shadow: #5941414e 0px 50px 100px -20px, #57323274 0px 30px 60px -30px, #42101058 0px -2px 6px 0px inset;
+}
+
+.TodoDetailsContainerEdit label{
+    text-align: left;
+
+}
+
+.TodoDetailsButtons, .TodoDetailsEditButtons{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    gap: 1rem;
+
+}
+
+.TodosPageContainer{
+    background-color: #FCE8E9ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    max-width: 100dvh;
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: #5941414e 0px 50px 100px -20px, #57323274 0px 30px 60px -30px, #42101058 0px -2px 6px 0px inset;
+}
+
+.NewTodoContainer{
+    background-color: white;
+    color: #939F71ff;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #FCE8E9ff;
+    border-radius: 15px;
+    padding: 1rem;
+    min-width: 100%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.NewTodoContainer input, .NewTodoContainer select, .TodosFilters select {
+    background-color: #939F71ff;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    padding: 1em;
+    box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+    margin: 10px;
+}
+
+.TodosFilters{
+    background-color: #FCE8E9ff;
+    color: #939F71ff;
+    display: flex;
+    flex-direction: row;
+    border: 2px solid #FCE8E9ff;
+    border-radius: 15px;
+    padding: 1rem;
+    min-width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: #5941414e 0px 50px 100px -20px, #57323274 0px 30px 60px -30px, #42101058 0px -2px 6px 0px inset;
+}
+
+ul {
+    list-style: none;
+    padding: 1px;
+    margin: 1px;
+    display: grid;
+    grid-template-columns: repeat(3, 4fr);
+    gap: 2rem;
+    justify-content: center;
+}
+  
+li {
+    background-color: #FEFBF5ff;
+    border-radius: 15px;
+    padding: 1rem;
+    border: 2px solid #939F71ff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    gap: 2rem;
+}
+  
+li:hover {
+    transform: scale(1.08);
+}

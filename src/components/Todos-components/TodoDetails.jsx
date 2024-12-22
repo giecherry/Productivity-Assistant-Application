@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react'
 import { TodoContext } from '../Todos-components/TodosContext';
+import TodoCSS from '../Todos-components/Todo.module.css'
 
 function TodoDetails() {
     
@@ -55,7 +56,7 @@ function TodoDetails() {
     return (
         <div>
             {isEditing ? (
-            <div>
+            <div className={TodoCSS.TodoDetailsContainerEdit}>
                 <h1>Edit Your Todo</h1>
                 <label>
                     Titel:
@@ -110,21 +111,26 @@ function TodoDetails() {
                         } 
                 />
             </label>
-            <button onClick={handleSave}>Save</button>
-            <button onClick={handleCancel}>Cancel</button>
+            <div className={TodoCSS.TodoDetailsEditButtons}>
+                <button onClick={handleSave}>Save</button>
+                <button onClick={handleCancel}>Cancel</button>
+            </div>
+            
         </div>
     ) : (   
             
-        <div>
+        <div className={TodoCSS.TodoDetailsContainer}>
             <h1>{todo.todoTitle}</h1>
             <p>Category: {todo.todoCategory}</p>
             <p>Description: {todo.todoDescription}</p>
             <p>Status: {todo.todoStatus}</p>
             <p>Estimated Time In Minutes: {todo.todoEsTime}</p>
             <p>Deadline: {todo.todoDeadline}</p>
-            <button onClick={handleComplete}> Completed</button>
-            <button onClick={handleDelite}> Delete </button>
-            <button onClick={handleEdit}> Edit </button>
+            <div className={TodoCSS.TodoDetailsButtons}>
+                <button onClick={handleComplete}> Completed</button>
+                <button onClick={handleDelite}> Delete </button>
+                <button onClick={handleEdit}> Edit </button>
+            </div>
         </div>
     )}
     </div>
