@@ -72,29 +72,32 @@ function TodoDetails() {
             </label>
             <label>
                 Category:
-                <input
-                    type="text"
+                <select
                     value={editedTodo.todoCategory}
                     onChange={(e) =>
                         setEditedTodo({ ...editedTodo, todoCategory: e.target.value })
 
                     }
-
-                    />
-                </label>
-                <label>
-                    Description:
-                    <textarea
-                        value={editedTodo.todoDescription}
-                        onChange={(e) =>
-                            setEditedTodo({ ...editedTodo, todoDescription: e.target.value})
+                >
+                    <option value="Health">Health</option>
+                    <option value="Housekeeping">HouseKeeping</option>
+                    <option value="Job related">Job related</option>
+                    <option value="Entertainmant">Entertainment</option>
+                </select>
+            </label>
+            <label>
+                Description:
+                <textarea
+                    value={editedTodo.todoDescription}
+                    onChange={(e) =>
+                        setEditedTodo({ ...editedTodo, todoDescription: e.target.value})
 
                         }
                     />
-                </label>
-                <label>
-                    Estemated Time:
-                    <input 
+            </label>
+            <label>
+                Estemated Time:
+                <input 
                     type="number"
                     value={editedTodo.todoEsTime}
                     onChange={(e) => 
