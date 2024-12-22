@@ -2,12 +2,14 @@ import HomePageCSS from "./HomePage.module.css"
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { TodoContext } from "../Todos-components/TodosContext.jsx";
+import { UserContext } from "../UserContext.jsx";
 
 
 const TodosOverview = () => {
     const { todos } = useContext(TodoContext);
+    const { inUser } = useContext(UserContext);
 
-    const recentTodos = [...todos].slice(-3).reverse();
+    const recentTodos = [...todos].filter(todo => todo.owner === inUser.userName && todo.todoStatus === "Uncompleted").slice(-3).reverse();
 
     return (
         <>

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { TodoContext } from '../components/Todos-components/TodosContext.jsx';
 import TodoCSS from '../components/Todos-components/Todo.module.css'
 import LogOutBtn from '../components/HomePage-components/LogOutBtn.jsx'
-
+import { UserContext } from "../components/UserContext.jsx";
 
 
 function TodosAndActivities() {
@@ -20,7 +20,8 @@ function TodosAndActivities() {
   const [filterCategory, setFilterCategory] = useState("");
   const [sortOption, setSortOption] = useState("");
   const [showList, setShowList] = useState(false);
-
+  
+  const { inUser } = useContext(UserContext);
   const { todos, addTodo } = useContext(TodoContext);
 
   function handleClick() {
@@ -50,7 +51,7 @@ function TodosAndActivities() {
   ,[todos]);
 
   const filteredAndSortedTodos = () => {
-    let filteredTodos = [...todos];
+    let filteredTodos = todos.filter(todo => todo.owner === inUser.userName);
 
     if (filterStatus) {
       filteredTodos = filteredTodos.filter(todo => todo.todoStatus === filterStatus);

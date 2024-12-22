@@ -22,7 +22,7 @@ function App() {
         <Route path="/habits" element={<Habits />} />
         <Route path="/calendar" element={<EventCalendar />} />
         <Route path="/calendar/newEvent" element={<NewEvent />} />
-        <Route path="/event/:id" element={<EventDetails />} />
+        <Route path="/calendar/:id" element={<EventDetails />} />
       </Routes>
     </>
   );

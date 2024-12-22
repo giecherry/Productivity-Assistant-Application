@@ -45,7 +45,7 @@ const Calendar = () => {
             <Link to="/calendar/newEvent"><button className={CalendarCSS.addEventButton}>+</button></Link>
             <div className={CalendarCSS.eventsListContainer}>
                 {eventsThisMonth.map((event,i) => (
-                    <Link to={`/event/${event.id}`} key={i}>
+                    <Link to={`/calendar/${event.id}`} key={i}>
                         <div className={CalendarCSS.eventContainer}>
                             <div className={CalendarCSS.eventDate}>
                             { isSameDay(event.startDateTime, event.endDateTime) ?
