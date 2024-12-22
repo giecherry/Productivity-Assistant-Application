@@ -131,7 +131,7 @@ function TodoDetails() {
             <br />
             <LogOutBtn />
             <br />
-            <Link to="/home"><button>&#8592;</button></Link>
+            <Link to="/todos"><button>&#8592;</button></Link>
         </div>
     )}
     </div>
