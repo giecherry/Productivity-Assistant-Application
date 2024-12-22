@@ -66,7 +66,7 @@ function TodoDetails() {
                         type="text"
                         value={editedTodo.todoTitle}
                         onChange={(e) =>
-                            setEditedTodo({...editedTodo, TodoTitle: e.target.value })
+                            setEditedTodo({...editedTodo, todoTitle: e.target.value })
                     }
                 />
                 </label>
