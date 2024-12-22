@@ -14,15 +14,15 @@ const TodosOverview = () => {
         <div className={HomePageCSS.todosContainer}>
             <h1>Todos Overview</h1>
             {recentTodos.length > 0 ? (
-                <ul>
+                <div>
                     {recentTodos.map((todo) => (
-                        <li key={todo.id}>
+                        <div key={todo.id} className={HomePageCSS.todos}>
                             <h3>{todo.todoTitle}</h3>
                             <p>{todo.todoCategory}</p>
                             <p>{todo.todoDeadline}</p>
-                        </li>
+                        </div>
                     ))}
-                </ul>
+                </div>
             ) : (
                 <p>No todos available</p>
             )}
