@@ -9,7 +9,7 @@ import HabitList from "../components/Habit-components/HabitList";
 
 const Habits = () => {
     
-    let {increment, reduce, zero, reset, habits, AddHabits} = useContext(HabitCounterContext)
+    let {habits} = useContext(HabitCounterContext)
     const [habitFilter, setHabitFilter] = useState(habits);
 
     useEffect(() => {
